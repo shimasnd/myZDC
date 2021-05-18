@@ -13,11 +13,11 @@
 /vis/modeling/trajectories/create/drawByCharge
 /vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
 /vis/scene/notifyHandlers scene-0
+/vis/scene/notifyHandlers scene-1
+/vis/scene/notifyHandlers scene-2
 /vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
 /vis/scene/notifyHandlers scene-0
-/vis/scene/add/axes 0 0 0 3 m
-/vis/scene/notifyHandlers
-/vis/scene/add/axes 0 0 37 1 m
-/vis/scene/notifyHandlers
-/vis/scene/add/axes 0.96 0 37500 1 m
+/vis/scene/notifyHandlers scene-1
+/vis/scene/notifyHandlers scene-2
+/vis/scene/add/axes 96 0 3750 100 cm
 /vis/scene/notifyHandlers

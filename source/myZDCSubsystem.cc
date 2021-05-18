@@ -113,5 +113,5 @@ void myZDCSubsystem::SetDefaultParameters()
   set_default_double_param("size_y", 60.);
   set_default_double_param("size_z", 200.);
 
-  set_default_string_param("material", "G4_Cu");
+  set_default_string_param("material", "G4_W");
 }

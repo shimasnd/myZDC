@@ -1,6 +1,6 @@
 myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
  ../myZDCDetector.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/g4main/PHG4Detector.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/g4main/PHG4Detector.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4RotationMatrix.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/globals.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ios.hh \
@@ -202,32 +202,32 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/parse_numbers.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/std_mutex.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ThreeVector.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ThreeVector.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/defs.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ThreeVector.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/Rotation.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationInterfaces.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/LorentzVector.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/LorentzVector.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ZMxpv.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/AxisAngle.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/AxisAngle.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationInterfaces.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationX.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationX.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/PhysicalConstants.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/defs.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/SystemOfUnits.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationY.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationY.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationZ.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationZ.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/Rotation.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/ThreeVector.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/defs.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/ThreeVector.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/Rotation.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationInterfaces.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/LorentzVector.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/LorentzVector.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/ZMxpv.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/AxisAngle.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/AxisAngle.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationInterfaces.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationX.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationX.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Units/PhysicalConstants.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Units/defs.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Units/SystemOfUnits.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationY.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationY.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationZ.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationZ.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/Rotation.icc \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/set \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_set.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_multiset.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/phparameter/PHParameters.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/phool/PHObject.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/phparameter/PHParameters.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/phool/PHObject.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TObject.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/Rtypes.h \
@@ -267,15 +267,15 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Polyhedron.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/HepPolyhedron.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Point3D.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Point3D.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/defs.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/BasicVector3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Point3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/defs.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/BasicVector3D.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Normal3D.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Normal3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Normal3D.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Transform3D.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Transform3D.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Transform3D.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Vector3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Transform3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Transform3D.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Vector3D.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.icc \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.icc \
@@ -339,13 +339,21 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/graphics_reps_defs.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.icc
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistManager.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Material.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistElementBuilder.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistMaterialBuilder.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ICRU90StoppingData.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LPhysicsFreeVector.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4PhysicsFreeVector.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Pow.hh
 
 /usr/include/stdc-predef.h:
 
 ../myZDCDetector.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/g4main/PHG4Detector.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/g4main/PHG4Detector.h:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4RotationMatrix.hh:
 
@@ -807,47 +815,47 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ThreeVector.hh:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ThreeVector.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/ThreeVector.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/defs.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/defs.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ThreeVector.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/ThreeVector.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/Rotation.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/Rotation.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationInterfaces.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationInterfaces.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/LorentzVector.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/LorentzVector.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/LorentzVector.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/LorentzVector.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ZMxpv.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/ZMxpv.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/AxisAngle.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/AxisAngle.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/AxisAngle.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/AxisAngle.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationInterfaces.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationInterfaces.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationX.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationX.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationX.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationX.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/PhysicalConstants.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Units/PhysicalConstants.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/defs.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Units/defs.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/SystemOfUnits.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Units/SystemOfUnits.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationY.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationY.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationY.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationY.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationZ.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationZ.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationZ.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/RotationZ.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/Rotation.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Vector/Rotation.icc:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/set:
 
@@ -855,9 +863,9 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_multiset.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/phparameter/PHParameters.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/phparameter/PHParameters.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/phool/PHObject.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/phool/PHObject.h:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TObject.h:
 
@@ -941,23 +949,23 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Point3D.hh:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Point3D.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Point3D.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/defs.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/defs.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/BasicVector3D.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/BasicVector3D.h:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Normal3D.hh:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Normal3D.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Normal3D.h:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Transform3D.hh:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Transform3D.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Transform3D.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Transform3D.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Transform3D.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Vector3D.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.3/include/CLHEP/Geometry/Vector3D.h:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.hh:
 
@@ -1086,3 +1094,19 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.icc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistManager.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Material.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistElementBuilder.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistMaterialBuilder.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ICRU90StoppingData.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LPhysicsFreeVector.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4PhysicsFreeVector.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Pow.hh:
