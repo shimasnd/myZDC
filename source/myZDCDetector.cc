@@ -21,6 +21,7 @@
 //____________________________________________________________________________..
 
 #include "myZDCDetector.h"
+#include "myZDCStructure.h"
 
 #include <phparameter/PHParameters.h>
 
@@ -77,7 +78,8 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
 
   G4VisAttributes *vis = new G4VisAttributes(G4Color(G4Colour::Grey()));  // grey is good to see the tracks in the display
   vis->SetForceSolid(true);
-  logical->SetVisAttributes(vis);
+  // logical->SetVisAttributes(vis);
+  logical->SetVisAttributes(G4VisAttributes::Invisible);
   G4RotationMatrix *rotm = new G4RotationMatrix();
   rotm->rotateX(m_Params->get_double_param("rot_x") * rad);
   rotm->rotateY(m_Params->get_double_param("rot_y") * rad);
@@ -92,8 +94,8 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
   // add it to the list of placed volumes so the IsInDetector method
   // picks them up
   ConstructStructure();
-
-  m_PhysicalVolumesSet.insert(m_gPhy);
+  
+  //  m_PhysicalVolumesSet.insert(m_gPhy);
  //end implement your own here://
   return;
 }
@@ -104,87 +106,24 @@ void myZDCDetector::ConstructStructure()
   double gsizex = m_Params->get_double_param("size_x") * cm;
   double gsizey = m_Params->get_double_param("size_y") * cm;
   double gsizez = m_Params->get_double_param("size_z") * cm;
-  double esizez = 40.* cm;
+  double endz = 0;
 
-  G4Material *fMat;
-  G4double sizex;
-  G4double sizey;
-  G4double sizez;
-  G4double widx;
-  G4double widy;
-  G4double widz;
-  G4double x_c;
-  G4double y_c;
-  G4double z_c;
+  myZDCStructure *mzs = new myZDCStructure();
 
-  //ECAL crystal
-  fMat = G4NistManager::Instance()->FindOrBuildMaterial("G4_PbWO4");
-  int nEx=15;
-  int nEy=15;
-  int nEz=2;
-  sizex = gsizex;
-  sizey = gsizey;
-  sizez = esizez;
-  widx = sizex/nEx;
-  widy = sizey/nEy;
-  widz = sizez/nEz;
-  
-  G4Box *ESolid = new G4Box("myZDC_ESolid",widx*0.5 ,widy*0.5, widz*0.5);
-  G4LogicalVolume *ELogic = new G4LogicalVolume(ESolid, fMat, "myZDC_ELogical");
+  endz = mzs->ConstructCrystalTowers(-gsizex/2.,-gsizey/2.,-gsizez/2.,
+				     gsizex/2., gsizey/2., (-gsizez + 42.*cm)/2., m_gPhy);
 
-  G4VisAttributes *Evis  = new G4VisAttributes(G4Color(G4Colour::Yellow()));
-  Evis->SetForceSolid(true);
-  ELogic->SetVisAttributes(Evis);
+  endz = mzs->ConstructEMLayers(-gsizex *0.5, -gsizey*0.5, endz,
+				gsizex*0.5, gsizey*0.5, gsizez*0.5, m_gPhy);
+  std::cout<<endz<<std::endl;
 
-  int k=0;
-  for(int l=0; l<nEz; l++){
-    z_c = - gsizez* 0.5 + widz*(l+0.5);
-    for(int j=0; j<nEy; j++){
-      y_c = - gsizey * 0.5 +widy*(j+0.5);
-      for(int i=0; i<nEx; i++){
-	x_c = -gsizex * 0.5 +widx*(i+0.5);
-	
-	std::string cellname = "myZDC_E"+std::to_string(k);
-	new G4PVPlacement(0, G4ThreeVector(x_c, y_c, z_c), cellname,ELogic,m_gPhy,false,k);
-	
-	k++;
-      }
-    }
-  }
-
-  //HCAL Tungsten
-  fMat = G4NistManager::Instance()->FindOrBuildMaterial("G4_W");
-  int nHx=12;
-  int nHy=12;
-  int nHz=32;
-  sizex = gsizex;
-  sizey = gsizey;
-  sizez = gsizez - esizez;
-  widx = sizex/nHx;
-  widy = sizey/nHy;
-  widz = sizez/nHz;
-  
-  G4Box *HSolid = new G4Box("myZDC_HSolid",widx*0.5 ,widy*0.5, widz*0.5);
-  G4LogicalVolume *HLogic = new G4LogicalVolume(HSolid, fMat, "myZDC_HLogical");
-
-  G4VisAttributes *Hvis  = new G4VisAttributes(G4Color(G4Colour::Green()));
-  Hvis->SetForceSolid(true);
-  HLogic->SetVisAttributes(Hvis);
-
-  k=0;
-  for(int l=0; l<nHz; l++){
-    z_c = - gsizez* 0.5 + esizez + widz*(l+0.5);
-    for(int j=0; j<nHy; j++){
-      y_c = - gsizey * 0.5 +widy*(j+0.5);
-      for(int i=0; i<nHx; i++){
-	x_c = -gsizex * 0.5 +widx*(i+0.5);
-	
-	std::string cellname = "myZDC_Z"+std::to_string(k);
-	new G4PVPlacement(0, G4ThreeVector(x_c, y_c, z_c), cellname,HLogic,m_gPhy,false,k);
-	k++;
-      }
-    }
-  } 
+  //  double hcalz = endz + 20. *mm;
+  double hcalz = 69.89 *mm;
+  std::cout<<hcalz<<std::endl;
+  std::cout<<"Now HCAL"<<std::endl;
+  endz = mzs->ConstructHCLayers(-gsizex *0.5, -gsizey*0.5, hcalz,
+  				gsizex*0.5, gsizey*0.5, gsizez*0.5, m_gPhy);
+  std::cout<<endz<<std::endl;
 
   return;
 }

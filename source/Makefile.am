@@ -20,7 +20,8 @@ lib_LTLIBRARIES = \
 libmyZDC_la_SOURCES = \
   myZDCSubsystem.cc\
   myZDCDetector.cc\
-  myZDCSteppingAction.cc
+  myZDCSteppingAction.cc\
+  myZDCStructure.cc
 
 libmyZDC_la_LIBADD = \
   -lphool \
