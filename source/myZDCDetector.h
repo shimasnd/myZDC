@@ -25,7 +25,6 @@ class myZDCDetector : public PHG4Detector
 
   //! construct
   void ConstructMe(G4LogicalVolume *world) override;
-  void ConstructStructure();
 
   void Print(const std::string &what = "ALL") const override;
 
@@ -39,7 +38,9 @@ class myZDCDetector : public PHG4Detector
 
  private:
   PHParameters *m_Params;
-  G4VPhysicalVolume *m_gPhy;
+
+  std::set<G4LogicalVolume *> m_ActiveLogicalVolumesSet;
+  std::set<G4LogicalVolume *> m_AbsorberLogicalVolumesSet;
 
   // active volumes
   std::set<G4VPhysicalVolume *> m_PhysicalVolumesSet;

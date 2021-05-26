@@ -103,9 +103,9 @@ void myZDCSubsystem::SetDefaultParameters()
   // angles are in rad
   // units should be converted to G4 units when used
   //implement your own here//
-  set_default_double_param("place_x", 9.6);
+  set_default_double_param("place_x", 96);
   set_default_double_param("place_y", 0.);
-  set_default_double_param("place_z", 375.);
+  set_default_double_param("place_z", 3750);
   set_default_double_param("rot_x", 0.);
   set_default_double_param("rot_y", 0.0256);
   set_default_double_param("rot_z", 0.);
@@ -113,5 +113,4 @@ void myZDCSubsystem::SetDefaultParameters()
   set_default_double_param("size_y", 60.);
   set_default_double_param("size_z", 200.);
 
-  set_default_string_param("material", "G4_W");
 }

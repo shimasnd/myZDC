@@ -1,11 +1,13 @@
 #ifndef MYZDCSTRUCTURE_H
 #define MYZDCSTRUCTURE_H
 
-#include <Geant4/G4Material.hh>
-#include <Geant4/G4VisAttributes.hh>
+#include <set>
+#include <Geant4/globals.hh>
 
 class G4LogicalVolume;
 class G4VPhysicalVolume;
+class G4VisAttributes;
+class G4Material;
 
 class myZDCStructure {
   public: 
@@ -25,6 +27,8 @@ class myZDCStructure {
   double ConstructHCSciLayers(double x0, double y0, double z0, 
 			      double x1, double y1, double z1,
 			      G4VPhysicalVolume *mPhy);
+  void ProvideLogicalVolumesSets(std::set<G4LogicalVolume *> &m_ActiveLogicalVolumesSet,
+				 std::set<G4LogicalVolume *> &m_AbsorberLogicalVolumesSet);
   void Print();
 
 
@@ -52,6 +56,9 @@ private:
   G4VisAttributes* fvisW;
   G4VisAttributes* fvisPb;
   G4VisAttributes* fvisSci;
+
+  std::set<G4LogicalVolume *> m_ActiveLogicalVolumesSet;
+  std::set<G4LogicalVolume *> m_AbsorberLogicalVolumesSet;
 
 };  
 

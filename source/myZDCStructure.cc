@@ -10,6 +10,7 @@
 #include <Geant4/G4VisAttributes.hh>
 #include <Geant4/G4Color.hh>
 
+
 myZDCStructure::myZDCStructure() {
   std::cout<<"myZDCStructure:: Use FoCal Layout"<<std::endl;
   std::cout<<"myZDCStructure:: Pad Layer"<<PAD_Layer_Thickness<<"mm thick"<<std::endl;
@@ -22,6 +23,15 @@ myZDCStructure::myZDCStructure() {
 }
 myZDCStructure::~myZDCStructure() {}
 
+void myZDCStructure::ProvideLogicalVolumesSets(std::set<G4LogicalVolume *> &ActiveLogicalVolumesSet,
+					       std::set<G4LogicalVolume *> &AbsorberLogicalVolumesSet){
+
+  ActiveLogicalVolumesSet  =  m_ActiveLogicalVolumesSet;
+  AbsorberLogicalVolumesSet=  m_AbsorberLogicalVolumesSet;
+
+  return;
+
+}
 double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, double Start_Z, 
 					      double End_X, double End_Y, double End_Z,
 					      G4VPhysicalVolume *motherPhy) {
@@ -40,14 +50,14 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   G4Box *PIXPlane    = new G4Box("CPIXPlane",   Width_X/2.0, Width_Y/2.0, PIX_Z/2.0);
   G4Box *PIXEnvelope = new G4Box("CPIXEnvelope",PIX_X/2.0, Width_Y/2.0, PIX_Z/2.0);
 
-  G4LogicalVolume* lV_PIX_Silicon = new G4LogicalVolume( PIX_Silicon,     fmat_Si, "LVol_CPIX_Silicon" );
-  G4LogicalVolume* lV_PIX_Glue2   = new G4LogicalVolume( PIX_Glue2, 	fmat_PET, "LVol_CPIX_Glue2");
-  G4LogicalVolume* lV_PIX_FPC 	  = new G4LogicalVolume( PIX_FPC,  fmat_PET, "LVol_CPIX_FPC");
-  G4LogicalVolume* lV_Crystal     = new G4LogicalVolume( Crystal, fmat_Crystal, "LVol_Crystal");
-  G4LogicalVolume* lV_CrysEnvelope= new G4LogicalVolume( CrysEnvelope, fmat_World, "LVol_CrysEnvelope");
-  G4LogicalVolume* lV_CrysBox     = new G4LogicalVolume( CrysBox, fmat_World, "LVol_CrysBox");
-  G4LogicalVolume* lV_PIXPlane    = new G4LogicalVolume( PIXPlane, fmat_World, "LVol_CPIXPlane");
-  G4LogicalVolume* lV_PIXEnvelope = new G4LogicalVolume( PIXEnvelope, fmat_World, "LVol_CPIXEnvelope");
+  G4LogicalVolume* lV_PIX_Silicon = new G4LogicalVolume( PIX_Silicon,     fmat_Si, "lV_Crystal_PIX_Silicon" );
+  G4LogicalVolume* lV_PIX_Glue2   = new G4LogicalVolume( PIX_Glue2, 	fmat_PET, "lV_Crystal_PIX_Glue2");
+  G4LogicalVolume* lV_PIX_FPC 	  = new G4LogicalVolume( PIX_FPC,  fmat_PET, "lV_Crystal_PIX_FPC");
+  G4LogicalVolume* lV_Crystal     = new G4LogicalVolume( Crystal, fmat_Crystal, "lV_Crystal");
+  G4LogicalVolume* lV_CrysEnvelope= new G4LogicalVolume( CrysEnvelope, fmat_World, "lV_CrysEnvelope");
+  G4LogicalVolume* lV_CrysBox     = new G4LogicalVolume( CrysBox, fmat_World, "lV_CrysBox");
+  G4LogicalVolume* lV_PIXPlane    = new G4LogicalVolume( PIXPlane, fmat_World, "lV_CPIXPlane");
+  G4LogicalVolume* lV_PIXEnvelope = new G4LogicalVolume( PIXEnvelope, fmat_World, "lV_CPIXEnvelope");
 
   lV_Crystal->SetVisAttributes(fvisCrystal);
   lV_PIX_Silicon->SetVisAttributes(fvisPIX);
@@ -59,6 +69,11 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   lV_PIXPlane->SetVisAttributes(G4VisAttributes::Invisible);
   lV_PIXEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   
+  m_ActiveLogicalVolumesSet.insert(lV_PIX_Silicon);
+  m_ActiveLogicalVolumesSet.insert(lV_Crystal);
+  m_AbsorberLogicalVolumesSet.insert(lV_PIX_Glue2);
+  m_AbsorberLogicalVolumesSet.insert(lV_PIX_FPC);
+
   //Making PIX layers using Replica
 
   int NdivX = (int)(Width_X/ PIX_X);
@@ -158,25 +173,25 @@ double myZDCStructure::ConstructEMLayers(double Start_X, double Start_Y, double 
   //   Logical volumes
   //*****************************************************************************************
   //PAD
-  G4LogicalVolume* lV_PAD_W 	= new G4LogicalVolume( PAD_W, 		fmat_W, "LogVol_PAD_W");
-  G4LogicalVolume* lV_PAD_Glue1 	= new G4LogicalVolume( PAD_Glue1, 	fmat_PET, "LogVol_PAD_Glue1" );
-  G4LogicalVolume* lV_PAD_Silicon	= new G4LogicalVolume( PAD_Silicon,     fmat_Si, "LogVol_PAD_Silicon" );
-  G4LogicalVolume* lV_PAD_Glue2 	= new G4LogicalVolume( PAD_Glue2, 	fmat_PET, "LogVol_PAD_Glue2");
-  G4LogicalVolume* lV_PAD_FPC 	= new G4LogicalVolume( PAD_FPC,  fmat_PET, "LogVol_PAD_FPC");
-  G4LogicalVolume* lV_PADPlane    = new G4LogicalVolume( PAD_Plane, fmat_World, "LVol_PADPlane");
-  G4LogicalVolume* lV_PADEnvelope = new G4LogicalVolume( PAD_Envelope, fmat_World, "LVol_PADEnvelope");
-  G4LogicalVolume* lV_PADLayer    = new G4LogicalVolume( PAD_Layer, fmat_World, "LVol_PADLayer");
-  G4LogicalVolume* lV_PADonlyBox  = new G4LogicalVolume( PADonlyBox, fmat_World, "LVol_PADonlyBox");
+  G4LogicalVolume* lV_PAD_W 	  = new G4LogicalVolume( PAD_W,        fmat_W,   "lV_PAD_W");
+  G4LogicalVolume* lV_PAD_Glue1   = new G4LogicalVolume( PAD_Glue1,    fmat_PET, "lV_PAD_Glue1" );
+  G4LogicalVolume* lV_PAD_Silicon = new G4LogicalVolume( PAD_Silicon,  fmat_Si,  "lV_PAD_Silicon" );
+  G4LogicalVolume* lV_PAD_Glue2   = new G4LogicalVolume( PAD_Glue2,    fmat_PET, "lV_PAD_Glue2");
+  G4LogicalVolume* lV_PAD_FPC 	  = new G4LogicalVolume( PAD_FPC,      fmat_PET, "lV_PAD_FPC");
+  G4LogicalVolume* lV_PADPlane    = new G4LogicalVolume( PAD_Plane,    fmat_World, "lV_PADPlane");
+  G4LogicalVolume* lV_PADEnvelope = new G4LogicalVolume( PAD_Envelope, fmat_World, "lV_PADEnvelope");
+  G4LogicalVolume* lV_PADLayer    = new G4LogicalVolume( PAD_Layer,    fmat_World, "lV_PADLayer");
+  G4LogicalVolume* lV_PADonlyBox  = new G4LogicalVolume( PADonlyBox,   fmat_World, "lV_PADonlyBox");
 
   //PIX
-  G4LogicalVolume* lV_PIX_W 	= new G4LogicalVolume( PIX_W, 	    fmat_W, "LogVol_PIX_W");
-  G4LogicalVolume* lV_PIX_Glue1 	= new G4LogicalVolume( PIX_Glue1,   fmat_PET, "LogVol_PIX_Glue1");
-  G4LogicalVolume* lV_PIX_Silicon	= new G4LogicalVolume( PIX_Silicon, fmat_Si, "LogVol_PIX_Silicon" );
-  G4LogicalVolume* lV_PIX_Glue2 	= new G4LogicalVolume( PIX_Glue2,   fmat_PET, "LogVol_PIX_Glue2" );
-  G4LogicalVolume* lV_PIX_FPC 	= new G4LogicalVolume( PIX_FPC,  fmat_PET, "LogVol_PIX_FPC");
-  G4LogicalVolume* lV_PIXPlane    = new G4LogicalVolume( PIX_Plane, fmat_World, "LVol_PIXPlane");
-  G4LogicalVolume* lV_PIXEnvelope = new G4LogicalVolume( PIX_Envelope, fmat_World, "LVol_PIXEnvelope");
-  G4LogicalVolume* lV_PIXLayer    = new G4LogicalVolume( PIX_Layer, fmat_World, "LVol_PIXLayer");
+  G4LogicalVolume* lV_PIX_W 	= new G4LogicalVolume( PIX_W, 	    fmat_W, "lV_PIX_W");
+  G4LogicalVolume* lV_PIX_Glue1 	= new G4LogicalVolume( PIX_Glue1,   fmat_PET, "lV_PIX_Glue1");
+  G4LogicalVolume* lV_PIX_Silicon	= new G4LogicalVolume( PIX_Silicon, fmat_Si, "lV_PIX_Silicon" );
+  G4LogicalVolume* lV_PIX_Glue2 	= new G4LogicalVolume( PIX_Glue2,   fmat_PET, "lV_PIX_Glue2" );
+  G4LogicalVolume* lV_PIX_FPC 	= new G4LogicalVolume( PIX_FPC,  fmat_PET, "lV_PIX_FPC");
+  G4LogicalVolume* lV_PIXPlane    = new G4LogicalVolume( PIX_Plane, fmat_World, "lV_PIXPlane");
+  G4LogicalVolume* lV_PIXEnvelope = new G4LogicalVolume( PIX_Envelope, fmat_World, "lV_PIXEnvelope");
+  G4LogicalVolume* lV_PIXLayer    = new G4LogicalVolume( PIX_Layer, fmat_World, "lV_PIXLayer");
 
   lV_PAD_W->SetVisAttributes(fvisW);
   lV_PIX_W->SetVisAttributes(fvisW);
@@ -198,6 +213,17 @@ double myZDCStructure::ConstructEMLayers(double Start_X, double Start_Y, double 
   lV_PIXPlane->SetVisAttributes(G4VisAttributes::Invisible);
   lV_PIXEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   lV_PIXLayer->SetVisAttributes(G4VisAttributes::Invisible);
+
+  m_ActiveLogicalVolumesSet.insert(lV_PAD_Silicon);
+  m_ActiveLogicalVolumesSet.insert(lV_PIX_Silicon);
+  m_AbsorberLogicalVolumesSet.insert(lV_PAD_W);
+  m_AbsorberLogicalVolumesSet.insert(lV_PAD_Glue1);
+  m_AbsorberLogicalVolumesSet.insert(lV_PAD_Glue2);
+  m_AbsorberLogicalVolumesSet.insert(lV_PAD_FPC);
+  m_AbsorberLogicalVolumesSet.insert(lV_PIX_W);
+  m_AbsorberLogicalVolumesSet.insert(lV_PIX_Glue1);
+  m_AbsorberLogicalVolumesSet.insert(lV_PIX_Glue2);
+  m_AbsorberLogicalVolumesSet.insert(lV_PIX_FPC);
 
   //Construct a PAD/PIX plane using Replica
   new G4PVReplica("PV_PADEnvelope", lV_PADEnvelope, lV_PADPlane, kXAxis, NpadX, PAD_X,0);
@@ -300,17 +326,17 @@ double myZDCStructure::ConstructHCSiliconLayers(double Start_X, double Start_Y, 
   G4Box* PAD_FPC 	= new G4Box("HPAD_FPC",		Width_X/2.0, Width_Y/2.0, PAD_FPC_Z/2.0);
   G4Box *PAD_Plane    = new G4Box("HPAD_Plane",    Width_X/2.0, Width_Y/2.0, PAD_Z/2.0);
   G4Box *PAD_Envelope = new G4Box("HPAD_Envelope", PAD_X/2.0, Width_Y/2.0, PAD_Z/2.0);
-  G4Box *HC_Si_Box    = new G4Box("HC_Si_Box",     Width_X/2., Width_Y/2., TotalLayerThickness);
+  G4Box *HC_Si_Box    = new G4Box("HC_Si_Box",     Width_X/2., Width_Y/2., TotalLayerThickness/2.);
   
   G4LogicalVolume* lV_HCal_Absorber= new G4LogicalVolume( HCal_Absorber, fmat_Pb, "lV_HCal_SiAbsorber");
   G4LogicalVolume* lV_HCal_Layer  = new G4LogicalVolume( HCal_Layer, fmat_World, "lV_HCal_SiLayer");
-  G4LogicalVolume* lV_PAD_Glue1   = new G4LogicalVolume( PAD_Glue1, 	fmat_PET, "LogVol_HPAD_Glue1" );
-  G4LogicalVolume* lV_PAD_Silicon = new G4LogicalVolume( PAD_Silicon,     fmat_Si, "LogVol_HPAD_Silicon" );
-  G4LogicalVolume* lV_PAD_Glue2   = new G4LogicalVolume( PAD_Glue2, 	fmat_PET, "LogVol_HPAD_Glue2");
-  G4LogicalVolume* lV_PAD_FPC 	  = new G4LogicalVolume( PAD_FPC,  fmat_PET, "LogVol_HPAD_FPC");
-  G4LogicalVolume* lV_PADPlane    = new G4LogicalVolume( PAD_Plane, fmat_World, "LVol_HPADPlane");
-  G4LogicalVolume* lV_PADEnvelope = new G4LogicalVolume( PAD_Envelope, fmat_World, "LVol_HPADEnvelope");
-  G4LogicalVolume* lV_HC_Si_Box   = new G4LogicalVolume( HC_Si_Box, fmat_World, "LVol_HC_Si_Box");
+  G4LogicalVolume* lV_PAD_Glue1   = new G4LogicalVolume( PAD_Glue1, 	fmat_PET, "lV_HCal_PAD_Glue1" );
+  G4LogicalVolume* lV_PAD_Silicon = new G4LogicalVolume( PAD_Silicon,     fmat_Si, "lV_HCal_PAD_Silicon" );
+  G4LogicalVolume* lV_PAD_Glue2   = new G4LogicalVolume( PAD_Glue2, 	fmat_PET, "lV_HCal_PAD_Glue2");
+  G4LogicalVolume* lV_PAD_FPC 	  = new G4LogicalVolume( PAD_FPC,  fmat_PET, "lV_HCal_PAD_FPC");
+  G4LogicalVolume* lV_PADPlane    = new G4LogicalVolume( PAD_Plane, fmat_World, "lV_HPADPlane");
+  G4LogicalVolume* lV_PADEnvelope = new G4LogicalVolume( PAD_Envelope, fmat_World, "lV_HPADEnvelope");
+  G4LogicalVolume* lV_HC_Si_Box   = new G4LogicalVolume( HC_Si_Box, fmat_World, "lV_HC_Si_Box");
 
   lV_HCal_Absorber->SetVisAttributes(fvisPb);
   lV_PAD_Silicon->SetVisAttributes(fvisPAD);
@@ -322,6 +348,12 @@ double myZDCStructure::ConstructHCSiliconLayers(double Start_X, double Start_Y, 
   lV_PADEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   lV_HCal_Layer->SetVisAttributes(G4VisAttributes::Invisible);
   lV_HC_Si_Box->SetVisAttributes(G4VisAttributes::Invisible);
+
+  m_ActiveLogicalVolumesSet.insert(lV_PAD_Silicon);
+  m_AbsorberLogicalVolumesSet.insert(lV_HCal_Absorber);
+  m_AbsorberLogicalVolumesSet.insert(lV_PAD_Glue1);
+  m_AbsorberLogicalVolumesSet.insert(lV_PAD_Glue2);
+  m_AbsorberLogicalVolumesSet.insert(lV_PAD_FPC);
 
   //Construct a PADplane using Replica
   new G4PVReplica("PV_PADEnvelope", lV_PADEnvelope, lV_PADPlane, kXAxis, NpadX, PAD_X,0);
@@ -373,7 +405,7 @@ double myZDCStructure::ConstructHCSciLayers(double Start_X, double Start_Y, doub
   G4Box* HCal_Layer     = new G4Box("HCal_Layer",       Width_X/2.0, Width_Y/2.0, HCal_Layer_Thickness/2.0);
   G4Box* HCal_SciPlane     = new G4Box("HCal_SciPlane",       Width_X/2.0, Width_Y/2.0, HCAL_Z_Scintilator/2.0);
   G4Box* HCal_SciEnvelope  = new G4Box("HCal_SciEnvelope",       HCAL_X_Tower/2.0, Width_Y/2.0, HCAL_Z_Scintilator/2.0);
-  G4Box* HCal_Box     = new G4Box("HCal_Box",       Width_X/2.0, Width_Y/2.0, TotalTowerThickness);
+  G4Box* HCal_Box     = new G4Box("HCal_Box",       Width_X/2.0, Width_Y/2.0, TotalTowerThickness/2.);
 
   //HCal volumes
   G4LogicalVolume* lV_HCal_Absorber	= new G4LogicalVolume( HCal_Absorber, 	 fmat_Pb, "lV_HCal_Absorber");
@@ -392,6 +424,9 @@ double myZDCStructure::ConstructHCSciLayers(double Start_X, double Start_Y, doub
   lV_HCal_SciPlane->SetVisAttributes(G4VisAttributes::Invisible);
   lV_HCal_SciEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   lV_HCal_Box->SetVisAttributes(G4VisAttributes::Invisible);
+
+  m_ActiveLogicalVolumesSet.insert(lV_HCal_Scintilator);
+  m_AbsorberLogicalVolumesSet.insert(lV_HCal_Absorber);
 
   new G4PVReplica("PV_HCSciEnvelope",lV_HCal_SciEnvelope, lV_HCal_SciPlane, kXAxis, HCALNumberOfTowersX, HCAL_X_Tower, 0);
   new G4PVReplica("PV_HCScintilator",lV_HCal_Scintilator, lV_HCal_SciEnvelope, kYAxis, HCALNumberOfTowersY, HCAL_Y_Tower,0);

@@ -207,8 +207,8 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     }
     else
     {
-      std::cout << "implement stuff for whichactive < 0 (inactive volumes)" << std::endl;
-      gSystem->Exit(1);
+      // std::cout << "implement stuff for whichactive < 0 (inactive volumes)" << std::endl;
+      // gSystem->Exit(1);
     }
     // this is for the tracking of the truth info
     if (G4VUserTrackInformation *p = aTrack->GetUserInformation())
