@@ -2,7 +2,7 @@
 #define MYZDCSTRUCTURE_H
 
 #include <Geant4/G4Material.hh>
-#include <Geant4/G4NistManager.hh>
+#include <Geant4/G4VisAttributes.hh>
 
 class G4LogicalVolume;
 class G4VPhysicalVolume;
@@ -19,14 +19,18 @@ class myZDCStructure {
   double ConstructEMLayers(double x0, double y0, double z0, 
 			 double x1, double y1, double z1,
 			 G4VPhysicalVolume *mPhy);
-  double ConstructHCLayers(double x0, double y0, double z0, 
-			   double x1, double y1, double z1,
-			   G4VPhysicalVolume *mPhy);
+  double ConstructHCSiliconLayers(double x0, double y0, double z0, 
+			      double x1, double y1, double z1,
+			      G4VPhysicalVolume *mPhy);
+  double ConstructHCSciLayers(double x0, double y0, double z0, 
+			      double x1, double y1, double z1,
+			      G4VPhysicalVolume *mPhy);
   void Print();
 
 
 private:
 
+  void SetColors();
   void Materials();
   
   int fLayer;
@@ -40,6 +44,14 @@ private:
   G4Material* fmat_Cu;
   G4Material* fmat_Fe;
   G4Material* fmat_Crystal;
+
+  G4VisAttributes* fvisCrystal;
+  G4VisAttributes* fvisPIX;
+  G4VisAttributes* fvisPAD;
+  G4VisAttributes* fvisDM;
+  G4VisAttributes* fvisW;
+  G4VisAttributes* fvisPb;
+  G4VisAttributes* fvisSci;
 
 };  
 

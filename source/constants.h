@@ -10,13 +10,14 @@ constexpr G4int nCTowerY=20;
 constexpr G4int nCTowerZ=2;
 constexpr G4double CTower_X = 3. *cm;
 constexpr G4double CTower_Y = 3. *cm;
-constexpr G4double CTower_Z = 20. *cm;
-
+constexpr G4double CTower_Z = 10. *cm;
+constexpr G4double CTower_GAP = 3. *cm;
 
 //MiniFoCal block
-constexpr G4int NumberOfLayers = 40;
-constexpr G4int NumberPIX = 20;
-constexpr G4int NumberPAD = 80;
+constexpr G4int NumberOfLayers = 42;
+constexpr G4int NumberPIX = 2;
+constexpr G4int NumberPAD = 40;
+constexpr G4int NPadOnlyLayers=20;
 
 //=================================================================
 //PIX detector
@@ -32,10 +33,6 @@ constexpr G4double PIX_Glue2_Z  = 0.11*mm; //between Si+FPC
 constexpr G4double PIX_FPC_Z    = 0.28*mm; //Readout
 constexpr G4double PIX_AirGap   = 1.2*mm;
 constexpr G4double PIX_Layer_Thickness = PIX_Absorber_Z + PIX_Glue1_Z + PIX_Z + PIX_Glue2_Z + PIX_FPC_Z + PIX_AirGap;
-//Plate size
-//constexpr G4double PIX_GuardRingThickness = 0.00*mm;
-//constexpr G4double PIX_MiniFoCal_X = ( (PIX_X*NpixX)+2*PIX_GuardRingThickness)*mm;
-//constexpr G4double PIX_MiniFoCal_Y = ( (PIX_Y*NpixY)+2*PIX_GuardRingThickness)*mm;
 
 //=================================================================
 //PAD detector
@@ -52,27 +49,27 @@ constexpr G4double PAD_Glue2_Z  = 0.13*mm; //between Si+FPC
 constexpr G4double PAD_FPC_Z    = 0.28*mm;
 constexpr G4double PAD_AirGap   = 1.0*mm;
 constexpr G4double PAD_Layer_Thickness = PAD_Absorber_Z + PAD_Glue1_Z + PAD_Z + PAD_Glue2_Z + PAD_FPC_Z + PAD_AirGap;
-//Plate size
-//constexpr G4double PAD_GuardRingThickness = 1.3*mm;
-//constexpr G4double PAD_MiniFoCal_X = ((PAD_X*NpadX)+2*PAD_GuardRingThickness)*mm;
-//constexpr G4double PAD_MiniFoCal_Y = ((PAD_Y*NpadY)+2*PAD_GuardRingThickness)*mm;
-
 
 //=================================================================
 //                  Focal-H parameters
 //=================================================================
-//constexpr G4double AirGapFromFoCalE = 50.0*mm;
 //Dimentions of the detector
 constexpr G4double HCAL_Z_Absorber = 30.0*mm;
 constexpr G4double HCAL_Z_Scintilator = 2*mm;
 constexpr G4double HCAL_Z_Gap = 0.0013*mm;
 constexpr G4double HCal_Layer_Thickness = HCAL_Z_Absorber + HCAL_Z_Scintilator + HCAL_Z_Gap;
 
-constexpr G4int HCALNumberOfLayers = 50;
+constexpr G4int HCALSiNumberOfLayers = 12;
+constexpr G4double HCal_Si_Layer_Thickness = HCAL_Z_Absorber + PAD_Glue1_Z + PAD_Z + PAD_Glue2_Z + PAD_FPC_Z + PAD_AirGap;
+
+constexpr G4int HCALSciNumberOfLayers = 30;
 constexpr G4int HCALNumberOfTowersX = 6;
 constexpr G4int HCALNumberOfTowersY = 6;       
+constexpr G4int HCALNumberOfTowersZ = 2;
+constexpr G4int NLayersHCALTower = HCALSciNumberOfLayers / HCALNumberOfTowersZ;
 
 constexpr G4double HCAL_X_Tower = 100.0*mm; //25mm -> 10cm
-constexpr G4double HCAL_Y_Tower = 100.0*mm;      
+constexpr G4double HCAL_Y_Tower = 100.0*mm;  
+constexpr G4double HCAL_Tower_Gap = 20. *mm;    
 
 #endif

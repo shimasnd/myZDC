@@ -91,11 +91,12 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
                     m_Params->get_double_param("place_y") * cm,
                     m_Params->get_double_param("place_z") * cm),
       logical, "myZDC", logicWorld, 0, false, OverlapCheck());
-  // add it to the list of placed volumes so the IsInDetector method
-  // picks them up
+
   ConstructStructure();
-  
-  //  m_PhysicalVolumesSet.insert(m_gPhy);
+
+    // add it to the list of placed volumes so the IsInDetector method
+  // picks them up
+  m_PhysicalVolumesSet.insert(m_gPhy);
  //end implement your own here://
   return;
 }
@@ -111,19 +112,19 @@ void myZDCDetector::ConstructStructure()
   myZDCStructure *mzs = new myZDCStructure();
 
   endz = mzs->ConstructCrystalTowers(-gsizex/2.,-gsizey/2.,-gsizez/2.,
-				     gsizex/2., gsizey/2., (-gsizez + 42.*cm)/2., m_gPhy);
-
+				     gsizex/2., gsizey/2., gsizez/2., m_gPhy);
+  
+  std::cout<<"After Crystal part   :"<<endz<<std::endl;
   endz = mzs->ConstructEMLayers(-gsizex *0.5, -gsizey*0.5, endz,
-				gsizex*0.5, gsizey*0.5, gsizez*0.5, m_gPhy);
-  std::cout<<endz<<std::endl;
-
-  //  double hcalz = endz + 20. *mm;
-  double hcalz = 69.89 *mm;
-  std::cout<<hcalz<<std::endl;
-  std::cout<<"Now HCAL"<<std::endl;
-  endz = mzs->ConstructHCLayers(-gsizex *0.5, -gsizey*0.5, hcalz,
   				gsizex*0.5, gsizey*0.5, gsizez*0.5, m_gPhy);
-  std::cout<<endz<<std::endl;
+  std::cout<<"After EM Layers part :"<<endz<<std::endl;
+  
+  endz = mzs->ConstructHCSiliconLayers(-gsizex *0.5, -gsizey*0.5, endz + 20.*mm,
+				   gsizex*0.5, gsizey*0.5, gsizez*0.5, m_gPhy);
+  std::cout<<"After HCal Silicon part     :"<<endz<<std::endl;
+  endz = mzs->ConstructHCSciLayers(-gsizex *0.5, -gsizey*0.5, endz + 20.*mm,
+				   gsizex*0.5, gsizey*0.5, gsizez*0.5, m_gPhy);
+  std::cout<<"After HCal Sci part     :"<<endz<<std::endl;
 
   return;
 }

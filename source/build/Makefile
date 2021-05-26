@@ -126,7 +126,7 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgincludedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libmyZDC_la_DEPENDENCIES =
 am_libmyZDC_la_OBJECTS = myZDCSubsystem.lo myZDCDetector.lo \
-	myZDCSteppingAction.lo
+	myZDCSteppingAction.lo myZDCStructure.lo
 libmyZDC_la_OBJECTS = $(am_libmyZDC_la_OBJECTS)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
@@ -356,7 +356,8 @@ lib_LTLIBRARIES = \
 libmyZDC_la_SOURCES = \
   myZDCSubsystem.cc\
   myZDCDetector.cc\
-  myZDCSteppingAction.cc
+  myZDCSteppingAction.cc\
+  myZDCStructure.cc
 
 libmyZDC_la_LIBADD = \
   -lphool \
@@ -466,6 +467,7 @@ distclean-compile:
 
 include ./$(DEPDIR)/myZDCDetector.Plo
 include ./$(DEPDIR)/myZDCSteppingAction.Plo
+include ./$(DEPDIR)/myZDCStructure.Plo
 include ./$(DEPDIR)/myZDCSubsystem.Plo
 include ./$(DEPDIR)/testexternals.Po
 
