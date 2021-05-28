@@ -19,6 +19,7 @@
 #include "myZDCSteppingAction.h"
 
 #include "myZDCDetector.h"
+#include "zdcdetid.h"
 
 #include <phparameter/PHParameters.h>
 
@@ -75,6 +76,7 @@ myZDCSteppingAction::myZDCSteppingAction(myZDCDetector *detector, const PHParame
   , m_EdepSum(0)
   , m_EionSum(0)
 {
+
 }
 
 //____________________________________________________________________________..
@@ -95,6 +97,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
   G4TouchableHandle touchpost = aStep->GetPostStepPoint()->GetTouchableHandle();
   // get volume of the current step
   G4VPhysicalVolume *volume = touch->GetVolume();
+
   // IsInDetector(volume) returns
   //  == 0 outside of detector
   //   > 0 for hits in active volume
@@ -104,6 +107,8 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
   {
     return false;
   }
+
+  
   // collect energy and track length step by step
   G4double edep = aStep->GetTotalEnergyDeposit() / GeV;
   G4double eion = (aStep->GetTotalEnergyDeposit() - aStep->GetNonIonizingEnergyDeposit()) / GeV;
@@ -119,7 +124,49 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
   // if you deal with multiple detectors in this stepping action
   // the detector id can be used to distinguish between them
   // hits can easily be analyzed later according to their detector id
-  int detector_id = 0;  // we use here only one detector in this simple example
+
+  /*------------------------------------------------*/
+  /*--Here check the ZDC detector ID and layers-----*/
+  /*------------------------------------------------*/
+
+  int detflag = -1;
+  if(whichactive>0) detflag = m_Detector->GetVolumeInfo(volume);
+  int detector_id = detflag%100;  
+  int detector_layer = (detflag%10000)/100;
+  int detector_nlyrbox =(detflag%1000000)/10000;
+  int detector_system=  (detflag/1000000)*1000000;
+
+  int xid = touch->GetCopyNumber(1);
+  int yid = touch->GetCopyNumber();
+
+  int layer_id = -1;
+  
+  if(whichactive>0){
+    if(detector_system == ZDCID::CrystalTower){
+      int zid = touch->GetCopyNumber(2);
+      if(detector_id == ZDCID::SI_PIXEL) layer_id = zid * 2;
+      else if(detector_id==ZDCID::Crystal) layer_id = zid * 2 +1;
+
+    }else if(detector_system == ZDCID::EMLayer){
+      if(detector_id == ZDCID::SI_PIXEL) layer_id = detector_layer + touch->GetCopyNumber(3);
+      if(detector_id == ZDCID::SI_PAD) {
+	int boxid = touch->GetCopyNumber(4);
+	int zid    =touch->GetCopyNumber(3);
+	int nlyr = detector_nlyrbox +1;
+	layer_id = detector_layer + zid + boxid * nlyr; 
+      }
+    }else if (detector_system == ZDCID::HCPadLayer){
+      if(detector_id == ZDCID::SI_PAD) layer_id = detector_layer + touch->GetCopyNumber(3);
+    }else if (detector_system == ZDCID::HCSciLayer){
+      if(detector_id == ZDCID::Scintilator){
+	int boxid = touch->GetCopyNumber(4);
+	int zid   = touch->GetCopyNumber(3);
+	int nlyr  = detector_nlyrbox;
+	layer_id = detector_layer + zid + boxid *nlyr;
+      }
+    }
+  }
+      
   bool geantino = false;
   // the check for the pdg code speeds things up, I do not want to make
   // an expensive string compare for every track when we know
@@ -145,17 +192,13 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
 // the sequence of random number seeds you find in the log), the printouts help
 // us giving the G4 support information about those failures
 // 
-  switch (prePoint->GetStepStatus())
-  {
+  switch (prePoint->GetStepStatus()){
   case fPostStepDoItProc:
-    if (m_SavePostStepStatus != fGeomBoundary)
-    {
+    if (m_SavePostStepStatus != fGeomBoundary){
       // this is the okay case, fPostStepDoItProc called in a volume, not first thing inside
       // a new volume, just proceed here
       break;
-    }
-    else
-    {
+    } else {
       // this is an impossible G4 Step print out diagnostic to help debug, not sure if
       // this is still with us
       std::cout << GetName() << ": New Hit for  " << std::endl;
@@ -177,11 +220,9 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
 // These are the normal cases
   case fGeomBoundary:
   case fUndefined:
-    if (!m_Hit)
-    {
+    if (!m_Hit) {
       m_Hit = new PHG4Hitv1();
     }
-    m_Hit->set_layer(detector_id);
     // here we set the entrance values in cm
     m_Hit->set_x(0, prePoint->GetPosition().x() / cm);
     m_Hit->set_y(0, prePoint->GetPosition().y() / cm);
@@ -198,6 +239,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     // you can find existing set methods in $OFFLINE_MAIN/include/g4main/PHG4Hit.h
     // this is initialization of your value. This is not needed you can just set the final
     // value at the last step in this volume later one
+
     if (whichactive > 0)
     {
       m_EionSum = 0;  // assuming the ionization energy is only needed for active
@@ -207,6 +249,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     }
     else
     {
+      m_SaveHitContainer = m_HitContainer;
       // std::cout << "implement stuff for whichactive < 0 (inactive volumes)" << std::endl;
       // gSystem->Exit(1);
     }
@@ -248,8 +291,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     gSystem->Exit(1);
   }
   // check if track id matches the initial one when the hit was created
-  if (aTrack->GetTrackID() != m_SaveTrackId)
-  {
+  if (aTrack->GetTrackID() != m_SaveTrackId){
     std::cout << GetName() << ": hits do not belong to the same track" << std::endl;
     std::cout << "saved track: " << m_SaveTrackId
          << ", current trackid: " << aTrack->GetTrackID()
@@ -270,10 +312,10 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
   // ceases to exist
   // sum up the energy to get total deposited
   m_EdepSum += edep;
-  if (whichactive > 0)
-  {
+  if (whichactive > 0) {
     m_EionSum += eion;
   }
+
   // if any of these conditions is true this is the last step in
   // this volume and we need to save the hit
   // postPoint->GetStepStatus() == fGeomBoundary: track leaves this volume
@@ -282,55 +324,51 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
   // postPoint->GetStepStatus() == fAtRestDoItProc: track stops (typically
   // aTrack->GetTrackStatus() == fStopAndKill is also set)
   // aTrack->GetTrackStatus() == fStopAndKill: track ends
+
   if (postPoint->GetStepStatus() == fGeomBoundary ||
       postPoint->GetStepStatus() == fWorldBoundary ||
       postPoint->GetStepStatus() == fAtRestDoItProc ||
-      aTrack->GetTrackStatus() == fStopAndKill)
-  {
+      aTrack->GetTrackStatus() == fStopAndKill){
     // save only hits with energy deposit (or geantino)
-    if (m_EdepSum > 0 || geantino)
-    {
+    if (m_EdepSum > 0 || geantino){
       // update values at exit coordinates and set keep flag
       // of track to keep
       m_Hit->set_x(1, postPoint->GetPosition().x() / cm);
       m_Hit->set_y(1, postPoint->GetPosition().y() / cm);
       m_Hit->set_z(1, postPoint->GetPosition().z() / cm);
       m_Hit->set_t(1, postPoint->GetGlobalTime() / nanosecond);
-      if (G4VUserTrackInformation *p = aTrack->GetUserInformation())
-      {
-        if (PHG4TrackUserInfoV1 *pp = dynamic_cast<PHG4TrackUserInfoV1 *>(p))
-        {
+      if (G4VUserTrackInformation *p = aTrack->GetUserInformation()){
+        if (PHG4TrackUserInfoV1 *pp = dynamic_cast<PHG4TrackUserInfoV1 *>(p)){
           pp->SetKeep(1);  // we want to keep the track
         }
       }
-      if (geantino)
-      {
+      
+      if (geantino){
  //implement your own here://
  // if you want to do something special for geantinos (normally you do not)
         m_Hit->set_edep(-1);  // only energy=0 g4hits get dropped, this way
                               // geantinos survive the g4hit compression
-        if (whichactive > 0)
-        {
+        if (whichactive > 0){
           m_Hit->set_eion(-1);
         }
-      }
-      else
-      {
-        m_Hit->set_edep(m_EdepSum);
+      } else {
+	  m_Hit->set_edep(m_EdepSum);
       }
  //implement your own here://
  // what you set here will be saved in the output
-      if (whichactive > 0)
-      {
-        m_Hit->set_eion(m_EionSum);
-      }
+      m_Hit->set_layer(layer_id);
+      m_Hit->set_index_i(xid);
+      m_Hit->set_index_j(yid);
+      m_Hit->set_hit_type(detector_id);
+      m_Hit->set_eion(m_EionSum);
+     
+      
       m_SaveHitContainer->AddHit(detector_id, m_Hit);
       // ownership has been transferred to container, set to null
       // so we will create a new hit for the next track
       m_Hit = nullptr;
-    }
-    else
-    {
+      
+    }else{
       // if this hit has no energy deposit, just reset it for reuse
       // this means we have to delete it in the dtor. If this was
       // the last hit we processed the memory is still allocated

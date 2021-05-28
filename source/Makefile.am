@@ -12,7 +12,8 @@ AM_LDFLAGS = \
   -L$(OFFLINE_MAIN)/lib64
 
 pkginclude_HEADERS = \
-  myZDCSubsystem.h
+  myZDCSubsystem.h\
+  myZDCNtuple.h
 
 lib_LTLIBRARIES = \
   libmyZDC.la
@@ -21,7 +22,8 @@ libmyZDC_la_SOURCES = \
   myZDCSubsystem.cc\
   myZDCDetector.cc\
   myZDCSteppingAction.cc\
-  myZDCStructure.cc
+  myZDCStructure.cc\
+  myZDCNtuple.cc
 
 libmyZDC_la_LIBADD = \
   -lphool \

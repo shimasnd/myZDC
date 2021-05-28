@@ -70,6 +70,13 @@ int myZDCDetector::IsInDetector(G4VPhysicalVolume *volume) const
   return 0;
 }
 
+int myZDCDetector::GetVolumeInfo(G4VPhysicalVolume *volume){
+
+  G4LogicalVolume *lvolume = volume->GetLogicalVolume();
+  int lvinfo = m_ActiveLogicalVolumeInfoMap[lvolume];
+  return lvinfo;
+}
+
 //_______________________________________________________________
 void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
 {
@@ -115,7 +122,8 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
   
   mzs->ProvideLogicalVolumesSets(m_ActiveLogicalVolumesSet, 
   				 m_AbsorberLogicalVolumesSet);
-  
+  mzs->ProvideLogicalVolumeInfoMap(m_ActiveLogicalVolumeInfoMap);
+
  //end implement your own here://
   return;
 }

@@ -1,5 +1,6 @@
 #include "myZDCStructure.h"
 #include "constants.h"
+#include "zdcdetid.h"
 
 #include <Geant4/G4LogicalVolume.hh>
 #include <Geant4/G4VPhysicalVolume.hh>
@@ -32,6 +33,15 @@ void myZDCStructure::ProvideLogicalVolumesSets(std::set<G4LogicalVolume *> &Acti
   return;
 
 }
+
+void myZDCStructure::ProvideLogicalVolumeInfoMap(std::map<G4LogicalVolume *, int> &ActiveLogicalVolumeInfoMap){
+					       
+  ActiveLogicalVolumeInfoMap = m_ActiveLogicalVolumeInfoMap;
+
+  return;
+
+}
+
 double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, double Start_Z, 
 					      double End_X, double End_Y, double End_Z,
 					      G4VPhysicalVolume *motherPhy) {
@@ -69,6 +79,11 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   lV_PIXPlane->SetVisAttributes(G4VisAttributes::Invisible);
   lV_PIXEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   
+  std::pair<G4LogicalVolume*, int> pair_Crystal= std::make_pair(lV_Crystal, fLayer*100 + ZDCID::Crystal + ZDCID::CrystalTower);
+  std::pair<G4LogicalVolume*, int> pair_CPIX = std::make_pair(lV_PIX_Silicon, fLayer*100 + ZDCID::SI_PIXEL + ZDCID::CrystalTower);
+  m_ActiveLogicalVolumeInfoMap.insert(pair_Crystal);
+  m_ActiveLogicalVolumeInfoMap.insert(pair_CPIX);
+
   m_ActiveLogicalVolumesSet.insert(lV_PIX_Silicon);
   m_ActiveLogicalVolumesSet.insert(lV_Crystal);
   m_AbsorberLogicalVolumesSet.insert(lV_PIX_Glue2);
@@ -214,6 +229,14 @@ double myZDCStructure::ConstructEMLayers(double Start_X, double Start_Y, double 
   lV_PIXEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   lV_PIXLayer->SetVisAttributes(G4VisAttributes::Invisible);
 
+  int infoval=0;
+  infoval = ZDCID::EMLayer+ NPadOnlyLayers * 10000 + fLayer*100 + ZDCID::SI_PAD;
+  std::pair<G4LogicalVolume*, int> pair_PAD_Si = std::make_pair(lV_PAD_Silicon, infoval);
+  infoval = ZDCID::EMLayer+ NPadOnlyLayers * 10000 + fLayer*100 + ZDCID::SI_PIXEL;
+  std::pair<G4LogicalVolume*, int> pair_PIX_Si = std::make_pair(lV_PIX_Silicon, infoval);
+  m_ActiveLogicalVolumeInfoMap.insert(pair_PAD_Si);
+  m_ActiveLogicalVolumeInfoMap.insert(pair_PIX_Si);
+
   m_ActiveLogicalVolumesSet.insert(lV_PAD_Silicon);
   m_ActiveLogicalVolumesSet.insert(lV_PIX_Silicon);
   m_AbsorberLogicalVolumesSet.insert(lV_PAD_W);
@@ -288,7 +311,7 @@ double myZDCStructure::ConstructEMLayers(double Start_X, double Start_Y, double 
     G4double posZ_PIX_Layer  = Start_Z + TotalLayerThickness + 0.5 *PIX_Layer_Thickness;
     G4ThreeVector threeVect_PIX_Layer = G4ThreeVector(Center_X, Center_Y, posZ_PIX_Layer);
     std::string ss_PIX = "PixLayer" + std::to_string(ilayer);
-    new G4PVPlacement(0, threeVect_PIX_Layer,ss_PIX, lV_PIXLayer, motherPhy, false, ilayer);
+    new G4PVPlacement(0, threeVect_PIX_Layer,ss_PIX, lV_PIXLayer, motherPhy, false, (NPadOnlyLayers+1) * (ilayer+1) -1);
     TotalLayerThickness += PIX_Layer_Thickness;
 
   }
@@ -349,6 +372,10 @@ double myZDCStructure::ConstructHCSiliconLayers(double Start_X, double Start_Y, 
   lV_HCal_Layer->SetVisAttributes(G4VisAttributes::Invisible);
   lV_HC_Si_Box->SetVisAttributes(G4VisAttributes::Invisible);
 
+  int infoval = ZDCID::HCPadLayer + fLayer*100 + ZDCID::SI_PAD;
+  std::pair<G4LogicalVolume*, int> pair_PAD= std::make_pair(lV_PAD_Silicon, infoval);
+  m_ActiveLogicalVolumeInfoMap.insert(pair_PAD);
+
   m_ActiveLogicalVolumesSet.insert(lV_PAD_Silicon);
   m_AbsorberLogicalVolumesSet.insert(lV_HCal_Absorber);
   m_AbsorberLogicalVolumesSet.insert(lV_PAD_Glue1);
@@ -384,6 +411,7 @@ double myZDCStructure::ConstructHCSiliconLayers(double Start_X, double Start_Y, 
   G4ThreeVector threeVect_HC_Si_Box = G4ThreeVector(Center_X, Center_Y, Start_Z + TotalLayerThickness *0.5);
   new G4PVPlacement(0, threeVect_HC_Si_Box, "PV_HC_Si_Box", lV_HC_Si_Box, motherPhy, false, 0);
   
+  fLayer += HCALSiNumberOfLayers;
   return Start_Z + TotalLayerThickness;
   
 }
@@ -425,6 +453,10 @@ double myZDCStructure::ConstructHCSciLayers(double Start_X, double Start_Y, doub
   lV_HCal_SciEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   lV_HCal_Box->SetVisAttributes(G4VisAttributes::Invisible);
 
+  int infoval = ZDCID::HCSciLayer +NLayersHCALTower*10000 + fLayer*100 + ZDCID::Scintilator;
+  std::pair<G4LogicalVolume*, int> pair_Scint= std::make_pair(lV_HCal_Scintilator, infoval);
+  m_ActiveLogicalVolumeInfoMap.insert(pair_Scint);
+
   m_ActiveLogicalVolumesSet.insert(lV_HCal_Scintilator);
   m_AbsorberLogicalVolumesSet.insert(lV_HCal_Absorber);
 
@@ -449,12 +481,13 @@ double myZDCStructure::ConstructHCSciLayers(double Start_X, double Start_Y, doub
     G4double posZ_HCal_Box = Start_Z + TotalThicknessCreated + TotalTowerThickness * 0.5;
     G4ThreeVector threeVect_LogV_HCal_Box  = G4ThreeVector(Center_X, Center_Y, posZ_HCal_Box);
     std::string ss_HCAL_Box = "PV_HCal_Box" + std::to_string(ibox);
-    new G4PVPlacement(0, threeVect_LogV_HCal_Box, ss_HCAL_Box, lV_HCal_Box,motherPhy,false,0);
+    new G4PVPlacement(0, threeVect_LogV_HCal_Box, ss_HCAL_Box, lV_HCal_Box,motherPhy,false,ibox);
     
     TotalThicknessCreated += TotalTowerThickness;
     TotalThicknessCreated += HCAL_Tower_Gap;
   }
 
+  fLayer += NLayersHCALTower;
   return Start_Z+TotalThicknessCreated;
 }
 

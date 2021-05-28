@@ -105,7 +105,7 @@ void myZDCSubsystem::SetDefaultParameters()
   //implement your own here//
   set_default_double_param("place_x", 96);
   set_default_double_param("place_y", 0.);
-  set_default_double_param("place_z", 3750);
+  set_default_double_param("place_z", 3750.);
   set_default_double_param("rot_x", 0.);
   set_default_double_param("rot_y", 0.0256);
   set_default_double_param("rot_z", 0.);

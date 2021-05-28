@@ -2,6 +2,7 @@
 #define MYZDCSTRUCTURE_H
 
 #include <set>
+#include <map>
 #include <Geant4/globals.hh>
 
 class G4LogicalVolume;
@@ -27,8 +28,10 @@ class myZDCStructure {
   double ConstructHCSciLayers(double x0, double y0, double z0, 
 			      double x1, double y1, double z1,
 			      G4VPhysicalVolume *mPhy);
-  void ProvideLogicalVolumesSets(std::set<G4LogicalVolume *> &m_ActiveLogicalVolumesSet,
-				 std::set<G4LogicalVolume *> &m_AbsorberLogicalVolumesSet);
+  void ProvideLogicalVolumesSets(std::set<G4LogicalVolume *> &ActiveLogicalVolumesSet,
+				 std::set<G4LogicalVolume *> &AbsorberLogicalVolumesSet);
+  void ProvideLogicalVolumeInfoMap(std::map<G4LogicalVolume *, int> &ActiveLVInfoPairsSet);
+
   void Print();
 
 
@@ -59,6 +62,7 @@ private:
 
   std::set<G4LogicalVolume *> m_ActiveLogicalVolumesSet;
   std::set<G4LogicalVolume *> m_AbsorberLogicalVolumesSet;
+  std::map<G4LogicalVolume*, int> m_ActiveLogicalVolumeInfoMap;
 
 };  
 

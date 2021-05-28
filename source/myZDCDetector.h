@@ -5,6 +5,7 @@
 
 #include <g4main/PHG4Detector.h>
 
+#include <map>
 #include <set>
 #include <string>  // for string
 
@@ -32,6 +33,7 @@ class myZDCDetector : public PHG4Detector
   //@{
   int IsInDetector(G4VPhysicalVolume *) const;
   //@}
+  int GetVolumeInfo(G4VPhysicalVolume *volume);
 
   void SuperDetector(const std::string &name) { m_SuperDetector = name; }
   const std::string SuperDetector() const { return m_SuperDetector; }
@@ -44,6 +46,7 @@ class myZDCDetector : public PHG4Detector
 
   // active volumes
   std::set<G4VPhysicalVolume *> m_PhysicalVolumesSet;
+  std::map<G4LogicalVolume*, int> m_ActiveLogicalVolumeInfoMap;
 
   std::string m_SuperDetector;
 };

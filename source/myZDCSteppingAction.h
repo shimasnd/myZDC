@@ -47,6 +47,8 @@ class myZDCSteppingAction : public PHG4SteppingAction
   int m_BlackHoleFlag;
   double m_EdepSum;
   double m_EionSum;
+
+ 
 };
 
 #endif // MYZDCSTEPPINGACTION_H

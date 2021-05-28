@@ -2,6 +2,7 @@
 #define MACRO_FUN4ALLG4MYZDC_C
 
 #include <myzdc/myZDCSubsystem.h>
+#include <myzdc/myZDCNtuple.h>
 
 #include <g4detectors/PHG4DetectorSubsystem.h>
 
@@ -53,15 +54,19 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   gen->set_vtx(-50, 0, 0);
   gen->set_phi_range(-14.5 / 180 * TMath::Pi(), 14.5 / 180 * TMath::Pi());
   gen->set_eta_range(-0.26, 0.26);
-  se->registerSubsystem(gen);
+  //  se->registerSubsystem(gen);
 
   // ParticleGun shoots right into the original MyDetector volume
   PHG4ParticleGun *gun = new PHG4ParticleGun();
-  //   gun->set_name("pi-");
-  gun->set_name("geantino");
-  gun->set_vtx(0, 0, -20);
-  gun->set_mom(0, 0, 1);
-  //   se->registerSubsystem(gun);
+  double ene = 100.;
+  double theta = 0; //for test
+  //double theta = atan2(96, 3750);
+  //  gun->set_name("gamma");
+  //  gun->set_name("pi-");
+  gun->set_name("neutron");
+  gun->set_vtx(0, 0, 0);
+  gun->set_mom(ene*sin(theta), 0, ene*cos(theta));
+  se->registerSubsystem(gun);
 
   //
   // Geant4 setup
@@ -76,12 +81,14 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
 
   myZDCSubsystem *mydet = new myZDCSubsystem("MyZDC");
   mydet->SetActive();
+  //for test
+  mydet->set_double_param("place_x",0.);
+  mydet->set_double_param("rot_y",0.);
+
   g4Reco->registerSubsystem(mydet);
 
   // mydet = new MyDetectorSubsystem("MyDetector2");
-  // mydet->set_double_param("place_x",40.);
-  // mydet->set_double_param("place_y",40.);
-  // mydet->set_double_param("rot_x",45.);
+  //  mydet->set_double_param("place_y",40.);
   // mydet->set_string_param("material","G4_Fe");
   // mydet->SetActive();
   // g4Reco->registerSubsystem(mydet);
@@ -96,11 +103,15 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   hits->AddNode("MyZDC_0", 0);
   se->registerSubsystem(hits);
 
+  myZDCNtuple *zdchits = new myZDCNtuple("Hits");
+  zdchits->AddNode("MyZDC_0", 0);
+  se->registerSubsystem(zdchits);
+
   ///////////////////////////////////////////
   // IOManagers...
   ///////////////////////////////////////////
 
-  // Fun4AllDstOutputManager *out = new Fun4AllDstOutputManager("DSTOUT","G4Example02.root");
+  //Fun4AllDstOutputManager *out = new Fun4AllDstOutputManager("DSTOUT","G4Example02.root");
   // out->Verbosity(10);
   // se->registerOutputManager(out);
 
