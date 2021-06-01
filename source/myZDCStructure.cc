@@ -428,16 +428,16 @@ double myZDCStructure::ConstructHCSciLayers(double Start_X, double Start_Y, doub
   
   //HCal tower
   G4Box* HCal_Absorber	= new G4Box("HCal_Absorber",	Width_X/2.0, Width_Y/2.0, HCAL_Z_Absorber/2.0);
-  G4Box* HCal_Scintilator= new G4Box("HCal_Scintilator",HCAL_X_Tower/2.0, HCAL_Y_Tower/2.0, HCAL_Z_Scintilator/2.0);
+  G4Box* HCal_Scintillator= new G4Box("HCal_Scintillator",HCAL_X_Tower/2.0, HCAL_Y_Tower/2.0, HCAL_Z_Scintillator/2.0);
   G4Box* HCal_Gap	= new G4Box("HCal_Gap",	        Width_X/2.0, Width_Y/2.0, HCAL_Z_Gap/2.0);
   G4Box* HCal_Layer     = new G4Box("HCal_Layer",       Width_X/2.0, Width_Y/2.0, HCal_Layer_Thickness/2.0);
-  G4Box* HCal_SciPlane     = new G4Box("HCal_SciPlane",       Width_X/2.0, Width_Y/2.0, HCAL_Z_Scintilator/2.0);
-  G4Box* HCal_SciEnvelope  = new G4Box("HCal_SciEnvelope",       HCAL_X_Tower/2.0, Width_Y/2.0, HCAL_Z_Scintilator/2.0);
+  G4Box* HCal_SciPlane     = new G4Box("HCal_SciPlane",       Width_X/2.0, Width_Y/2.0, HCAL_Z_Scintillator/2.0);
+  G4Box* HCal_SciEnvelope  = new G4Box("HCal_SciEnvelope",       HCAL_X_Tower/2.0, Width_Y/2.0, HCAL_Z_Scintillator/2.0);
   G4Box* HCal_Box     = new G4Box("HCal_Box",       Width_X/2.0, Width_Y/2.0, TotalTowerThickness/2.);
 
   //HCal volumes
   G4LogicalVolume* lV_HCal_Absorber	= new G4LogicalVolume( HCal_Absorber, 	 fmat_Pb, "lV_HCal_Absorber");
-  G4LogicalVolume* lV_HCal_Scintilator   = new G4LogicalVolume( HCal_Scintilator, fmat_Sci,"lV_HCal_Scintilator");
+  G4LogicalVolume* lV_HCal_Scintillator   = new G4LogicalVolume( HCal_Scintillator, fmat_Sci,"lV_HCal_Scintillator");
   G4LogicalVolume* lV_HCal_Gap	= new G4LogicalVolume( HCal_Gap, 	  fmat_World, "lV_HCal_Gap");
   G4LogicalVolume* lV_HCal_Layer  = new G4LogicalVolume(HCal_Layer, fmat_World, "lV_HCal_Layer");
   G4LogicalVolume* lV_HCal_SciPlane  = new G4LogicalVolume(HCal_SciPlane, fmat_World, "lV_HCal_SciPlane");
@@ -445,7 +445,7 @@ double myZDCStructure::ConstructHCSciLayers(double Start_X, double Start_Y, doub
   G4LogicalVolume* lV_HCal_Box  = new G4LogicalVolume(HCal_Box, fmat_World, "lV_HCal_Box");
 
   lV_HCal_Absorber->SetVisAttributes(fvisPb);
-  lV_HCal_Scintilator->SetVisAttributes(fvisSci);
+  lV_HCal_Scintillator->SetVisAttributes(fvisSci);
 
   lV_HCal_Gap->SetVisAttributes(G4VisAttributes::Invisible);
   lV_HCal_Layer->SetVisAttributes(G4VisAttributes::Invisible);
@@ -453,24 +453,24 @@ double myZDCStructure::ConstructHCSciLayers(double Start_X, double Start_Y, doub
   lV_HCal_SciEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   lV_HCal_Box->SetVisAttributes(G4VisAttributes::Invisible);
 
-  int infoval = ZDCID::HCSciLayer +NLayersHCALTower*10000 + fLayer*100 + ZDCID::Scintilator;
-  std::pair<G4LogicalVolume*, int> pair_Scint= std::make_pair(lV_HCal_Scintilator, infoval);
+  int infoval = ZDCID::HCSciLayer +NLayersHCALTower*10000 + fLayer*100 + ZDCID::Scintillator;
+  std::pair<G4LogicalVolume*, int> pair_Scint= std::make_pair(lV_HCal_Scintillator, infoval);
   m_ActiveLogicalVolumeInfoMap.insert(pair_Scint);
 
-  m_ActiveLogicalVolumesSet.insert(lV_HCal_Scintilator);
+  m_ActiveLogicalVolumesSet.insert(lV_HCal_Scintillator);
   m_AbsorberLogicalVolumesSet.insert(lV_HCal_Absorber);
 
   new G4PVReplica("PV_HCSciEnvelope",lV_HCal_SciEnvelope, lV_HCal_SciPlane, kXAxis, HCALNumberOfTowersX, HCAL_X_Tower, 0);
-  new G4PVReplica("PV_HCScintilator",lV_HCal_Scintilator, lV_HCal_SciEnvelope, kYAxis, HCALNumberOfTowersY, HCAL_Y_Tower,0);
+  new G4PVReplica("PV_HCScintillator",lV_HCal_Scintillator, lV_HCal_SciEnvelope, kYAxis, HCALNumberOfTowersY, HCAL_Y_Tower,0);
 
   G4double posZ_HCal_Absorber    = -0.5 * HCal_Layer_Thickness + HCAL_Z_Absorber/2 ;
-  G4double posZ_HCal_Scintilator = -0.5 * HCal_Layer_Thickness + HCAL_Z_Absorber + HCAL_Z_Scintilator/2 ;
-  G4double posZ_HCal_Gap         = -0.5 * HCal_Layer_Thickness + HCAL_Z_Absorber + HCAL_Z_Scintilator + HCAL_Z_Gap/2 ;
+  G4double posZ_HCal_Scintillator = -0.5 * HCal_Layer_Thickness + HCAL_Z_Absorber + HCAL_Z_Scintillator/2 ;
+  G4double posZ_HCal_Gap         = -0.5 * HCal_Layer_Thickness + HCAL_Z_Absorber + HCAL_Z_Scintillator + HCAL_Z_Gap/2 ;
 
   G4ThreeVector threeVect_LogV_HCal_Absorber    = G4ThreeVector(0, 0, posZ_HCal_Absorber);
-  G4ThreeVector threeVect_LogV_HCal_Scintilator = G4ThreeVector(0, 0, posZ_HCal_Scintilator);
+  G4ThreeVector threeVect_LogV_HCal_Scintillator = G4ThreeVector(0, 0, posZ_HCal_Scintillator);
   G4ThreeVector threeVect_LogV_HCal_Gap         = G4ThreeVector(0, 0, posZ_HCal_Gap);
-  new G4PVPlacement(0, threeVect_LogV_HCal_Scintilator, lV_HCal_SciPlane,"PV_HCal_Sci", lV_HCal_Layer,false,0);  
+  new G4PVPlacement(0, threeVect_LogV_HCal_Scintillator, lV_HCal_SciPlane,"PV_HCal_Sci", lV_HCal_Layer,false,0);  
   new G4PVPlacement(0, threeVect_LogV_HCal_Absorber,    lV_HCal_Absorber,"PV_HCal_Abs", lV_HCal_Layer,false,0);
   new G4PVPlacement(0, threeVect_LogV_HCal_Gap,         lV_HCal_Gap,     "PV_HCal_Gap", lV_HCal_Layer,false,0);
   
@@ -523,7 +523,7 @@ void myZDCStructure::Materials(){
   
   //Definition of the scintillator
   G4double density= 1.032 *g/cm3;       //to define the dencity on my own
-  fmat_Sci = new G4Material("Scintilator",density,2);   //
+  fmat_Sci = new G4Material("Scintillator",density,2);   //
   fmat_Sci->AddElement(elC,8);
   fmat_Sci->AddElement(elH,8);
   

@@ -1,6 +1,6 @@
 myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
  ../myZDCDetector.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/g4main/PHG4Detector.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/g4main/PHG4Detector.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4RotationMatrix.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/globals.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ios.hh \
@@ -202,37 +202,113 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/parse_numbers.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/std_mutex.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ThreeVector.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ThreeVector.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/defs.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ThreeVector.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/Rotation.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationInterfaces.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/LorentzVector.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/LorentzVector.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ZMxpv.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/AxisAngle.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/AxisAngle.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationInterfaces.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationX.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationX.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/PhysicalConstants.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/defs.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/SystemOfUnits.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationY.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationY.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationZ.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationZ.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/Rotation.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/ThreeVector.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/defs.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/ThreeVector.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/Rotation.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationInterfaces.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/LorentzVector.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/LorentzVector.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/ZMxpv.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/AxisAngle.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/AxisAngle.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationInterfaces.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationX.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationX.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Units/PhysicalConstants.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Units/defs.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Units/SystemOfUnits.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationY.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationY.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationZ.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationZ.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/Rotation.icc \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/set \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_set.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_multiset.h \
  ../myZDCStructure.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Material.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/globals.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/phparameter/PHParameters.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/phool/PHObject.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TObject.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/Rtypes.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RtypesCore.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/ROOT/RConfig.hxx \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/ROOT/../RVersion.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/DllImport.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/snprintf.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/strlcpy.h \
+ /usr/include/unistd.h /usr/include/bits/posix_opt.h \
+ /usr/include/bits/environments.h /usr/include/bits/confname.h \
+ /usr/include/getopt.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/atomic \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_base.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_lockfree_defines.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TGenericClassInfo.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/vector \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_uninitialized.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_vector.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_bvector.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/vector.tcc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TSchemaHelper.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TIsAProxy.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TVirtualIsAProxy.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TStorage.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TVersionCheck.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RVersion.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/cstddef \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomTypes.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomConfig.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4CSGSolid.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VSolid.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/geomdefs.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VSolid.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Polyhedron.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/HepPolyhedron.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Point3D.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Point3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/defs.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/BasicVector3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Normal3D.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Normal3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Transform3D.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Transform3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Transform3D.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Vector3D.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Colour.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LogicalVolume.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Region.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomSplitter.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/geomwdefs.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4AutoLock.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Threading.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/thread \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/memory \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_raw_storage_iter.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/ext/concurrence.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr_base.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/allocated_ptr.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/refwrap.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr_atomic.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/backward/auto_ptr.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/condition_variable \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/future \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_futex.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/std_function.h \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Region.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VPhysicalVolume.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4RotationMatrix.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VPhysicalVolume.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LogicalVolume.icc \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Material.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Element.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Isotope.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4IonisParamElm.hh \
@@ -253,24 +329,6 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4MaterialPropertiesTable.icc \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4IonisParamMat.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Exp.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Threading.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/thread \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/memory \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_raw_storage_iter.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/ext/concurrence.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr_base.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/allocated_ptr.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/refwrap.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr_atomic.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_base.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_lockfree_defines.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/backward/auto_ptr.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/condition_variable \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/future \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/atomic \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_futex.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/std_function.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4SandiaTable.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4OrderedTable.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4DataVector.hh \
@@ -278,69 +336,12 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
  /usr/include/assert.h \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ElementVector.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4MaterialTable.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/graphics_reps_defs.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Colour.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/phparameter/PHParameters.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/phool/PHObject.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TObject.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/Rtypes.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RtypesCore.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/ROOT/RConfig.hxx \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/ROOT/../RVersion.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/DllImport.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/snprintf.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/strlcpy.h \
- /usr/include/unistd.h /usr/include/bits/posix_opt.h \
- /usr/include/bits/environments.h /usr/include/bits/confname.h \
- /usr/include/getopt.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TGenericClassInfo.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TSchemaHelper.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TIsAProxy.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TVirtualIsAProxy.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TStorage.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TVersionCheck.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RVersion.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/cstddef \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomTypes.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomConfig.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4CSGSolid.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VSolid.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/geomdefs.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VSolid.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Polyhedron.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/HepPolyhedron.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Point3D.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Point3D.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/defs.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/BasicVector3D.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Normal3D.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Normal3D.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Transform3D.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Transform3D.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Transform3D.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Vector3D.h \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LogicalVolume.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Region.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomSplitter.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/geomwdefs.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4AutoLock.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Region.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VPhysicalVolume.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4RotationMatrix.hh \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VPhysicalVolume.icc \
- /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LogicalVolume.icc \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4PVPlacement.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4SystemOfUnits.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/graphics_reps_defs.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh \
+ /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.icc \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistManager.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Material.hh \
  /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistElementBuilder.hh \
@@ -354,7 +355,7 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 
 ../myZDCDetector.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/g4main/PHG4Detector.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/g4main/PHG4Detector.h:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4RotationMatrix.hh:
 
@@ -816,47 +817,47 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4ThreeVector.hh:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ThreeVector.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/ThreeVector.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/defs.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/defs.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ThreeVector.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/ThreeVector.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/Rotation.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/Rotation.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationInterfaces.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationInterfaces.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/LorentzVector.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/LorentzVector.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/LorentzVector.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/LorentzVector.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/ZMxpv.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/ZMxpv.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/AxisAngle.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/AxisAngle.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/AxisAngle.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/AxisAngle.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationInterfaces.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationInterfaces.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationX.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationX.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationX.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationX.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/PhysicalConstants.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Units/PhysicalConstants.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/defs.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Units/defs.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Units/SystemOfUnits.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Units/SystemOfUnits.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationY.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationY.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationY.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationY.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationZ.h:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationZ.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/RotationZ.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/RotationZ.icc:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Vector/Rotation.icc:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Vector/Rotation.icc:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/set:
 
@@ -866,7 +867,49 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 
 ../myZDCStructure.h:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Material.hh:
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/globals.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/phparameter/PHParameters.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/phool/PHObject.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TObject.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/Rtypes.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RtypesCore.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/ROOT/RConfig.hxx:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/ROOT/../RVersion.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/DllImport.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/snprintf.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/strlcpy.h:
+
+/usr/include/unistd.h:
+
+/usr/include/bits/posix_opt.h:
+
+/usr/include/bits/environments.h:
+
+/usr/include/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/atomic:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_base.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_lockfree_defines.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TGenericClassInfo.h:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/vector:
 
@@ -877,6 +920,120 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_bvector.h:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/vector.tcc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TSchemaHelper.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TIsAProxy.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TVirtualIsAProxy.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TStorage.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TVersionCheck.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RVersion.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/cstddef:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomTypes.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomConfig.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4CSGSolid.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VSolid.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/geomdefs.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VSolid.icc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Polyhedron.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/HepPolyhedron.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Point3D.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Point3D.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/defs.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/BasicVector3D.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Normal3D.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Normal3D.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Transform3D.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Transform3D.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Transform3D.icc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.4/include/CLHEP/Geometry/Vector3D.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.icc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.icc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Colour.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LogicalVolume.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Region.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomSplitter.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/geomwdefs.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4AutoLock.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Threading.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/thread:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/memory:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_raw_storage_iter.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/ext/concurrence.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr_base.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/allocated_ptr.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/refwrap.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr_atomic.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/backward/auto_ptr.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/condition_variable:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/future:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_futex.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/std_function.h:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Region.icc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VPhysicalVolume.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4RotationMatrix.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VPhysicalVolume.icc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LogicalVolume.icc:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Material.hh:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Element.hh:
 
@@ -918,42 +1075,6 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Exp.hh:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Threading.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/thread:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/memory:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/stl_raw_storage_iter.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/ext/concurrence.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr_base.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/allocated_ptr.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/refwrap.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/shared_ptr_atomic.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_base.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_lockfree_defines.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/backward/auto_ptr.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/condition_variable:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/future:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/atomic:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/atomic_futex.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/bits/std_function.h:
-
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4SandiaTable.hh:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4OrderedTable.hh:
@@ -968,135 +1089,17 @@ myZDCDetector.lo: ../myZDCDetector.cc /usr/include/stdc-predef.h \
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4MaterialTable.hh:
 
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4PVPlacement.hh:
+
+/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4SystemOfUnits.hh:
+
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.hh:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/graphics_reps_defs.hh:
 
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Colour.hh:
-
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VisAttributes.icc:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/phparameter/PHParameters.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/phool/PHObject.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TObject.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/Rtypes.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RtypesCore.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/ROOT/RConfig.hxx:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/ROOT/../RVersion.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RConfigure.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/DllImport.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/snprintf.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/strlcpy.h:
-
-/usr/include/unistd.h:
-
-/usr/include/bits/posix_opt.h:
-
-/usr/include/bits/environments.h:
-
-/usr/include/bits/confname.h:
-
-/usr/include/getopt.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TGenericClassInfo.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TSchemaHelper.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TIsAProxy.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TVirtualIsAProxy.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TStorage.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/TVersionCheck.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/root-6.22.02/include/RVersion.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/gcc/8.3.0.1-0a5ad/x86_64-centos7/include/c++/8.3.0/cstddef:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomTypes.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomConfig.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4CSGSolid.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VSolid.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/geomdefs.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VSolid.icc:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Polyhedron.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/HepPolyhedron.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Point3D.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Point3D.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/defs.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/BasicVector3D.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Normal3D.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Normal3D.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Transform3D.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Transform3D.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Transform3D.icc:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/release/release_new/new.2/include/CLHEP/Geometry/Vector3D.h:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Visible.icc:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Box.icc:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Color.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LogicalVolume.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Region.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4GeomSplitter.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/geomwdefs.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4AutoLock.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4Region.icc:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VPhysicalVolume.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4RotationMatrix.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4VPhysicalVolume.icc:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4LogicalVolume.icc:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4PVPlacement.hh:
-
-/cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4SystemOfUnits.hh:
 
 /cvmfs/eic.opensciencegrid.org/ecce/gcc-8.3/opt/fun4all/core/geant4.10.06.p02/include/Geant4/G4NistManager.hh:
 

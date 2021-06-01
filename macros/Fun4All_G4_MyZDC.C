@@ -3,6 +3,7 @@
 
 #include <myzdc/myZDCSubsystem.h>
 #include <myzdc/myZDCNtuple.h>
+#include <myzdc/myZDCHitTree.h>
 
 #include <g4detectors/PHG4DetectorSubsystem.h>
 
@@ -60,10 +61,10 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   PHG4ParticleGun *gun = new PHG4ParticleGun();
   double ene = 100.;
   double theta = 0; //for test
+  //  string particle = "gamma";
+  string particle = "neutron";
   //double theta = atan2(96, 3750);
-  //  gun->set_name("gamma");
-  //  gun->set_name("pi-");
-  gun->set_name("neutron");
+  gun->set_name(particle);
   gun->set_vtx(0, 0, 0);
   gun->set_mom(ene*sin(theta), 0, ene*cos(theta));
   se->registerSubsystem(gun);
@@ -82,6 +83,7 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   myZDCSubsystem *mydet = new myZDCSubsystem("MyZDC");
   mydet->SetActive();
   //for test
+  mydet->set_double_param("place_z",375.);
   mydet->set_double_param("place_x",0.);
   mydet->set_double_param("rot_y",0.);
 
@@ -101,11 +103,15 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
 
   G4HitNtuple *hits = new G4HitNtuple("Hits");
   hits->AddNode("MyZDC_0", 0);
-  se->registerSubsystem(hits);
+  //  se->registerSubsystem(hits);
 
   myZDCNtuple *zdchits = new myZDCNtuple("Hits");
   zdchits->AddNode("MyZDC_0", 0);
   se->registerSubsystem(zdchits);
+  
+  myZDCHitTree *zdctree = new myZDCHitTree("Hits");
+  zdctree->AddNode("MyZDC_0", 0);
+  se->registerSubsystem(zdctree);
 
   ///////////////////////////////////////////
   // IOManagers...
@@ -138,6 +144,10 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   cout << "  hitntup->SetMarkerColor(2)" << endl;
   cout << "  hitntup->Draw(\"x0:y0:z0\",\"\",\"same\")" << endl;
   cout << endl;
+
+  cout<<endl;
+  cout<< "My Setup: " <<particle<< "  with "<<ene<<" GeV"<<endl;
+  cout<<endl;
   gSystem->Exit(0);
 }
 

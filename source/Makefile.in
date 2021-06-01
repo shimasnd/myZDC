@@ -126,7 +126,8 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgincludedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libmyZDC_la_DEPENDENCIES =
 am_libmyZDC_la_OBJECTS = myZDCSubsystem.lo myZDCDetector.lo \
-	myZDCSteppingAction.lo myZDCStructure.lo
+	myZDCSteppingAction.lo myZDCStructure.lo myZDCNtuple.lo \
+	myZDCHitTree.lo
 libmyZDC_la_OBJECTS = $(am_libmyZDC_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -348,7 +349,9 @@ AM_LDFLAGS = \
   -L$(OFFLINE_MAIN)/lib64
 
 pkginclude_HEADERS = \
-  myZDCSubsystem.h
+  myZDCSubsystem.h\
+  myZDCNtuple.h\
+  myZDCHitTree.h
 
 lib_LTLIBRARIES = \
   libmyZDC.la
@@ -357,7 +360,9 @@ libmyZDC_la_SOURCES = \
   myZDCSubsystem.cc\
   myZDCDetector.cc\
   myZDCSteppingAction.cc\
-  myZDCStructure.cc
+  myZDCStructure.cc\
+  myZDCNtuple.cc\
+  myZDCHitTree.cc
 
 libmyZDC_la_LIBADD = \
   -lphool \
@@ -466,6 +471,8 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/myZDCDetector.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/myZDCHitTree.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/myZDCNtuple.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/myZDCSteppingAction.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/myZDCStructure.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/myZDCSubsystem.Plo@am__quote@

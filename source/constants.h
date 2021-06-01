@@ -55,9 +55,9 @@ constexpr G4double PAD_Layer_Thickness = PAD_Absorber_Z + PAD_Glue1_Z + PAD_Z + 
 //=================================================================
 //Dimentions of the detector
 constexpr G4double HCAL_Z_Absorber = 30.0*mm;
-constexpr G4double HCAL_Z_Scintilator = 2*mm;
+constexpr G4double HCAL_Z_Scintillator = 2*mm;
 constexpr G4double HCAL_Z_Gap = 0.0013*mm;
-constexpr G4double HCal_Layer_Thickness = HCAL_Z_Absorber + HCAL_Z_Scintilator + HCAL_Z_Gap;
+constexpr G4double HCal_Layer_Thickness = HCAL_Z_Absorber + HCAL_Z_Scintillator + HCAL_Z_Gap;
 
 constexpr G4int HCALSiNumberOfLayers = 12;
 constexpr G4double HCal_Si_Layer_Thickness = HCAL_Z_Absorber + PAD_Glue1_Z + PAD_Z + PAD_Glue2_Z + PAD_FPC_Z + PAD_AirGap;

@@ -35,7 +35,7 @@ int myZDCNtuple::Init(PHCompositeNode *)
  {
    hm = new Fun4AllHistoManager(Name());
    outfile = new TFile(_filename.c_str(), "RECREATE");
-   ntup = new TNtuple("zdchit", "myZDCs", "detid:layer:xid:yid:x0:y0:z0:x1:y1:z1:edep");
+   ntup = new TNtuple("zdchit", "myZDCs", "detid:layer:xid:yid:x0:y0:z0:x1:y1:z1:t0:t1:edep");
    //  ntup->SetDirectory(0);
    return 0;
  }
@@ -71,6 +71,8 @@ int myZDCNtuple::Init(PHCompositeNode *)
 		  hit_iter->second->get_x(1),
 		  hit_iter->second->get_y(1),
 		  hit_iter->second->get_z(1),
+		  hit_iter->second->get_t(0),
+		  hit_iter->second->get_t(1),
 		  hit_iter->second->get_edep());
      }
    }

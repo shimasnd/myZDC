@@ -158,7 +158,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     }else if (detector_system == ZDCID::HCPadLayer){
       if(detector_id == ZDCID::SI_PAD) layer_id = detector_layer + touch->GetCopyNumber(3);
     }else if (detector_system == ZDCID::HCSciLayer){
-      if(detector_id == ZDCID::Scintilator){
+      if(detector_id == ZDCID::Scintillator){
 	int boxid = touch->GetCopyNumber(4);
 	int zid   = touch->GetCopyNumber(3);
 	int nlyr  = detector_nlyrbox;
