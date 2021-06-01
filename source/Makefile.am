@@ -13,7 +13,8 @@ AM_LDFLAGS = \
 
 pkginclude_HEADERS = \
   myZDCSubsystem.h\
-  myZDCNtuple.h
+  myZDCNtuple.h\
+  myZDCHitTree.h
 
 lib_LTLIBRARIES = \
   libmyZDC.la
@@ -23,7 +24,8 @@ libmyZDC_la_SOURCES = \
   myZDCDetector.cc\
   myZDCSteppingAction.cc\
   myZDCStructure.cc\
-  myZDCNtuple.cc
+  myZDCNtuple.cc\
+  myZDCHitTree.cc
 
 libmyZDC_la_LIBADD = \
   -lphool \
