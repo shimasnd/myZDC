@@ -30,7 +30,8 @@ class myZDCStructure {
 			      G4VPhysicalVolume *mPhy);
   void ProvideLogicalVolumesSets(std::set<G4LogicalVolume *> &ActiveLogicalVolumesSet,
 				 std::set<G4LogicalVolume *> &AbsorberLogicalVolumesSet);
-  void ProvideLogicalVolumeInfoMap(std::map<G4LogicalVolume *, int> &ActiveLVInfoPairsSet);
+  void ProvideLogicalVolumeInfoMap(std::map<G4LogicalVolume *, int> &ActiveLogicalVolumeInfoMap,
+				   std::map<G4LogicalVolume *, int> &AbsorberLogicalVolumeInfoMap);
 
   void Print();
 
@@ -63,6 +64,7 @@ private:
   std::set<G4LogicalVolume *> m_ActiveLogicalVolumesSet;
   std::set<G4LogicalVolume *> m_AbsorberLogicalVolumesSet;
   std::map<G4LogicalVolume*, int> m_ActiveLogicalVolumeInfoMap;
+  std::map<G4LogicalVolume*, int> m_AbsorberLogicalVolumeInfoMap;
 
 };  
 

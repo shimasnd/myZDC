@@ -70,10 +70,17 @@ int myZDCDetector::IsInDetector(G4VPhysicalVolume *volume) const
   return 0;
 }
 
-int myZDCDetector::GetVolumeInfo(G4VPhysicalVolume *volume){
+int myZDCDetector::GetActiveVolumeInfo(G4VPhysicalVolume *volume){
 
   G4LogicalVolume *lvolume = volume->GetLogicalVolume();
   int lvinfo = m_ActiveLogicalVolumeInfoMap[lvolume];
+  return lvinfo;
+}
+
+int myZDCDetector::GetAbsorberVolumeInfo(G4VPhysicalVolume *volume){
+
+  G4LogicalVolume *lvolume = volume->GetLogicalVolume();
+  int lvinfo = m_AbsorberLogicalVolumeInfoMap[lvolume];
   return lvinfo;
 }
 
@@ -103,14 +110,15 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
 
   myZDCStructure *mzs = new myZDCStructure();
   double endz = 0;
+  cout<<"Z size: "<<zdim<<endl;
 
-  endz = mzs->ConstructCrystalTowers(-xdim/2.,-ydim/2.,-zdim/2.,
-				     xdim/2., ydim/2., zdim/2., gPhy);
-  std::cout<<"After Crystal part                   :"<<endz<<std::endl;
+  // endz = mzs->ConstructCrystalTowers(-xdim/2.,-ydim/2.,-zdim/2.,
+  // 				     xdim/2., ydim/2., zdim/2., gPhy);
+  // std::cout<<"After Crystal part                   :"<<endz<<std::endl;
   
-  endz = mzs->ConstructEMLayers(-xdim *0.5, -ydim*0.5, endz,
-  				xdim*0.5, ydim*0.5, zdim*0.5, gPhy);
-  std::cout<<"After EM Layers part                 :"<<endz<<std::endl;
+  // endz = mzs->ConstructEMLayers(-xdim *0.5, -ydim*0.5, endz,
+  // 				xdim*0.5, ydim*0.5, zdim*0.5, gPhy);
+  // std::cout<<"After EM Layers part                 :"<<endz<<std::endl;
 
   endz = mzs->ConstructHCSiliconLayers(-xdim *0.5, -ydim*0.5, endz + 20.*mm,
   				       xdim*0.5, ydim*0.5, zdim*0.5, gPhy);
@@ -122,7 +130,8 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
   
   mzs->ProvideLogicalVolumesSets(m_ActiveLogicalVolumesSet, 
   				 m_AbsorberLogicalVolumesSet);
-  mzs->ProvideLogicalVolumeInfoMap(m_ActiveLogicalVolumeInfoMap);
+  mzs->ProvideLogicalVolumeInfoMap(m_ActiveLogicalVolumeInfoMap,
+				   m_AbsorberLogicalVolumeInfoMap);
 
  //end implement your own here://
   return;

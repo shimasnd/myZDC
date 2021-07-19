@@ -5,12 +5,11 @@
 #include <Geant4/G4SystemOfUnits.hh>
 
 //Crystal Towers
-constexpr G4int nCTowerX=20;
-constexpr G4int nCTowerY=20;
+
 constexpr G4int nCTowerZ=2;
 constexpr G4double CTower_X = 3. *cm;
 constexpr G4double CTower_Y = 3. *cm;
-constexpr G4double CTower_Z = 10. *cm;
+constexpr G4double CTower_Z = 7. *cm;
 constexpr G4double CTower_GAP = 3. *cm;
 
 //MiniFoCal block

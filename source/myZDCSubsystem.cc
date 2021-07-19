@@ -111,6 +111,6 @@ void myZDCSubsystem::SetDefaultParameters()
   set_default_double_param("rot_z", 0.);
   set_default_double_param("size_x", 60.);
   set_default_double_param("size_y", 60.);
-  set_default_double_param("size_z", 200.);
+  set_default_double_param("size_z", 300.);
 
 }

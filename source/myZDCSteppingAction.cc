@@ -130,7 +130,8 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
   /*------------------------------------------------*/
 
   int detflag = -1;
-  if(whichactive>0) detflag = m_Detector->GetVolumeInfo(volume);
+  if(whichactive>0) detflag = m_Detector->GetActiveVolumeInfo(volume);
+  else if (whichactive<0) detflag = m_Detector->GetAbsorberVolumeInfo(volume);
   int detector_id = detflag%100;  
   int detector_layer = (detflag%10000)/100;
   int detector_nlyrbox =(detflag%1000000)/10000;
@@ -164,6 +165,14 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
 	int nlyr  = detector_nlyrbox;
 	layer_id = detector_layer + zid + boxid *nlyr;
       }
+    }
+  }
+
+  if(whichactive<0){
+    layer_id = detector_layer;
+    if(detector_system == ZDCID::HCSciLayer){
+      int boxid = touch->GetCopyNumber(2);
+      layer_id = detector_layer + boxid * detector_nlyrbox;
     }
   }
       

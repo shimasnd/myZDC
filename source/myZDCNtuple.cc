@@ -44,7 +44,6 @@ int myZDCNtuple::Init(PHCompositeNode *)
  {
    ostringstream nodename;
    set<string>::const_iterator iter;
-   vector<TH1 *>::const_iterator eiter;
    for (iter = _node_postfix.begin(); iter != _node_postfix.end(); ++iter)
    {
      //int detid = (_detid.find(*iter))->second;

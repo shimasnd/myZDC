@@ -34,9 +34,11 @@ void myZDCStructure::ProvideLogicalVolumesSets(std::set<G4LogicalVolume *> &Acti
 
 }
 
-void myZDCStructure::ProvideLogicalVolumeInfoMap(std::map<G4LogicalVolume *, int> &ActiveLogicalVolumeInfoMap){
+void myZDCStructure::ProvideLogicalVolumeInfoMap(std::map<G4LogicalVolume *, int> &ActiveLogicalVolumeInfoMap,
+						 std::map<G4LogicalVolume *, int> &AbsorberLogicalVolumeInfoMap){
 					       
   ActiveLogicalVolumeInfoMap = m_ActiveLogicalVolumeInfoMap;
+  AbsorberLogicalVolumeInfoMap = m_AbsorberLogicalVolumeInfoMap;
 
   return;
 
@@ -83,6 +85,10 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   std::pair<G4LogicalVolume*, int> pair_CPIX = std::make_pair(lV_PIX_Silicon, fLayer*100 + ZDCID::SI_PIXEL + ZDCID::CrystalTower);
   m_ActiveLogicalVolumeInfoMap.insert(pair_Crystal);
   m_ActiveLogicalVolumeInfoMap.insert(pair_CPIX);
+  std::pair<G4LogicalVolume*, int> pair_Glue2 = std::make_pair(lV_PIX_Glue2, fLayer*100 + ZDCID::Materials + ZDCID::CrystalTower);
+  std::pair<G4LogicalVolume*, int> pair_FPC = std::make_pair(lV_PIX_FPC, fLayer*100 + ZDCID::Materials + ZDCID::CrystalTower);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_Glue2);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_FPC);
 
   m_ActiveLogicalVolumesSet.insert(lV_PIX_Silicon);
   m_ActiveLogicalVolumesSet.insert(lV_Crystal);
@@ -97,7 +103,9 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   new G4PVReplica("PV_CPIX", lV_PIX_Silicon, lV_PIXEnvelope, kYAxis, NdivY, PIX_Y,0);
 
   //Making Crystal Box using Replica
+  int nCTowerX = (int)(Width_X/ CTower_X);
   new G4PVReplica("PV_CrysEnvelope", lV_CrysEnvelope, lV_CrysBox, kXAxis, nCTowerX, CTower_X,0);
+  int nCTowerY = (int)(Width_Y/ CTower_Y);
   new G4PVReplica("PV_Crystal", lV_Crystal, lV_CrysEnvelope, kYAxis, nCTowerY, CTower_Y,0);
 
   //*********************
@@ -236,7 +244,25 @@ double myZDCStructure::ConstructEMLayers(double Start_X, double Start_Y, double 
   std::pair<G4LogicalVolume*, int> pair_PIX_Si = std::make_pair(lV_PIX_Silicon, infoval);
   m_ActiveLogicalVolumeInfoMap.insert(pair_PAD_Si);
   m_ActiveLogicalVolumeInfoMap.insert(pair_PIX_Si);
-
+  infoval = ZDCID::EMLayer+ NPadOnlyLayers * 10000 + fLayer*100 + ZDCID::Abs_Tungsten;
+  std::pair<G4LogicalVolume*, int> pair_PAD_W = std::make_pair(lV_PAD_W, infoval);
+  std::pair<G4LogicalVolume*, int> pair_PIX_W = std::make_pair(lV_PIX_W, infoval);
+  infoval = ZDCID::EMLayer+ NPadOnlyLayers * 10000 + fLayer*100 + ZDCID::Materials;
+  std::pair<G4LogicalVolume*, int> pair_PAD_Glue1 = std::make_pair(lV_PAD_Glue1, infoval);
+  std::pair<G4LogicalVolume*, int> pair_PIX_Glue1 = std::make_pair(lV_PIX_Glue1, infoval);
+  std::pair<G4LogicalVolume*, int> pair_PAD_Glue2 = std::make_pair(lV_PAD_Glue2, infoval);
+  std::pair<G4LogicalVolume*, int> pair_PIX_Glue2 = std::make_pair(lV_PIX_Glue2, infoval);
+  std::pair<G4LogicalVolume*, int> pair_PAD_FPC = std::make_pair(lV_PAD_FPC, infoval);
+  std::pair<G4LogicalVolume*, int> pair_PIX_FPC = std::make_pair(lV_PIX_FPC, infoval);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_PAD_W);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_PIX_W);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_PAD_Glue1);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_PIX_Glue1);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_PAD_Glue2);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_PIX_Glue2);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_PAD_FPC);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_PIX_FPC);
+  
   m_ActiveLogicalVolumesSet.insert(lV_PAD_Silicon);
   m_ActiveLogicalVolumesSet.insert(lV_PIX_Silicon);
   m_AbsorberLogicalVolumesSet.insert(lV_PAD_W);
@@ -375,6 +401,16 @@ double myZDCStructure::ConstructHCSiliconLayers(double Start_X, double Start_Y, 
   int infoval = ZDCID::HCPadLayer + fLayer*100 + ZDCID::SI_PAD;
   std::pair<G4LogicalVolume*, int> pair_PAD= std::make_pair(lV_PAD_Silicon, infoval);
   m_ActiveLogicalVolumeInfoMap.insert(pair_PAD);
+  infoval = ZDCID::HCPadLayer + fLayer*100 +ZDCID::Abs_Pb;
+  std::pair<G4LogicalVolume*, int> pair_Pb = std::make_pair(lV_HCal_Absorber,infoval);
+  infoval = ZDCID::HCPadLayer + fLayer*100 +ZDCID::Materials;
+  std::pair<G4LogicalVolume*, int> pair_Glue1 = std::make_pair(lV_PAD_Glue1,infoval);
+  std::pair<G4LogicalVolume*, int> pair_Glue2 = std::make_pair(lV_PAD_Glue2,infoval);
+  std::pair<G4LogicalVolume*, int> pair_FPC = std::make_pair(lV_PAD_FPC,infoval);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_Pb);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_Glue1);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_Glue2);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_FPC);
 
   m_ActiveLogicalVolumesSet.insert(lV_PAD_Silicon);
   m_AbsorberLogicalVolumesSet.insert(lV_HCal_Absorber);
@@ -456,6 +492,9 @@ double myZDCStructure::ConstructHCSciLayers(double Start_X, double Start_Y, doub
   int infoval = ZDCID::HCSciLayer +NLayersHCALTower*10000 + fLayer*100 + ZDCID::Scintillator;
   std::pair<G4LogicalVolume*, int> pair_Scint= std::make_pair(lV_HCal_Scintillator, infoval);
   m_ActiveLogicalVolumeInfoMap.insert(pair_Scint);
+  infoval = ZDCID::HCSciLayer + NLayersHCALTower*10000 + fLayer*100 + ZDCID::Abs_Pb;
+  std::pair<G4LogicalVolume*, int> pair_Abs = std::make_pair(lV_HCal_Absorber, infoval);
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_Abs);
 
   m_ActiveLogicalVolumesSet.insert(lV_HCal_Scintillator);
   m_AbsorberLogicalVolumesSet.insert(lV_HCal_Absorber);
