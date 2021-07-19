@@ -59,7 +59,7 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
 
   // ParticleGun shoots right into the original MyDetector volume
   PHG4ParticleGun *gun = new PHG4ParticleGun();
-  double ene = 100.;
+  double ene = 5.;
   double theta = 0; //for test
   //  string particle = "gamma";
   string particle = "neutron";
@@ -82,10 +82,12 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
 
   myZDCSubsystem *mydet = new myZDCSubsystem("MyZDC");
   mydet->SetActive();
+
   //for test
-  mydet->set_double_param("place_z",375.);
+  mydet->set_double_param("place_z",200.);
   mydet->set_double_param("place_x",0.);
   mydet->set_double_param("rot_y",0.);
+  mydet->set_double_param("size_z",300);
 
   g4Reco->registerSubsystem(mydet);
 
@@ -105,9 +107,9 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   hits->AddNode("MyZDC_0", 0);
   //  se->registerSubsystem(hits);
 
-  myZDCNtuple *zdchits = new myZDCNtuple("Hits");
-  zdchits->AddNode("MyZDC_0", 0);
-  se->registerSubsystem(zdchits);
+  // myZDCNtuple *zdchits = new myZDCNtuple("Hits");
+  // zdchits->AddNode("MyZDC_0", 0);
+  // se->registerSubsystem(zdchits);
   
   myZDCHitTree *zdctree = new myZDCHitTree("Hits");
   zdctree->AddNode("MyZDC_0", 0);
