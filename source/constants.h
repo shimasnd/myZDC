@@ -6,17 +6,17 @@
 
 //Crystal Towers
 
-constexpr G4int nCTowerZ=2;
+constexpr G4int nCTowerZ=1;
 constexpr G4double CTower_X = 3. *cm;
 constexpr G4double CTower_Y = 3. *cm;
 constexpr G4double CTower_Z = 7. *cm;
 constexpr G4double CTower_GAP = 3. *cm;
 
 //MiniFoCal block
-constexpr G4int NumberOfLayers = 42;
+constexpr G4int NumberOfLayers = 22;
 constexpr G4int NumberPIX = 2;
-constexpr G4int NumberPAD = 40;
-constexpr G4int NPadOnlyLayers=20;
+constexpr G4int NumberPAD = 20;
+constexpr G4int NPadOnlyLayers=10;
 
 //=================================================================
 //PIX detector
@@ -61,10 +61,10 @@ constexpr G4double HCal_Layer_Thickness = HCAL_Z_Absorber + HCAL_Z_Scintillator 
 constexpr G4int HCALSiNumberOfLayers = 12;
 constexpr G4double HCal_Si_Layer_Thickness = HCAL_Z_Absorber + PAD_Glue1_Z + PAD_Z + PAD_Glue2_Z + PAD_FPC_Z + PAD_AirGap;
 
-constexpr G4int HCALSciNumberOfLayers = 45;
+constexpr G4int HCALSciNumberOfLayers = 30;
 constexpr G4int HCALNumberOfTowersX = 6;
 constexpr G4int HCALNumberOfTowersY = 6;       
-constexpr G4int HCALNumberOfTowersZ = 3;
+constexpr G4int HCALNumberOfTowersZ = 2;
 constexpr G4int NLayersHCALTower = HCALSciNumberOfLayers / HCALNumberOfTowersZ;
 
 constexpr G4double HCAL_X_Tower = 100.0*mm; //25mm -> 10cm

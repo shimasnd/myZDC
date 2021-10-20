@@ -93,7 +93,8 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
   double ydim = m_Params->get_double_param("size_y") * cm;
   double zdim = m_Params->get_double_param("size_z") * cm;
   G4VSolid *solidbox = new G4Box("myZDCSolid", xdim / 2., ydim / 2., zdim / 2.);
-  G4LogicalVolume *logical = new G4LogicalVolume(solidbox, G4Material::GetMaterial("G4_Galactic"), "myZDCLogical");
+  G4LogicalVolume *logical = new G4LogicalVolume(solidbox, G4Material::GetMaterial("G4_AIR"), "myZDCLogical");
+  //  G4LogicalVolume *logical = new G4LogicalVolume(solidbox, G4Material::GetMaterial("G4_Galactic"), "myZDCLogical");
 
   logical->SetVisAttributes(G4VisAttributes::Invisible);
   G4RotationMatrix *rotm = new G4RotationMatrix();
@@ -109,16 +110,16 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
       logical, "myZDC", logicWorld, 0, false, OverlapCheck());
 
   myZDCStructure *mzs = new myZDCStructure();
-  double endz = 0;
+  double endz = -zdim/2.;
   cout<<"Z size: "<<zdim<<endl;
 
-  // endz = mzs->ConstructCrystalTowers(-xdim/2.,-ydim/2.,-zdim/2.,
-  // 				     xdim/2., ydim/2., zdim/2., gPhy);
-  // std::cout<<"After Crystal part                   :"<<endz<<std::endl;
+  endz = mzs->ConstructCrystalTowers(-xdim/2.,-ydim/2.,-zdim/2.,
+  				     xdim/2., ydim/2., zdim/2., gPhy);
+  std::cout<<"After Crystal part                   :"<<endz<<std::endl;
   
-  // endz = mzs->ConstructEMLayers(-xdim *0.5, -ydim*0.5, endz,
-  // 				xdim*0.5, ydim*0.5, zdim*0.5, gPhy);
-  // std::cout<<"After EM Layers part                 :"<<endz<<std::endl;
+  endz = mzs->ConstructEMLayers(-xdim *0.5, -ydim*0.5, endz,
+  				xdim*0.5, ydim*0.5, zdim*0.5, gPhy);
+  std::cout<<"After EM Layers part                 :"<<endz<<std::endl;
 
   endz = mzs->ConstructHCSiliconLayers(-xdim *0.5, -ydim*0.5, endz + 20.*mm,
   				       xdim*0.5, ydim*0.5, zdim*0.5, gPhy);

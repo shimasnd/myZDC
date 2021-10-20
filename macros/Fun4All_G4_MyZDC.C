@@ -59,10 +59,10 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
 
   // ParticleGun shoots right into the original MyDetector volume
   PHG4ParticleGun *gun = new PHG4ParticleGun();
-  double ene = 5.;
+  double ene = 10.;
   double theta = 0; //for test
-  //  string particle = "gamma";
-  string particle = "neutron";
+  string particle = "gamma";
+  //  string particle = "neutron";
   //double theta = atan2(96, 3750);
   gun->set_name(particle);
   gun->set_vtx(0, 0, 0);
