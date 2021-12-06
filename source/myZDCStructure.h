@@ -34,6 +34,7 @@ class myZDCStructure {
 				   std::map<G4LogicalVolume *, int> &AbsorberLogicalVolumeInfoMap);
 
   void Print();
+  void PrintTowerMap(const std::string &d);
 
 
 private:
@@ -65,6 +66,11 @@ private:
   std::set<G4LogicalVolume *> m_AbsorberLogicalVolumesSet;
   std::map<G4LogicalVolume*, int> m_ActiveLogicalVolumeInfoMap;
   std::map<G4LogicalVolume*, int> m_AbsorberLogicalVolumeInfoMap;
+
+  double _z_Crystal[2];
+  double _z_EMLayers[2];
+  double _z_HCSilicon[2];
+  double _z_HCSci[2];
 
 };  
 

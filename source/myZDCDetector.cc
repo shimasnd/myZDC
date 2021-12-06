@@ -134,6 +134,11 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
   mzs->ProvideLogicalVolumeInfoMap(m_ActiveLogicalVolumeInfoMap,
 				   m_AbsorberLogicalVolumeInfoMap);
 
+  // mzs->PrintTowerMap("Crystal");
+  // mzs->PrintTowerMap("SiPixel");
+  // mzs->PrintTowerMap("SiPad");
+  // mzs->PrintTowerMap("Sci");
+
  //end implement your own here://
   return;
 }
@@ -150,3 +155,4 @@ void myZDCDetector::Print(const std::string &what) const
   }
   return;
 }
+

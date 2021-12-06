@@ -14,7 +14,8 @@ AM_LDFLAGS = \
 pkginclude_HEADERS = \
   myZDCSubsystem.h\
   myZDCNtuple.h\
-  myZDCHitTree.h
+  myZDCHitTree.h\
+  myZDCRawTowerBuilder.h
 
 lib_LTLIBRARIES = \
   libmyZDC.la
@@ -25,13 +26,15 @@ libmyZDC_la_SOURCES = \
   myZDCSteppingAction.cc\
   myZDCStructure.cc\
   myZDCNtuple.cc\
-  myZDCHitTree.cc
+  myZDCHitTree.cc\
+  myZDCRawTowerBuilder.cc
 
 libmyZDC_la_LIBADD = \
   -lphool \
   -lSubsysReco\
   -lg4detectors\
-  -lg4testbench 
+  -lg4testbench\
+  -lcalo_io
 
 BUILT_SOURCES = testexternals.cc
 

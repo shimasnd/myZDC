@@ -60,6 +60,12 @@ class myZDCHitTree : public SubsysReco
   std::vector<float> time1;
   std::vector<float> edep;
 
+  int Ntrack;
+  std::vector<float> trk_px;
+  std::vector<float> trk_py;
+  std::vector<float> trk_pz;
+  std::vector<float> trk_e;
+  std::vector<int> trk_pid;
   
 
 };
