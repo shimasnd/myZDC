@@ -137,7 +137,7 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
   // mzs->PrintTowerMap("Crystal");
   // mzs->PrintTowerMap("SiPixel");
   // mzs->PrintTowerMap("SiPad");
-  // mzs->PrintTowerMap("Sci");
+  //  mzs->PrintTowerMap("Sci");
 
  //end implement your own here://
   return;

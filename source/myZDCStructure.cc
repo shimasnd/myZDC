@@ -766,11 +766,13 @@ void myZDCStructure::PrintTowerMap(const std::string &d){
 	    <<"x_cnt " <<"\t"<<"y_cnt " <<"\t"<<"z_cnt "<<"\t"
 	    <<"size_x "<<"\t"<<"size_y "<<"\t"<<"size_z"<<std::endl;
 
-    double HCTower_Z = NLayersHCALTower * HCal_Layer_Thickness / (double) HCALNumberOfTowersZ;
+    double HCTower_Z = NLayersHCALTower * HCal_Layer_Thickness;
+    std::cout<<"HC mapping: "<<offsetZ<<" "<<HCTower_Z<<std::endl;
 
     for(int iB= 0; iB< HCALNumberOfTowersZ; iB++){
       
-      double z_cnt = offsetZ + HCTower_Z;
+      double z_cnt = offsetZ + HCTower_Z/2.;
+      offsetZ += HCTower_Z;
 
       for(int ix = 0; ix < HCALNumberOfTowersX; ix++){
 	double x_cnt = (ix - HCALNumberOfTowersX/2) * HCAL_X_Tower + HCAL_X_Tower/2.;
