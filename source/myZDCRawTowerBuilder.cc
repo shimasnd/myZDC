@@ -48,19 +48,10 @@ myZDCRawTowerBuilder::myZDCRawTowerBuilder(const std::string &name)
   , m_SubDetector("NONE")
   , m_MappingTowerFile("default.txt")
   , m_CaloId(RawTowerDefs::NONE)
-  , m_GlobalPlaceInX(0)
-  , m_GlobalPlaceInY(0)
-  , m_GlobalPlaceInZ(0)
-  , m_RotInX(0)
-  , m_RotInY(0)
-  , m_RotInZ(0)
   , m_Emin(1e-9)
   , m_TowerDepth(0)
   , m_ThicknessAbsorber(0)
   , m_ThicknessScintilator(0)
-  , m_NLayers(0)
-  , m_NLayersPerTowerSeg(0)
-  , m_NTowerSeg(0)
 {
 }
 
@@ -286,6 +277,13 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
   
   string line_mapping;
 
+  double RotAroundX=0.;
+  double RotAroundY=0.;
+  double RotAroundZ=0.;
+  double GlobalPlaceInX=0.;
+  double GlobalPlaceInY=0.;
+  double GlobalPlaceInZ=0.;
+
   while (getline(istream_mapping, line_mapping))
   {
     /* Skip lines starting with / including a '#' */
@@ -314,7 +312,6 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
         exit(1);
       }
 
-      //      for (int il = 0; il < m_NTowerSeg; il++){
         /* Construct unique Tower ID */
       unsigned int temp_id = RawTowerDefs::encode_towerid_zdc(m_CaloId, idx_x, idx_y, idx_L);
 
@@ -327,14 +324,9 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
       temp_geo->set_size_y(size_y);
       temp_geo->set_size_z(size_z);
   
-      // float blocklength = m_NLayersPerTowerSeg*(m_ThicknessAbsorber+m_ThicknessScintilator);
-      // temp_geo->set_center_z(pos_z-0.5*size_z+(il+0.5)*blocklength);
-      // temp_geo->set_size_z(m_NLayersPerTowerSeg*(m_ThicknessAbsorber+m_ThicknessScintilator));
-      // temp_geo->set_tower_type((int) type);
-
       /* Insert this tower into position map */
       m_Geoms->add_tower_geometry(temp_geo);
-	//    }
+    
     }
 
     /* If line does not start with keyword Tower, read as parameter */
@@ -358,33 +350,28 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
 
       parit = m_GlobalParameterMap.find("Gx0");
       if (parit != m_GlobalParameterMap.end())
-        m_GlobalPlaceInX = parit->second;
+        GlobalPlaceInX = parit->second;
 
       parit = m_GlobalParameterMap.find("Gy0");
       if (parit != m_GlobalParameterMap.end())
-        m_GlobalPlaceInY = parit->second;
+        GlobalPlaceInY = parit->second;
 
       parit = m_GlobalParameterMap.find("Gz0");
       if (parit != m_GlobalParameterMap.end())
-        m_GlobalPlaceInZ = parit->second;
+        GlobalPlaceInZ = parit->second;
 
       parit = m_GlobalParameterMap.find("Grot_x");
       if (parit != m_GlobalParameterMap.end())
-        m_RotInX = parit->second;
+        RotAroundX = parit->second;
 
       parit = m_GlobalParameterMap.find("Grot_y");
       if (parit != m_GlobalParameterMap.end())
-        m_RotInY = parit->second;
+        RotAroundY = parit->second;
 
       parit = m_GlobalParameterMap.find("Grot_z");
       if (parit != m_GlobalParameterMap.end())
-        m_RotInZ = parit->second;
-
+        RotAroundZ = parit->second;
       
-      if (Verbosity() > 1)
-      {
-        // std::cout << "RawTowerBuilder LHCal - Absorber: " << m_ThicknessAbsorber << " cm\t Scintilator: "<< m_ThicknessScintilator << " cm\t #Layers: " << m_NLayers << "\t layers per segment: " << m_NLayersPerTowerSeg <<  "\t #segment: "<< m_NTowerSeg << std::endl;
-      }
     }
   }
     
@@ -399,19 +386,17 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
     double y_temp = it->second->get_center_y();
     double z_temp = it->second->get_center_z();
 
-    /* Rotation */
-    TRotation rot;
-    rot.RotateX(m_RotInX);
-    rot.RotateY(m_RotInY);
-    rot.RotateZ(m_RotInZ);
-
     TVector3 v_temp_r(x_temp, y_temp, z_temp);
-    v_temp_r.Transform(rot);
+
+    /* Rotation */
+    v_temp_r.RotateX(RotAroundX);
+    v_temp_r.RotateY(RotAroundY);
+    v_temp_r.RotateZ(RotAroundZ);
 
     /* Translation */
-    double x_temp_rt = v_temp_r.X() + m_GlobalPlaceInX;
-    double y_temp_rt = v_temp_r.Y() + m_GlobalPlaceInY;
-    double z_temp_rt = v_temp_r.Z() + m_GlobalPlaceInZ;
+    double x_temp_rt = v_temp_r.X() + GlobalPlaceInX;
+    double y_temp_rt = v_temp_r.Y() + GlobalPlaceInY;
+    double z_temp_rt = v_temp_r.Z() + GlobalPlaceInZ;
 
     /* Update tower geometry object */
     it->second->set_center_x(x_temp_rt);

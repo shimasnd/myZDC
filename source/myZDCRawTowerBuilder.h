@@ -89,21 +89,10 @@ class myZDCRawTowerBuilder : public SubsysReco
   
   RawTowerDefs::CalorimeterId m_CaloId;
 
-  double m_GlobalPlaceInX;
-  double m_GlobalPlaceInY;
-  double m_GlobalPlaceInZ;
-
-  double m_RotInX;
-  double m_RotInY;
-  double m_RotInZ;
-
   double m_Emin;
   double m_TowerDepth;
   double m_ThicknessAbsorber;
   double  m_ThicknessScintilator;
-  int m_NLayers;
-  int m_NLayersPerTowerSeg;
-  int m_NTowerSeg;
   std::map<std::string, double> m_GlobalParameterMap;
 };
 
