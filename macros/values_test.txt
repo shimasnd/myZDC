@@ -1,0 +1,10 @@
+myZDCStructure:: Use FoCal Layout
+myZDCStructure:: Pad Layer5.34mm thick
+myZDCStructure:: Pix Layer5.5mm thick
+myZDCStructure:: HCAL Layer32.0013mm thick
+Z size: 3000
+After Crystal part                   :-1396.22
+After EM Layers part                 :-1278.42
+After HCal Silicon part              :-876.34
+After HCal Sci part  (incl. 2cm gap) :143.699
+

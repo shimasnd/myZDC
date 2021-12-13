@@ -4,6 +4,8 @@
 #include <myzdc/myZDCSubsystem.h>
 #include <myzdc/myZDCNtuple.h>
 #include <myzdc/myZDCHitTree.h>
+#include <myzdc/myZDCRawTowerBuilder.h>
+#include <g4calo/RawTowerDigitizer.h>
 
 #include <g4detectors/PHG4DetectorSubsystem.h>
 
@@ -61,8 +63,8 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   PHG4ParticleGun *gun = new PHG4ParticleGun();
   double ene = 10.;
   double theta = 0; //for test
-  string particle = "gamma";
-  //  string particle = "neutron";
+  //  string particle = "gamma";
+  string particle = "neutron";
   //double theta = atan2(96, 3750);
   gun->set_name(particle);
   gun->set_vtx(0, 0, 0);
@@ -114,6 +116,32 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   myZDCHitTree *zdctree = new myZDCHitTree("Hits");
   zdctree->AddNode("MyZDC_0", 0);
   se->registerSubsystem(zdctree);
+  
+  //test towers...
+  myZDCRawTowerBuilder *tower_Crystal = new myZDCRawTowerBuilder("TowerBuilder_Crystal");
+  tower_Crystal->Detector("MyZDC_0");
+  tower_Crystal->SubDetector("ZDC_Crystal");
+  tower_Crystal->set_sim_tower_node_prefix("SIM");
+  tower_Crystal->GeometryTableFile("../maps/ZDC_Crystal_mapping.txt");
+  //  tower_Crystal->Verbosity(4);
+  
+  RawTowerDigitizer *TowerDigitizer = new RawTowerDigitizer("ZDC_CrystalRawTowerDigitizer");
+ // TowerDigitizer->Detector("ZDC_Crystal");
+ // // TowerDigitizer->Verbosity(verbosity);
+ // TowerDigitizer->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
+ // se->registerSubsystem(TowerDigitizer);
+
+ myZDCRawTowerBuilder *tower_Sci = new myZDCRawTowerBuilder("TowerBuilder_Sci");
+  tower_Sci->Detector("MyZDC_0");
+  tower_Sci->SubDetector("ZDC_Sci");
+  tower_Sci->set_sim_tower_node_prefix("SIM");
+  tower_Sci->GeometryTableFile("../maps/ZDC_Sci_mapping.txt");
+  tower_Sci->Verbosity(4);
+
+  se->registerSubsystem(tower_Crystal);
+  se->registerSubsystem(tower_Sci);
+  //  se->Verbosity(4);
+
 
   ///////////////////////////////////////////
   // IOManagers...
