@@ -84,6 +84,7 @@ int myZDCHitTree::Init(PHCompositeNode *)
      PHG4HitContainer::ConstRange hit_range = hits->getHits();
      for (PHG4HitContainer::ConstIterator hit_iter = hit_range.first; hit_iter != hit_range.second; hit_iter++){
        if(hit_iter->second->get_hit_type()<0) continue;
+       if(hit_iter->second->get_hit_type()>5) continue; //to skip absorber hits
        Nhit++;
 
        layerType.push_back(hit_iter->second->get_hit_type());
