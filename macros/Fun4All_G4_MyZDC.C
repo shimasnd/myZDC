@@ -123,9 +123,9 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   tower_Crystal->SubDetector("ZDC_Crystal");
   tower_Crystal->set_sim_tower_node_prefix("SIM");
   tower_Crystal->GeometryTableFile("../maps/ZDC_Crystal_mapping.txt");
-  //  tower_Crystal->Verbosity(4);
+  tower_Crystal->Verbosity(2);
   
-  RawTowerDigitizer *TowerDigitizer = new RawTowerDigitizer("ZDC_CrystalRawTowerDigitizer");
+  //  RawTowerDigitizer *TowerDigitizer = new RawTowerDigitizer("ZDC_CrystalRawTowerDigitizer");
  // TowerDigitizer->Detector("ZDC_Crystal");
  // // TowerDigitizer->Verbosity(verbosity);
  // TowerDigitizer->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
@@ -136,7 +136,7 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   tower_Sci->SubDetector("ZDC_Sci");
   tower_Sci->set_sim_tower_node_prefix("SIM");
   tower_Sci->GeometryTableFile("../maps/ZDC_Sci_mapping.txt");
-  tower_Sci->Verbosity(4);
+  tower_Sci->Verbosity(3);
 
   se->registerSubsystem(tower_Crystal);
   se->registerSubsystem(tower_Sci);

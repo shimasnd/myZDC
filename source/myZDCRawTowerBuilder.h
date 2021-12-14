@@ -86,7 +86,7 @@ class myZDCRawTowerBuilder : public SubsysReco
   std::string m_MappingTowerFile;
 
   int m_SubDetID;
-  
+ 
   RawTowerDefs::CalorimeterId m_CaloId;
 
   double m_Emin;
@@ -94,6 +94,7 @@ class myZDCRawTowerBuilder : public SubsysReco
   double m_ThicknessAbsorber;
   double  m_ThicknessScintilator;
   std::map<std::string, double> m_GlobalParameterMap;
+  std::map<int, int> m_TowerIDtoLayerIDMap;
 };
 
 #endif

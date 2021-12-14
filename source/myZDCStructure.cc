@@ -629,12 +629,23 @@ void myZDCStructure::PrintTowerMap(const std::string &d){
   std::string filename = "ZDC_"+d+"_mapping.txt";
   map_file.open(filename,std::ios::out);
   
+  map_file<<"# ZDC_"<<d<<std::endl;
+  map_file<<"Gx0 "<<"\t"<<"-962.4"<<std::endl;
+  map_file<<"Gy0 "<<"\t"<<"0."<<std::endl;
+  map_file<<"Gz0 "<<"\t"<<"37000."<<std::endl;
+  map_file<<"Grot_x "<<"\t"<<"0."<<std::endl;
+  map_file<<"Grot_y "<<"\t"<<"-0.025"<<std::endl;
+  map_file<<"Grot_z "<<"\t"<<"0."<<std::endl;
+
   double offsetZ=0;
   if(d=="Crystal"){
 
     offsetZ=0;
 
-    map_file<<"# ZDC_Crystal"<<std::endl;
+    map_file<<"#Tower ID <-> Layer ID"<<std::endl;
+    for(int iL=0; iL<nCTowerZ; iL++)
+      map_file<<"iT_iL "<<iL<<"\t"<<2*iL+1<<std::endl;
+    
     map_file<<"#Tower "<<"\t"<<"iLayer "<<"\t"<<"iX "<<"\t"<<"iY "<<"\t"
 	    <<"x_cnt " <<"\t"<<"y_cnt " <<"\t"<<"z_cnt "<<"\t"
 	    <<"size_x "<<"\t"<<"size_y "<<"\t"<<"size_z"<<std::endl;
@@ -662,13 +673,20 @@ void myZDCStructure::PrintTowerMap(const std::string &d){
   }else if (d=="SiPixel"){
     
     offsetZ = 0;
+    int nPixLayer = 1 + nCTowerZ + NumberPIX;
 
-    map_file<<"# ZDC_SiPixel"<<std::endl;
+    map_file<<"#Tower ID <-> Layer ID"<<std::endl;
+    for(int iL=0; iL<nPixLayer; iL++){
+      if(iL<=nCTowerZ) 
+	map_file<<"iT_iL "<<iL<<"\t"<<2*iL<<std::endl;
+      else 
+	map_file<<"iT_iL "<<iL<<"\t"
+		<<nCTowerZ*2 + (iL-nCTowerZ) * (NPadOnlyLayers + 1)<<std::endl;
+    }
+
     map_file<<"#Tower "<<"\t"<<"iLayer "<<"\t"<<"iX "<<"\t"<<"iY "<<"\t"
 	    <<"x_cnt " <<"\t"<<"y_cnt " <<"\t"<<"z_cnt "<<"\t"
 	    <<"size_x "<<"\t"<<"size_y "<<"\t"<<"size_z"<<std::endl;
-
-    int nPixLayer = 1 + nCTowerZ + NumberPIX;
     
     for(int iL=0; iL < nPixLayer; iL++){
 
@@ -699,15 +717,30 @@ void myZDCStructure::PrintTowerMap(const std::string &d){
   }else if(d=="SiPad"){
     
     offsetZ = _z_EMLayers[0] - _z_Crystal[0];
+    int iTower=0;
 
-    map_file<<"# ZDC_SiPad"<<std::endl;
+    map_file<<"#Tower ID <-> Layer ID"<<std::endl;
+    for(int iB=0; iB<NumberPAD/NPadOnlyLayers; iB++){
+      for(int iL=0; iL<NPadOnlyLayers; iL++){
+	map_file<<"iT_iL "<<iTower<<"\t"
+		<<2*nCTowerZ + iB*(NPadOnlyLayers+1)+iL+1<<std::endl;
+	iTower++;
+      }
+    }
+    for(int iL=0; iL<HCALSiNumberOfLayers; iL++){
+      map_file<<"iT_iL "<<iTower<<"\t"
+	      <<2*nCTowerZ+1+NumberOfLayers+iL<<std::endl;
+      iTower++;
+    }
+
+
     map_file<<"#Tower "<<"\t"<<"iLayer "<<"\t"<<"iX "<<"\t"<<"iY "<<"\t"
 	    <<"x_cnt " <<"\t"<<"y_cnt " <<"\t"<<"z_cnt "<<"\t"
 	    <<"size_x "<<"\t"<<"size_y "<<"\t"<<"size_z"<<std::endl;
     
     offsetZ += (PIX_Z + PIX_Glue2_Z + PIX_FPC_Z + PIX_AirGap);
 
-    int iTower =0;
+    iTower =0;
     for(int iB=0; iB<NumberPAD/NPadOnlyLayers; iB++){
       for(int iL=0; iL<NPadOnlyLayers; iL++){
 	
@@ -761,7 +794,13 @@ void myZDCStructure::PrintTowerMap(const std::string &d){
 
     offsetZ = _z_HCSci[0] - _z_Crystal[0];
 
-    map_file<<"# ZDC_Sci"<<std::endl;
+    map_file<<"#Tower ID <-> Layer ID"<<std::endl;
+    for(int iB=0; iB<HCALNumberOfTowersZ; iB++){
+      map_file<<"iT_iL "<<iB<<"\t"
+	      <<2*nCTowerZ + 1 + NumberOfLayers + HCALSiNumberOfLayers 
+	+ iB * NLayersHCALTower<<std::endl;
+    }
+
     map_file<<"#Tower "<<"\t"<<"iLayer "<<"\t"<<"iX "<<"\t"<<"iY "<<"\t"
 	    <<"x_cnt " <<"\t"<<"y_cnt " <<"\t"<<"z_cnt "<<"\t"
 	    <<"size_x "<<"\t"<<"size_y "<<"\t"<<"size_z"<<std::endl;

@@ -115,8 +115,20 @@ int myZDCRawTowerBuilder::process_event(PHCompositeNode *topNode)
     if (g4hit_i->get_hit_type() != m_SubDetID) continue;
 
     /* encode CaloTowerID from i (xid), j (yid) index of tower / hit and calorimeter ID */
-    int towerid = g4hit_i->get_index_k();
     int layerid = g4hit_i->get_layer();
+    int towerid = -1;
+    if(m_SubDetID==ZDCID::Scintillator){
+      for(auto it = m_TowerIDtoLayerIDMap.begin(); it!=m_TowerIDtoLayerIDMap.end();it++)
+	if(layerid >= it->second) towerid = it->first;
+    }else {
+      for(auto it = m_TowerIDtoLayerIDMap.begin(); it!=m_TowerIDtoLayerIDMap.end(); it++){
+	if(layerid == it->second){
+	  towerid = it->first;
+	  break;
+	}
+      }
+    }
+
     RawTowerDefs::keytype calotowerid = RawTowerDefs::encode_towerid_zdc(m_CaloId,
 								     g4hit_i->get_index_i(),
 								     g4hit_i->get_index_j(),
@@ -133,7 +145,9 @@ int myZDCRawTowerBuilder::process_event(PHCompositeNode *topNode)
       m_Towers->AddTower(tower->get_id(), tower);
       if (Verbosity() > 2) 
       {
-        std::cout << "in: " <<  g4hit_i->get_index_i() << "\t" << g4hit_i->get_index_j() << "\t" << g4hit_i->get_index_k() << std::endl;
+	cout<<m_SubDetector<<" : L = "<<layerid<<" , T = "<<towerid<<endl;
+	    
+        std::cout << "in:   " <<  g4hit_i->get_index_i() << "\t" << g4hit_i->get_index_j() << "\t" << layerid << std::endl;
         std::cout << "decoded: " <<  tower->get_bineta() << "\t" << tower->get_binphi()  << "\t" << tower->get_binl()  << std::endl;
       }
     }
@@ -284,6 +298,8 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
   double GlobalPlaceInY=0.;
   double GlobalPlaceInZ=0.;
 
+  m_TowerIDtoLayerIDMap.clear();
+
   while (getline(istream_mapping, line_mapping))
   {
     /* Skip lines starting with / including a '#' */
@@ -330,6 +346,17 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
     }
 
     /* If line does not start with keyword Tower, read as parameter */
+    else if (line_mapping.find("iT_iL ")!=string::npos)
+    {
+      int towerid, layerid;
+      string dummys;
+      if(!(iss >> dummys >> towerid >> layerid))
+      {
+	cerr<<"ERROR in myZDCRawTowerBuilder: Failed to read line in mapping file "<< m_MappingTowerFile <<endl;
+	exit(1);
+      }
+      m_TowerIDtoLayerIDMap.insert(make_pair(towerid,layerid));
+    }
     else
     {
       /* If this line is not a comment and not a tower, save parameter as string / value. */

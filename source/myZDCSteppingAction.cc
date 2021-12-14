@@ -145,14 +145,12 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
   int yid = touch->GetCopyNumber();
 
   int layer_id = -1;
-  int tower_id = -1;
 
   if(whichactive>0){
     if(detector_system == ZDCID::CrystalTower){
       int zid = touch->GetCopyNumber(2);
       if(detector_id == ZDCID::SI_PIXEL) layer_id = zid * 2;
       else if(detector_id==ZDCID::Crystal) layer_id = zid * 2 +1;
-      tower_id = layer_id;
     }else if(detector_system == ZDCID::EMLayer){
       if(detector_id == ZDCID::SI_PIXEL) layer_id = detector_layer + touch->GetCopyNumber(3);
       if(detector_id == ZDCID::SI_PAD) {
@@ -161,17 +159,14 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
 	int nlyr = detector_nlyrbox +1;
 	layer_id = detector_layer + zid + boxid * nlyr; 
       }
-      tower_id = layer_id;
     }else if (detector_system == ZDCID::HCPadLayer){
       if(detector_id == ZDCID::SI_PAD) layer_id = detector_layer + touch->GetCopyNumber(3);
-      tower_id = layer_id;
     }else if (detector_system == ZDCID::HCSciLayer){
       if(detector_id == ZDCID::Scintillator){
 	int boxid = touch->GetCopyNumber(4);
 	int zid   = touch->GetCopyNumber(3);
 	int nlyr  = detector_nlyrbox;
 	layer_id = detector_layer + zid + boxid *nlyr;
-	tower_id = detector_layer + boxid;
       }
       
     }
@@ -383,7 +378,6 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
       m_Hit->set_layer(layer_id);
       m_Hit->set_index_i(xid);
       m_Hit->set_index_j(yid);
-      m_Hit->set_index_k(tower_id);
       m_Hit->set_hit_type(detector_id);
       m_Hit->set_eion(m_EionSum);
       m_Hit->set_light_yield(m_LightYield);
