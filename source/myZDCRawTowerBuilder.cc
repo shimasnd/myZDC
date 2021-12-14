@@ -156,6 +156,7 @@ int myZDCRawTowerBuilder::process_event(PHCompositeNode *topNode)
     cout << "Energy lost by dropping towers with less than " << m_Emin
          << " energy, lost energy: " << towerE - m_Towers->getTotalEdep() << endl;
     m_Towers->identify();
+    std::cout<<"Total energy: "<<m_Towers->getTotalEdep()<<std::endl;
     RawTowerContainer::ConstRange begin_end = m_Towers->getTowers();
     RawTowerContainer::ConstIterator iter;
     for (iter = begin_end.first; iter != begin_end.second; ++iter)
@@ -300,20 +301,20 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
     /* If line starts with keyword Tower, add to tower positions */
     if (line_mapping.find("Tower ") != string::npos)
     {
-      unsigned idx_L, idx_x, idx_y;
+      unsigned idx_T, idx_x, idx_y;
       double pos_x, pos_y, pos_z;
       double size_x, size_y, size_z;
       string dummys;
 
       /* read string- break if error */
-      if (!(iss >> dummys >> idx_L >> idx_x >> idx_y >> pos_x >> pos_y >> pos_z >> size_x >> size_y >> size_z))
+      if (!(iss >> dummys >> idx_T >> idx_x >> idx_y >> pos_x >> pos_y >> pos_z >> size_x >> size_y >> size_z))
       {
         cerr << "ERROR in myZDCRawTowerBuilder: Failed to read line in mapping file " << m_MappingTowerFile << endl;
         exit(1);
       }
 
         /* Construct unique Tower ID */
-      unsigned int temp_id = RawTowerDefs::encode_towerid_zdc(m_CaloId, idx_x, idx_y, idx_L);
+      unsigned int temp_id = RawTowerDefs::encode_towerid_zdc(m_CaloId, idx_x, idx_y, idx_T);
 
       /* Create tower geometry object */
       RawTowerGeom *temp_geo = new RawTowerGeomv3(temp_id);
