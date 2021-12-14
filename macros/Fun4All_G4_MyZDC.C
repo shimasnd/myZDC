@@ -63,8 +63,8 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   PHG4ParticleGun *gun = new PHG4ParticleGun();
   double ene = 10.;
   double theta = 0; //for test
-  string particle = "gamma";
-  //string particle = "neutron";
+  //  string particle = "gamma";
+  string particle = "neutron";
   //double theta = atan2(96, 3750);
   gun->set_name(particle);
   gun->set_vtx(0, 0, 0);
@@ -123,14 +123,14 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   tower_Crystal->SubDetector("ZDC_Crystal");
   tower_Crystal->set_sim_tower_node_prefix("SIM");
   tower_Crystal->GeometryTableFile("../maps/ZDC_Crystal_mapping.txt");
-  tower_Crystal->Verbosity(2);
+  //  tower_Crystal->Verbosity(2);
   
   myZDCRawTowerBuilder *tower_SiPix = new myZDCRawTowerBuilder("TowerBuilder_SiPix");
   tower_SiPix->Detector("MyZDC_0");
   tower_SiPix->SubDetector("ZDC_SiPixel");
   tower_SiPix->set_sim_tower_node_prefix("SIM");
   tower_SiPix->GeometryTableFile("../maps/ZDC_SiPixel_mapping.txt");
-  tower_SiPix->Verbosity(2);
+  //  tower_SiPix->Verbosity(2);
 
   myZDCRawTowerBuilder *tower_SiPad = new myZDCRawTowerBuilder("TowerBuilder_SiPad");
   tower_SiPad->Detector("MyZDC_0");
@@ -144,7 +144,7 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   tower_Sci->SubDetector("ZDC_Sci");
   tower_Sci->set_sim_tower_node_prefix("SIM");
   tower_Sci->GeometryTableFile("../maps/ZDC_Sci_mapping.txt");
-  tower_Sci->Verbosity(3);
+  //  tower_Sci->Verbosity(2);
 
   se->registerSubsystem(tower_Crystal);
   se->registerSubsystem(tower_SiPix);
@@ -153,13 +153,13 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
 
   RawTowerDigitizer *TowerDigitizer_Crystal = new RawTowerDigitizer("ZDC_CrystalRawTowerDigitizer");
   TowerDigitizer_Crystal->Detector("ZDC_Crystal");
-  TowerDigitizer_Crystal->Verbosity(3);
+  //  TowerDigitizer_Crystal->Verbosity(3);
   TowerDigitizer_Crystal->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
   se->registerSubsystem(TowerDigitizer_Crystal);
 
   RawTowerDigitizer *TowerDigitizer_SiPixel = new RawTowerDigitizer("ZDC_SiPixelRawTowerDigitizer");
   TowerDigitizer_SiPixel->Detector("ZDC_SiPixel");
-  TowerDigitizer_SiPixel->Verbosity(3);
+  //  TowerDigitizer_SiPixel->Verbosity(3);
   TowerDigitizer_SiPixel->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
   se->registerSubsystem(TowerDigitizer_SiPixel);
 
