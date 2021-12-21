@@ -1,15 +1,12 @@
 #include "myZDCRawTowerBuilder.h"
 #include "zdcdetid.h"
 
-#include <calobase/RawTowerContainer.h>
-#include <calobase/RawTowerv2.h>
+#include <eiczdcbase/RawTowerZDCContainer.h>
+#include <eiczdcbase/RawTowerZDCv1.h>
 
-#include <calobase/RawTower.h>                 // for RawTower
-#include <calobase/RawTowerDefs.h>             // for convert_name_to_caloid
-#include <calobase/RawTowerGeom.h>             // for RawTowerGeom
-#include <calobase/RawTowerGeomv3.h>
-#include <calobase/RawTowerGeomContainer.h>    // for RawTowerGeomContainer
-#include <calobase/RawTowerGeomContainerv1.h>
+#include <eiczdcbase/RawTowerZDCGeom.h>             // for RawTowerGeom
+#include <eiczdcbase/RawTowerZDCGeomv1.h>
+#include <eiczdcbase/RawTowerZDCGeomContainer.h>    // for RawTowerGeomContainer
 
 #include <g4main/PHG4Hit.h>
 #include <g4main/PHG4HitContainer.h>
@@ -47,7 +44,7 @@ myZDCRawTowerBuilder::myZDCRawTowerBuilder(const std::string &name)
   , m_Detector("NONE")
   , m_SubDetector("NONE")
   , m_MappingTowerFile("default.txt")
-  , m_CaloId(RawTowerDefs::NONE)
+  , m_CaloId(RawTowerZDCDefs::NONE)
   , m_Emin(1e-9)
   , m_TowerDepth(0)
   , m_ThicknessAbsorber(0)
@@ -129,7 +126,7 @@ int myZDCRawTowerBuilder::process_event(PHCompositeNode *topNode)
       }
     }
 
-    RawTowerDefs::keytype calotowerid = RawTowerDefs::encode_towerid_zdc(m_CaloId,
+    RawTowerZDCDefs::keytype calotowerid = RawTowerZDCDefs::encode_towerid_zdc(m_CaloId,
 								     g4hit_i->get_index_i(),
 								     g4hit_i->get_index_j(),
 								     towerid
@@ -137,10 +134,10 @@ int myZDCRawTowerBuilder::process_event(PHCompositeNode *topNode)
     
   
     /* add the energy to the corresponding tower */
-    RawTowerv2 *tower = dynamic_cast<RawTowerv2 *>(m_Towers->getTower(calotowerid));
+    RawTowerZDCv1 *tower = dynamic_cast<RawTowerZDCv1 *>(m_Towers->getTower(calotowerid));
     if (!tower)
     {
-      tower = new RawTowerv2(calotowerid);
+      tower = new RawTowerZDCv1(calotowerid);
       tower->set_energy(0);
       m_Towers->AddTower(tower->get_id(), tower);
       if (Verbosity() > 2) 
@@ -171,8 +168,8 @@ int myZDCRawTowerBuilder::process_event(PHCompositeNode *topNode)
          << " energy, lost energy: " << towerE - m_Towers->getTotalEdep() << endl;
     m_Towers->identify();
     std::cout<<"Total energy: "<<m_Towers->getTotalEdep()<<std::endl;
-    RawTowerContainer::ConstRange begin_end = m_Towers->getTowers();
-    RawTowerContainer::ConstIterator iter;
+    RawTowerZDCContainer::ConstRange begin_end = m_Towers->getTowers();
+    RawTowerZDCContainer::ConstIterator iter;
     for (iter = begin_end.first; iter != begin_end.second; ++iter)
     {
       iter->second->identify();
@@ -213,7 +210,7 @@ void myZDCRawTowerBuilder::SubDetector(const std::string &d)
     exit(1);
   }
   
-  m_CaloId = RawTowerDefs::convert_name_to_caloid(d);
+  m_CaloId = RawTowerZDCDefs::convert_name_to_caloid(d);
   
 }
 
@@ -235,7 +232,7 @@ void myZDCRawTowerBuilder::CreateNodes(PHCompositeNode *topNode)
   }
 
   // Create the tower geometry node on the tree
-  m_Geoms = new RawTowerGeomContainerv1(m_CaloId);
+  m_Geoms = new RawTowerZDCGeomContainer(m_CaloId);
   string NodeNameTowerGeometries = "TOWERGEOM_" + m_SubDetector;
 
   PHIODataNode<PHObject> *geomNode = new PHIODataNode<PHObject>(m_Geoms, NodeNameTowerGeometries, "PHObject");
@@ -252,7 +249,7 @@ void myZDCRawTowerBuilder::CreateNodes(PHCompositeNode *topNode)
   }
 
   // Create the tower nodes on the tree
-  m_Towers = new RawTowerContainer(m_CaloId);
+  m_Towers = new RawTowerZDCContainer(m_CaloId);
   string NodeNameTowers;
   if (m_SimTowerNodePrefix.empty())
   {
@@ -330,10 +327,10 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
       }
 
         /* Construct unique Tower ID */
-      unsigned int temp_id = RawTowerDefs::encode_towerid_zdc(m_CaloId, idx_x, idx_y, idx_T);
+      unsigned int temp_id = RawTowerZDCDefs::encode_towerid_zdc(m_CaloId, idx_x, idx_y, idx_T);
 
       /* Create tower geometry object */
-      RawTowerGeom *temp_geo = new RawTowerGeomv3(temp_id);
+      RawTowerZDCGeomv1 *temp_geo = new RawTowerZDCGeomv1(temp_id);
       temp_geo->set_center_x(pos_x);
       temp_geo->set_center_y(pos_y);
       temp_geo->set_center_z(pos_z);
@@ -405,9 +402,9 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
     
   /* Correct tower geometries for global calorimter translation / rotation 
    * after reading parameters from file */
-  RawTowerGeomContainer::ConstRange all_towers = m_Geoms->get_tower_geometries();
+  RawTowerZDCGeomContainer::ConstRange all_towers = m_Geoms->get_tower_geometries();
 
-  for (RawTowerGeomContainer::ConstIterator it = all_towers.first;
+  for (RawTowerZDCGeomContainer::ConstIterator it = all_towers.first;
        it != all_towers.second; ++it)
   {
     double x_temp = it->second->get_center_x();

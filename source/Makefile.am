@@ -34,7 +34,7 @@ libmyZDC_la_LIBADD = \
   -lSubsysReco\
   -lg4detectors\
   -lg4testbench\
-  -lcalo_io
+  -leiczdcbase
 
 BUILT_SOURCES = testexternals.cc
 

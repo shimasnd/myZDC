@@ -1,7 +1,7 @@
 #ifndef EICG4ZDC_RAWTOWERBUILDER_H
 #define EICG4ZDC_RAWTOWERBUILDER_H
 
-#include <calobase/RawTowerDefs.h>
+#include <eiczdcbase/RawTowerZDCDefs.h>
 
 #include <fun4all/SubsysReco.h>
 
@@ -9,11 +9,11 @@
 #include <string>
 
 class PHCompositeNode;
-class RawTowerContainer;
-class RawTowerGeomContainer;
+class RawTowerZDCContainer;
+class RawTowerZDCGeomContainer;
 
 /**
- * \brief SubsysReco module creating calorimeter tower objects (RawTowerv1) from hits
+ * \brief SubsysReco module creating calorimeter tower objects (RawTowerZDCv1) from hits
  * (PHG4Hit) using j,k,l indeces of these hits
  *
  */
@@ -68,7 +68,7 @@ class myZDCRawTowerBuilder : public SubsysReco
  private:
   /** Create nodes for output.
    *
-   * Name of output node for RawTowerContainer: "TOWER_" + detector;
+   * Name of output node for RawTowerZDCContainer: "TOWER_" + detector;
    */
   void CreateNodes(PHCompositeNode *topNode);
 
@@ -76,8 +76,8 @@ class myZDCRawTowerBuilder : public SubsysReco
    */
   bool ReadGeometryFromTable();
 
-  RawTowerContainer *m_Towers;
-  RawTowerGeomContainer *m_Geoms;
+  RawTowerZDCContainer *m_Towers;
+  RawTowerZDCGeomContainer *m_Geoms;
 
   std::string m_Detector;
   std::string m_SubDetector;
@@ -87,7 +87,7 @@ class myZDCRawTowerBuilder : public SubsysReco
 
   int m_SubDetID;
  
-  RawTowerDefs::CalorimeterId m_CaloId;
+  RawTowerZDCDefs::CalorimeterId m_CaloId;
 
   double m_Emin;
   double m_TowerDepth;

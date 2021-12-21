@@ -167,8 +167,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
 	int zid   = touch->GetCopyNumber(3);
 	int nlyr  = detector_nlyrbox;
 	layer_id = detector_layer + zid + boxid *nlyr;
-      }
-      
+      }      
     }
   }
 
