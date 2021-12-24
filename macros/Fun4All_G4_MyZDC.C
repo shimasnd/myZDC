@@ -6,6 +6,7 @@
 #include <myzdc/myZDCHitTree.h>
 #include <myzdc/myZDCRawTowerBuilder.h>
 #include <eiczdcreco/RawTowerZDCDigitizer.h>
+#include <eiczdcreco/RawTowerZDCCalibration.h>
 
 #include <g4detectors/PHG4DetectorSubsystem.h>
 
@@ -156,6 +157,14 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   TowerDigitizer_Crystal->Verbosity(3);
   TowerDigitizer_Crystal->set_digi_algorithm(RawTowerZDCDigitizer::kNo_digitization);
   se->registerSubsystem(TowerDigitizer_Crystal);
+
+  RawTowerZDCCalibration *TowerCalibration_Crystal = new RawTowerZDCCalibration("ZDC_CrystalRawTowerCalibration");
+  TowerCalibration_Crystal->Detector("ZDC_Crystal");
+  TowerCalibration_Crystal->Verbosity(3);
+  TowerCalibration_Crystal->set_calib_algorithm(RawTowerZDCCalibration::kSimple_linear_calibration);
+  TowerCalibration_Crystal->set_calib_const_GeV_ADC(1.);
+  TowerCalibration_Crystal->set_pedstal_ADC(0);
+  se->registerSubsystem(TowerCalibration_Crystal);
 
   // RawTowerDigitizer *TowerDigitizer_SiPixel = new RawTowerDigitizer("ZDC_SiPixelRawTowerDigitizer");
   // TowerDigitizer_SiPixel->Detector("ZDC_SiPixel");
