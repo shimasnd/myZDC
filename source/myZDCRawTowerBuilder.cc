@@ -144,7 +144,7 @@ int myZDCRawTowerBuilder::process_event(PHCompositeNode *topNode)
       {
 	cout<<m_SubDetector<<" : L = "<<layerid<<" , T = "<<towerid<<endl;
 	    
-        std::cout << "in:   " <<  g4hit_i->get_index_i() << "\t" << g4hit_i->get_index_j() << "\t" << layerid << std::endl;
+        std::cout << "in:   " <<  g4hit_i->get_index_i() << "\t" << g4hit_i->get_index_j() << "\t" << towerid << std::endl;
         std::cout << "decoded: " <<  tower->get_bineta() << "\t" << tower->get_binphi()  << "\t" << tower->get_binl()  << std::endl;
       }
     }
@@ -273,7 +273,7 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
   ifstream istream_mapping;
 
   if(m_MappingTowerFile.find(m_SubDetector)==std::string::npos){
-    cerr<<"CaloTowerGeomManager::ReadGeometryFileFromTable - ERROR unmatched mapping file: SubDetector "<<m_SubDetector<<" : mapping file : "<<m_MappingTowerFile<<endl;
+    cerr<<"ZDCTowerGeomManager::ReadGeometryFileFromTable - ERROR unmatched mapping file: SubDetector "<<m_SubDetector<<" : mapping file : "<<m_MappingTowerFile<<endl;
   }
 
   /* Open the datafile, if it won't open return an error */
@@ -282,7 +282,7 @@ bool myZDCRawTowerBuilder::ReadGeometryFromTable()
     istream_mapping.open(m_MappingTowerFile);
     if (!istream_mapping)
     {
-      cerr << "CaloTowerGeomManager::ReadGeometryFromTable - ERROR Failed to open mapping file " << m_MappingTowerFile << endl;
+      cerr << "ZDCTowerGeomManager::ReadGeometryFromTable - ERROR Failed to open mapping file " << m_MappingTowerFile << endl;
       exit(1);
     }
   }

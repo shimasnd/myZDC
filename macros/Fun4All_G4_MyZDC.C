@@ -5,7 +5,7 @@
 #include <myzdc/myZDCNtuple.h>
 #include <myzdc/myZDCHitTree.h>
 #include <myzdc/myZDCRawTowerBuilder.h>
-#include <g4calo/RawTowerDigitizer.h>
+#include <eiczdcreco/RawTowerZDCDigitizer.h>
 
 #include <g4detectors/PHG4DetectorSubsystem.h>
 
@@ -123,59 +123,59 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   tower_Crystal->SubDetector("ZDC_Crystal");
   tower_Crystal->set_sim_tower_node_prefix("SIM");
   tower_Crystal->GeometryTableFile("../maps/ZDC_Crystal_mapping.txt");
-  //  tower_Crystal->Verbosity(2);
+  //  tower_Crystal->Verbosity(3);
   
-  myZDCRawTowerBuilder *tower_SiPix = new myZDCRawTowerBuilder("TowerBuilder_SiPix");
-  tower_SiPix->Detector("MyZDC_0");
-  tower_SiPix->SubDetector("ZDC_SiPixel");
-  tower_SiPix->set_sim_tower_node_prefix("SIM");
-  tower_SiPix->GeometryTableFile("../maps/ZDC_SiPixel_mapping.txt");
-  //  tower_SiPix->Verbosity(2);
+ //  myZDCRawTowerBuilder *tower_SiPix = new myZDCRawTowerBuilder("TowerBuilder_SiPix");
+ //  tower_SiPix->Detector("MyZDC_0");
+ //  tower_SiPix->SubDetector("ZDC_SiPixel");
+ //  tower_SiPix->set_sim_tower_node_prefix("SIM");
+ //  tower_SiPix->GeometryTableFile("../maps/ZDC_SiPixel_mapping.txt");
+ //  //  tower_SiPix->Verbosity(3);
 
-  myZDCRawTowerBuilder *tower_SiPad = new myZDCRawTowerBuilder("TowerBuilder_SiPad");
-  tower_SiPad->Detector("MyZDC_0");
-  tower_SiPad->SubDetector("ZDC_SiPad");
-  tower_SiPad->set_sim_tower_node_prefix("SIM");
-  tower_SiPad->GeometryTableFile("../maps/ZDC_SiPad_mapping.txt");
-  //  tower_SiPad->Verbosity(4);
+ //  myZDCRawTowerBuilder *tower_SiPad = new myZDCRawTowerBuilder("TowerBuilder_SiPad");
+ //  tower_SiPad->Detector("MyZDC_0");
+ //  tower_SiPad->SubDetector("ZDC_SiPad");
+ //  tower_SiPad->set_sim_tower_node_prefix("SIM");
+ //  tower_SiPad->GeometryTableFile("../maps/ZDC_SiPad_mapping.txt");
+ //  //  tower_SiPad->Verbosity(4);
 
- myZDCRawTowerBuilder *tower_Sci = new myZDCRawTowerBuilder("TowerBuilder_Sci");
-  tower_Sci->Detector("MyZDC_0");
-  tower_Sci->SubDetector("ZDC_Sci");
-  tower_Sci->set_sim_tower_node_prefix("SIM");
-  tower_Sci->GeometryTableFile("../maps/ZDC_Sci_mapping.txt");
-  //  tower_Sci->Verbosity(2);
+ // myZDCRawTowerBuilder *tower_Sci = new myZDCRawTowerBuilder("TowerBuilder_Sci");
+ //  tower_Sci->Detector("MyZDC_0");
+ //  tower_Sci->SubDetector("ZDC_Sci");
+ //  tower_Sci->set_sim_tower_node_prefix("SIM");
+ //  tower_Sci->GeometryTableFile("../maps/ZDC_Sci_mapping.txt");
+ //  //  tower_Sci->Verbosity(2);
 
   se->registerSubsystem(tower_Crystal);
-  se->registerSubsystem(tower_SiPix);
-  se->registerSubsystem(tower_SiPad);
-  se->registerSubsystem(tower_Sci);
+  //  se->registerSubsystem(tower_SiPix);
+  // se->registerSubsystem(tower_SiPad);
+  // se->registerSubsystem(tower_Sci);
 
-  RawTowerDigitizer *TowerDigitizer_Crystal = new RawTowerDigitizer("ZDC_CrystalRawTowerDigitizer");
-  TowerDigitizer_Crystal->Detector("ZDC_Crystal");
-  //  TowerDigitizer_Crystal->Verbosity(3);
-  TowerDigitizer_Crystal->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
-  se->registerSubsystem(TowerDigitizer_Crystal);
+  RawTowerZDCDigitizer *TowerDigitizer_Crystal = new RawTowerZDCDigitizer("ZDC_CrystalRawTowerDigitizer");
+  // TowerDigitizer_Crystal->Detector("ZDC_Crystal");
+  // //  TowerDigitizer_Crystal->Verbosity(3);
+  // TowerDigitizer_Crystal->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
+  // se->registerSubsystem(TowerDigitizer_Crystal);
 
-  RawTowerDigitizer *TowerDigitizer_SiPixel = new RawTowerDigitizer("ZDC_SiPixelRawTowerDigitizer");
-  TowerDigitizer_SiPixel->Detector("ZDC_SiPixel");
-  //  TowerDigitizer_SiPixel->Verbosity(3);
-  TowerDigitizer_SiPixel->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
-  se->registerSubsystem(TowerDigitizer_SiPixel);
+  // RawTowerDigitizer *TowerDigitizer_SiPixel = new RawTowerDigitizer("ZDC_SiPixelRawTowerDigitizer");
+  // TowerDigitizer_SiPixel->Detector("ZDC_SiPixel");
+  // //  TowerDigitizer_SiPixel->Verbosity(3);
+  // TowerDigitizer_SiPixel->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
+  // se->registerSubsystem(TowerDigitizer_SiPixel);
 
-  RawTowerDigitizer *TowerDigitizer_SiPad = new RawTowerDigitizer("ZDC_SiPadRawTowerDigitizer");
-  TowerDigitizer_SiPad->Detector("ZDC_SiPad");
-  //  TowerDigitizer_SiPad->Verbosity(3);
-  TowerDigitizer_SiPad->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
-   se->registerSubsystem(TowerDigitizer_SiPad);
+  // RawTowerDigitizer *TowerDigitizer_SiPad = new RawTowerDigitizer("ZDC_SiPadRawTowerDigitizer");
+  // TowerDigitizer_SiPad->Detector("ZDC_SiPad");
+  // //  TowerDigitizer_SiPad->Verbosity(3);
+  // TowerDigitizer_SiPad->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
+  //  se->registerSubsystem(TowerDigitizer_SiPad);
 
-  RawTowerDigitizer *TowerDigitizer_Sci = new RawTowerDigitizer("ZDC_SciRawTowerDigitizer");
-  TowerDigitizer_Sci->Detector("ZDC_Sci");
-  //  TowerDigitizer_Sci->Verbosity(3);
-  TowerDigitizer_Sci->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
-  se->registerSubsystem(TowerDigitizer_Sci);
+  // RawTowerDigitizer *TowerDigitizer_Sci = new RawTowerDigitizer("ZDC_SciRawTowerDigitizer");
+  // TowerDigitizer_Sci->Detector("ZDC_Sci");
+  // //  TowerDigitizer_Sci->Verbosity(3);
+  // TowerDigitizer_Sci->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
+  // se->registerSubsystem(TowerDigitizer_Sci);
 
-  //  se->Verbosity(4);
+  // //  se->Verbosity(4);
 
 
   ///////////////////////////////////////////
