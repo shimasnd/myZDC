@@ -152,10 +152,10 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   // se->registerSubsystem(tower_Sci);
 
   RawTowerZDCDigitizer *TowerDigitizer_Crystal = new RawTowerZDCDigitizer("ZDC_CrystalRawTowerDigitizer");
-  // TowerDigitizer_Crystal->Detector("ZDC_Crystal");
-  // //  TowerDigitizer_Crystal->Verbosity(3);
-  // TowerDigitizer_Crystal->set_digi_algorithm(RawTowerDigitizer::kNo_digitization);
-  // se->registerSubsystem(TowerDigitizer_Crystal);
+  TowerDigitizer_Crystal->Detector("ZDC_Crystal");
+  TowerDigitizer_Crystal->Verbosity(3);
+  TowerDigitizer_Crystal->set_digi_algorithm(RawTowerZDCDigitizer::kNo_digitization);
+  se->registerSubsystem(TowerDigitizer_Crystal);
 
   // RawTowerDigitizer *TowerDigitizer_SiPixel = new RawTowerDigitizer("ZDC_SiPixelRawTowerDigitizer");
   // TowerDigitizer_SiPixel->Detector("ZDC_SiPixel");
