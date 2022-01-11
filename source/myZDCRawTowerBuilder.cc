@@ -148,9 +148,13 @@ int myZDCRawTowerBuilder::process_event(PHCompositeNode *topNode)
         std::cout << "decoded: " <<  tower->get_bineta() << "\t" << tower->get_binphi()  << "\t" << tower->get_binl()  << std::endl;
       }
     }
-    tower->add_ecell(layerid, g4hit_i->get_light_yield());
-    tower->set_energy(tower->get_energy() + g4hit_i->get_light_yield());
-    tower->add_eshower(g4hit_i->get_shower_id(), g4hit_i->get_edep());
+    double hit_energy = 0;
+    if(m_SubDetID==ZDCID::Crystal || m_SubDetID==ZDCID::Scintillator) hit_energy = g4hit_i->get_light_yield();
+    else hit_energy = g4hit_i->get_edep();
+
+    tower->add_ecell(layerid, hit_energy);
+    tower->set_energy(tower->get_energy() + hit_energy);
+    tower->add_eshower(g4hit_i->get_shower_id(), hit_energy);
   }
 
   float towerE = 0.;
