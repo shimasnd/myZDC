@@ -56,6 +56,7 @@ int myZDCHitTree::Init(PHCompositeNode *)
    tree->Branch("time0", &time0);
    tree->Branch("time1", &time1);
    tree->Branch("edep", &edep);
+   tree->Branch("lightyield",&lightyield);
 
    tree->Branch("Ntrack",&Ntrack, "Ntrack/I");
    tree->Branch("trk_px", &trk_px);
@@ -100,6 +101,7 @@ int myZDCHitTree::Init(PHCompositeNode *)
        time0.push_back(hit_iter->second->get_t(0));
        time1.push_back(hit_iter->second->get_t(1));
        edep.push_back(hit_iter->second->get_edep());
+       lightyield.push_back(hit_iter->second->get_light_yield());
      }
      
    }
@@ -144,6 +146,7 @@ int myZDCHitTree::Init(PHCompositeNode *)
    time0.clear();
    time1.clear();
    edep.clear();
+   lightyield.clear();
    trk_px.clear();
    trk_py.clear();
    trk_pz.clear();

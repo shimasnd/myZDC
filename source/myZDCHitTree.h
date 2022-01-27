@@ -59,6 +59,7 @@ class myZDCHitTree : public SubsysReco
   std::vector<float> time0;
   std::vector<float> time1;
   std::vector<float> edep;
+  std::vector<float> lightyield;
 
   int Ntrack;
   std::vector<float> trk_px;
