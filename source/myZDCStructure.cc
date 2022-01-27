@@ -12,11 +12,17 @@
 #include <Geant4/G4Color.hh>
 
 
-myZDCStructure::myZDCStructure() {
+myZDCStructure::myZDCStructure(const std::string &crystal) {
   std::cout<<"myZDCStructure:: Use FoCal Layout"<<std::endl;
   std::cout<<"myZDCStructure:: Pad Layer"<<PAD_Layer_Thickness<<"mm thick"<<std::endl;
   std::cout<<"myZDCStructure:: Pix Layer"<<PIX_Layer_Thickness<<"mm thick"<<std::endl;
   std::cout<<"myZDCStructure:: HCAL Layer"<<HCal_Layer_Thickness<<"mm thick"<<std::endl;
+  std::cout<<"myZDCStructure:: Crystal uses "<<crystal<<"  (default: PbWO4)"<<std::endl;
+
+  if(crystal=="PbWO4") _id_Crystal = _id_PbWO4;
+  else if(crystal=="LYSO") _id_Crystal = _id_LYSO;
+  else _id_Crystal = _id_PbWO4;
+
   Materials();
   SetColors();
   fLayer=0;
@@ -560,8 +566,6 @@ void myZDCStructure::Materials(){
   
   fmat_World = material_Man->FindOrBuildMaterial("G4_AIR");
 
-  fmat_Crystal = material_Man->FindOrBuildMaterial("G4_PbWO4");
-
   //The definition of the W alloy
   fmat_W = new G4Material("tungsten",18.73 *g/cm3,3);
   //G4Material* material_tungsten = new G4Material("tungsten",19.3 *g/cm3,1);
@@ -592,6 +596,23 @@ void myZDCStructure::Materials(){
   fmat_Pb = material_Man->FindOrBuildMaterial("G4_Pb");
   fmat_Cu = material_Man->FindOrBuildMaterial("G4_Cu");
   fmat_Fe = material_Man->FindOrBuildMaterial("G4_Fe");
+
+  //Definition of LYSO
+  G4Element* Lu = new G4Element("Lutetium","Lu",71,194.97*g/mole);
+  G4Element* Y  = new G4Element("Yttrium","Y",39,88.905*g/mole);
+  G4Element* Si = material_Man->FindOrBuildElement("Si");
+  G4Material* mat_LYSO = new G4Material("LYSO",7.4*g/cm3,4);
+  mat_LYSO->AddElement(Lu,1.8);
+  mat_LYSO->AddElement(Y,0.2);
+  mat_LYSO->AddElement(Si,1);
+  mat_LYSO->AddElement(O,5);
+
+  //PbWO4
+  G4Material* mat_PbWO4 = material_Man->FindOrBuildMaterial("G4_PbWO4");
+  
+  if(_id_Crystal == _id_PbWO4) fmat_Crystal = mat_PbWO4;
+  if(_id_Crystal == _id_LYSO)  fmat_Crystal = mat_LYSO;
+
   return;
 }
 

@@ -109,7 +109,7 @@ void myZDCDetector::ConstructMe(G4LogicalVolume *logicWorld)
                     m_Params->get_double_param("place_z") * cm),
       logical, "myZDC", logicWorld, 0, false, OverlapCheck());
 
-  myZDCStructure *mzs = new myZDCStructure();
+  myZDCStructure *mzs = new myZDCStructure("PbWO4");
   double endz = -zdim/2.;
   cout<<"Z size: "<<zdim<<endl;
 

@@ -12,7 +12,7 @@ class G4Material;
 
 class myZDCStructure {
   public: 
-  myZDCStructure();
+  myZDCStructure(const std::string &crystal);
   ~myZDCStructure();
 
   double ConstructCrystalTowers(double x0, double y0, double z0,
@@ -43,7 +43,10 @@ private:
   void Materials();
   
   int fLayer;
-  
+  int _id_Crystal;
+
+  enum Crystal {_id_PbWO4=0, _id_LYSO};
+
   G4Material* fmat_World;
   G4Material* fmat_W;
   G4Material* fmat_PET;
