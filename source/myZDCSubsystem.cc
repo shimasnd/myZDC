@@ -112,5 +112,5 @@ void myZDCSubsystem::SetDefaultParameters()
   set_default_double_param("size_x", 60.);
   set_default_double_param("size_y", 60.);
   set_default_double_param("size_z", 300.);
-
+  set_default_string_param("crystal","PbWO4");
 }

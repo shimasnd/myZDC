@@ -602,10 +602,11 @@ void myZDCStructure::Materials(){
   G4Element* Y  = new G4Element("Yttrium","Y",39,88.905*g/mole);
   G4Element* Si = material_Man->FindOrBuildElement("Si");
   G4Material* mat_LYSO = new G4Material("LYSO",7.4*g/cm3,4);
-  mat_LYSO->AddElement(Lu,1.8);
-  mat_LYSO->AddElement(Y,0.2);
-  mat_LYSO->AddElement(Si,1);
-  mat_LYSO->AddElement(O,5);
+  G4double totLyso  = 1.8 + 0.2 + 1 + 5;
+  mat_LYSO->AddElement(Lu,1.8/totLyso);
+  mat_LYSO->AddElement(Y,0.2/totLyso);
+  mat_LYSO->AddElement(Si,1./totLyso);
+  mat_LYSO->AddElement(O,5./totLyso);
 
   //PbWO4
   G4Material* mat_PbWO4 = material_Man->FindOrBuildMaterial("G4_PbWO4");
