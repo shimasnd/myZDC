@@ -4,6 +4,7 @@
 #define MYZDCSUBSYSTEM_H
 
 #include <g4detectors/PHG4DetectorSubsystem.h>
+#include <time.h>
 
 class PHCompositeNode;
 class PHG4Detector;
@@ -56,6 +57,8 @@ class myZDCSubsystem : public PHG4DetectorSubsystem
   //! detector construction
   /*! derives from PHG4Detector */
   myZDCDetector  *m_Detector;
+  clock_t m_start_time;
+  int m_cnt;
 
   //! particle tracking "stepping" action
   /*! derives from PHG4SteppingActions */

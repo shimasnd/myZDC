@@ -67,6 +67,8 @@ int myZDCSubsystem::InitRunSubsystem(PHCompositeNode *topNode)
   {
     m_SteppingAction = new myZDCSteppingAction(m_Detector, GetParams());
   }
+  m_start_time = clock();
+  m_cnt = 0;
   return 0;
 }
 //_______________________________________________________________________
@@ -78,6 +80,13 @@ int myZDCSubsystem::process_event(PHCompositeNode *topNode)
   {
     m_SteppingAction->SetInterfacePointers(topNode);
   }
+  if(m_cnt%20==0) 
+  {
+    clock_t end_time = clock();
+    std::cout<<"myZDCSubsystem:: "<<m_cnt<<" event processed.. : time = "<<(double)(end_time - m_start_time) / CLOCKS_PER_SEC<<" sec."<<std::endl;
+  } 
+  m_cnt++;
+
   return 0;
 }
 //_______________________________________________________________________
@@ -113,4 +122,5 @@ void myZDCSubsystem::SetDefaultParameters()
   set_default_double_param("size_y", 60.);
   set_default_double_param("size_z", 300.);
   set_default_string_param("crystal","PbWO4");
+
 }
