@@ -598,7 +598,7 @@ void myZDCStructure::Materials(){
   fmat_Fe = material_Man->FindOrBuildMaterial("G4_Fe");
 
   //Definition of LYSO
-  G4Element* Lu = new G4Element("Lutetium","Lu",71,194.97*g/mole);
+  G4Element* Lu = new G4Element("Lutetium","Lu",71,174.97*g/mole);
   G4Element* Y  = new G4Element("Yttrium","Y",39,88.905*g/mole);
   G4Element* Si = material_Man->FindOrBuildElement("Si");
   G4Material* mat_LYSO = new G4Material("LYSO",7.4*g/cm3,4);
