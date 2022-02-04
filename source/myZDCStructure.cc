@@ -21,6 +21,7 @@ myZDCStructure::myZDCStructure(const std::string &crystal) {
 
   if(crystal=="PbWO4") _id_Crystal = _id_PbWO4;
   else if(crystal=="LYSO") _id_Crystal = _id_LYSO;
+  else if(crystal=="LYSOCe") _id_Crystal = _id_LYSOCe;
   else _id_Crystal = _id_PbWO4;
 
   Materials();
@@ -598,8 +599,8 @@ void myZDCStructure::Materials(){
   fmat_Fe = material_Man->FindOrBuildMaterial("G4_Fe");
 
   //Definition of LYSO
-  G4Element* Lu = new G4Element("Lutetium","Lu",71,174.97*g/mole);
-  G4Element* Y  = new G4Element("Yttrium","Y",39,88.905*g/mole);
+  G4Element* Lu = material_Man->FindOrBuildElement("Lu"); // new G4Element("Lutetium","Lu",71,174.97*g/mole);
+  G4Element* Y  = material_Man->FindOrBuildElement("Y"); // new G4Element("Yttrium","Y",39,88.905*g/mole);
   G4Element* Si = material_Man->FindOrBuildElement("Si");
   G4Material* mat_LYSO = new G4Material("LYSO",7.4*g/cm3,4);
   G4double totLyso  = 1.8 + 0.2 + 1 + 5;
@@ -608,11 +609,17 @@ void myZDCStructure::Materials(){
   mat_LYSO->AddElement(Si,1./totLyso);
   mat_LYSO->AddElement(O,5./totLyso);
 
+  G4Material* mat_LYSOCe = new G4Material("LYSOCe", 7.2*g/cm3, 2);
+  G4Element* Ce = material_Man->FindOrBuildElement("Ce");
+  mat_LYSOCe->AddMaterial(mat_LYSO,0.995);
+  mat_LYSOCe->AddElement(Ce, 0.005);
+
   //PbWO4
   G4Material* mat_PbWO4 = material_Man->FindOrBuildMaterial("G4_PbWO4");
   
   if(_id_Crystal == _id_PbWO4) fmat_Crystal = mat_PbWO4;
   if(_id_Crystal == _id_LYSO)  fmat_Crystal = mat_LYSO;
+  if(_id_Crystal == _id_LYSOCe) fmat_Crystal = mat_LYSOCe;
 
   return;
 }

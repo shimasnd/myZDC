@@ -45,7 +45,7 @@ private:
   int fLayer;
   int _id_Crystal;
 
-  enum Crystal {_id_PbWO4=0, _id_LYSO};
+  enum Crystal {_id_PbWO4=0, _id_LYSO, _id_LYSOCe};
 
   G4Material* fmat_World;
   G4Material* fmat_W;
