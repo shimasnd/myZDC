@@ -611,7 +611,7 @@ void myZDCStructure::Materials(){
 
   G4Material* mat_LYSOCe = new G4Material("LYSOCe", 7.2*g/cm3, 2);
   G4Element* Ce = material_Man->FindOrBuildElement("Ce");
-  G4double massFraction = 0.005*140.1160/(0.005*140.1160+0.995*mat_LYSO->GetMassOfMolecule()/10.);
+  G4double massFraction = 0.005*140.1160/(0.005*140.1160+0.995*440.8039);
   mat_LYSOCe->AddMaterial(mat_LYSO,1-massFraction);
   mat_LYSOCe->AddElement(Ce, massFraction);
 
