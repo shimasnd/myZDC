@@ -603,7 +603,6 @@ void myZDCStructure::Materials(){
   G4Element* Y  = material_Man->FindOrBuildElement("Y"); // new G4Element("Yttrium","Y",39,88.905*g/mole);
   G4Element* Si = material_Man->FindOrBuildElement("Si");
   G4Material* mat_LYSO = new G4Material("LYSO",7.4*g/cm3,4);
-  G4double totLyso  = 1.8 + 0.2 + 1 + 5;
   mat_LYSO->AddElement(Lu,18);
   mat_LYSO->AddElement(Y,2);
   mat_LYSO->AddElement(Si,10);
@@ -611,7 +610,7 @@ void myZDCStructure::Materials(){
 
   G4Material* mat_LYSOCe = new G4Material("LYSOCe", 7.2*g/cm3, 2);
   G4Element* Ce = material_Man->FindOrBuildElement("Ce");
-  G4double massFraction = 0.005*140.1160/(0.005*140.1160+0.995*440.8039);
+  G4double massFraction = 0.005*140.1160/(0.005*140.1160+0.995*440.8039); //may need revision?
   mat_LYSOCe->AddMaterial(mat_LYSO,1-massFraction);
   mat_LYSOCe->AddElement(Ce, massFraction);
 
