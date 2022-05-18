@@ -68,15 +68,18 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   double Center_Y = (Start_Y + End_Y)/2.;
   double Width_X = End_X - Start_X;
   double Width_Y = End_Y - Start_Y;
-
+  double CTower_w_RO_Z = CTower_Z + APD_socket_Z;
+  
   G4Box* PIX_Silicon = new G4Box("CPIX_Silicon",	PIX_X/2.0,   PIX_Y/2.0,   PIX_Z/2.0); 
   G4Box* PIX_Glue2   = new G4Box("CPIX_Glue2",	Width_X/2.0, Width_Y/2.0, PIX_Glue2_Z/2.0);
   G4Box* PIX_FPC     = new G4Box("CPIX_FPC",	Width_X/2.0, Width_Y/2.0, PIX_FPC_Z/2.0);
-  G4Box *Crystal     = new G4Box("Crystal",     CTower_X*0.5 ,CTower_Y*0.5, CTower_Z*0.5);
-  G4Box *CrysEnvelope= new G4Box("CrysEnvelope",CTower_X*0.5 ,Width_Y*0.5, CTower_Z*0.5);
-  G4Box *CrysBox     = new G4Box("CrysBox",     Width_X*0.5 ,Width_Y*0.5, CTower_Z*0.5);
+  G4Box *Crystal     = new G4Box("Crystal",     CTower_X*0.5, CTower_Y*0.5, CTower_Z*0.5);
+  G4Box *Crystal_RO  = new G4Box("Crystal_RO",     CTower_X*0.5, CTower_Y*0.5, CTower_w_RO_Z*0.5);
+  G4Box *CrysEnvelope= new G4Box("CrysEnvelope",CTower_X*0.5 ,Width_Y*0.5, CTower_w_RO_Z*0.5);
+  G4Box *CrysBox     = new G4Box("CrysBox",     Width_X*0.5 ,Width_Y*0.5, CTower_w_RO_Z*0.5);
   G4Box *PIXPlane    = new G4Box("CPIXPlane",   Width_X/2.0, Width_Y/2.0, PIX_Z/2.0);
   G4Box *PIXEnvelope = new G4Box("CPIXEnvelope",PIX_X/2.0, Width_Y/2.0, PIX_Z/2.0);
+  G4Box *APD_socket  = new G4Box("CAPD_sensor", CTower_X*0.5, CTower_Y*0.5, APD_socket_Z*0.5);
 
   G4LogicalVolume* lV_PIX_Silicon = new G4LogicalVolume( PIX_Silicon,     fmat_Si, "lV_Crystal_PIX_Silicon" );
   G4LogicalVolume* lV_PIX_Glue2   = new G4LogicalVolume( PIX_Glue2, 	fmat_PET, "lV_Crystal_PIX_Glue2");
@@ -86,11 +89,13 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   G4LogicalVolume* lV_CrysBox     = new G4LogicalVolume( CrysBox, fmat_World, "lV_CrysBox");
   G4LogicalVolume* lV_PIXPlane    = new G4LogicalVolume( PIXPlane, fmat_World, "lV_CPIXPlane");
   G4LogicalVolume* lV_PIXEnvelope = new G4LogicalVolume( PIXEnvelope, fmat_World, "lV_CPIXEnvelope");
+  G4LogicalVolume* lV_APD_socket  = new G4LogicalVolume( APD_socket, fmat_PET, "lv_CAPD_socket");
 
   lV_Crystal->SetVisAttributes(fvisCrystal);
   lV_PIX_Silicon->SetVisAttributes(fvisPIX);
   lV_PIX_Glue2->SetVisAttributes(fvisDM);
   lV_PIX_FPC->SetVisAttributes(fvisDM);
+  lv_APD_socket->SetVisAttributes(fvisDM);
   
   lV_CrysBox->SetVisAttributes(G4VisAttributes::Invisible);
   lV_CrysEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
@@ -103,13 +108,16 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   m_ActiveLogicalVolumeInfoMap.insert(pair_CPIX);
   std::pair<G4LogicalVolume*, int> pair_Glue2 = std::make_pair(lV_PIX_Glue2, fLayer*100 + ZDCID::Materials + ZDCID::CrystalTower);
   std::pair<G4LogicalVolume*, int> pair_FPC = std::make_pair(lV_PIX_FPC, fLayer*100 + ZDCID::Materials + ZDCID::CrystalTower);
+  std::pair<G4LogicalVolume*, int> pair_APD_socket = std::make_pair(lV_APD_socket, fLayer*100 + ZDCID::Materials + ZDCID::CrystalTower);
   m_AbsorberLogicalVolumeInfoMap.insert(pair_Glue2);
   m_AbsorberLogicalVolumeInfoMap.insert(pair_FPC);
-
+  m_AbsorberLogicalVolumeInfoMap.insert(pair_APD_socket);
+  
   m_ActiveLogicalVolumesSet.insert(lV_PIX_Silicon);
   m_ActiveLogicalVolumesSet.insert(lV_Crystal);
   m_AbsorberLogicalVolumesSet.insert(lV_PIX_Glue2);
   m_AbsorberLogicalVolumesSet.insert(lV_PIX_FPC);
+  m_AbsorberLogicalVolumesSet.insert(lV_APD_socket);
 
   //Making PIX layers using Replica
 
@@ -118,9 +126,15 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   int NdivY = (int)(Width_Y/ PIX_Y);
   new G4PVReplica("PV_CPIX", lV_PIX_Silicon, lV_PIXEnvelope, kYAxis, NdivY, PIX_Y,0);
 
+  //Making Crystal Tower
+  G4ThreeVector threeVect_Crystal_inTower = G4ThreeVector(0, 0, CTower_Z/2.);
+  G4Threevector threeVect_APD_sock_inTower = G4ThreeVector(0, 0, CTower_Z + APD_socket_Z/2.);
+  new G4PVPlacement(0, threeVect_Crystal_inTower, lV_Crystal, "PV_Crystal", lV_Crystal_R0, false, 0);
+  new G4PVPlacement(0, threeVect_APD_sock_inTower, lV_APD_socket, "PV_APD_socket", lV_Crystal_R0, false, 0);
+  
   //Making Crystal Box using Replica
   new G4PVReplica("PV_CrysEnvelope", lV_CrysEnvelope, lV_CrysBox, kXAxis, nCTowerX, CTower_X,0);
-  new G4PVReplica("PV_Crystal", lV_Crystal, lV_CrysEnvelope, kYAxis, nCTowerY, CTower_Y,0);
+  new G4PVReplica("PV_Crystal_RO", lV_Crystal_RO, lV_CrysEnvelope, kYAxis, nCTowerY, CTower_Y,0);
 
   //*********************
   //Now crete nCTowerZ+1 PIX layers with nCTowerZ Tower layers
@@ -148,14 +162,14 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
     new G4PVPlacement(0, threeVect_PIX_FPC,   ss_PIX_FPC, 	lV_PIX_FPC,     motherPhy, false, ilayer);
 
     LayerID  +=2; 
-    offsetZ +=CTower_Z + CTower_GAP;
+    offsetZ +=CTower_Z + CTower_GAP;   //APD socket is in the Gap region. i.e. Gap starts from the end of crystal. 
   }
 
   offsetZ = PIX_Z + PIX_Glue2_Z + PIX_FPC_Z + PIX_AirGap;
   LayerID = fLayer+1;
 
   for (int ilayer =0; ilayer<nCTowerZ; ilayer++){
-    G4double position_Z_Crystal = Start_Z + offsetZ + CTower_Z/2.;
+    G4double position_Z_Crystal = Start_Z + offsetZ + CTower_w_RO_Z/2.;
 
     G4ThreeVector threeVect_Crystal  = G4ThreeVector(Center_X, Center_Y, position_Z_Crystal);
     std::string ss_Crystal = "PhysVol_Crystal_L"+std::to_string(LayerID);

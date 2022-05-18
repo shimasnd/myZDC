@@ -4,6 +4,16 @@
 
 #include <Geant4/G4SystemOfUnits.hh>
 
+//APD
+
+/* constexpr G4double APD_Si_X = 5. *mm; */
+/* constexpr G4double APD_Si_Y = 5. *mm; */
+/* constexpr G4double APD_Si_Z = 0.006 *mm; */
+/* constexpr G4double APD_case_X = 10.6 *mm; */
+/* constexpr G4double APD_case_Y = 9. *mm; */
+/* constexpr G4double APD_case_Z = 1.65 *mm; */
+constexpr G4double APD_socket_Z = 2.5 *mm;
+
 //Crystal Towers
 
 constexpr G4int nCTowerZ=1;
