@@ -89,6 +89,7 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   G4LogicalVolume* lV_PIXPlane    = new G4LogicalVolume( PIXPlane, fmat_World, "lV_CPIXPlane");
   G4LogicalVolume* lV_PIXEnvelope = new G4LogicalVolume( PIXEnvelope, fmat_World, "lV_CPIXEnvelope");
   G4LogicalVolume* lV_APD_socket  = new G4LogicalVolume( APD_socket, fmat_PET, "lV_CAPD_socket");
+  G4LogicalVolume* lV_Crystal_RO  = new G4LogicalVolume( Crystal_RO, fmat_World, "lV_Crystal_RO");
 
   lV_Crystal->SetVisAttributes(fvisCrystal);
   lV_PIX_Silicon->SetVisAttributes(fvisPIX);
@@ -100,6 +101,7 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   lV_CrysEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
   lV_PIXPlane->SetVisAttributes(G4VisAttributes::Invisible);
   lV_PIXEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
+  lV_Crystal_RO->SetVisAttributes(G4VisAttributes::Invisible);
   
   std::pair<G4LogicalVolume*, int> pair_Crystal= std::make_pair(lV_Crystal, fLayer*100 + ZDCID::Crystal + ZDCID::CrystalTower);
   std::pair<G4LogicalVolume*, int> pair_CPIX = std::make_pair(lV_PIX_Silicon, fLayer*100 + ZDCID::SI_PIXEL + ZDCID::CrystalTower);
