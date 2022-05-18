@@ -68,6 +68,7 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   double Width_X = End_X - Start_X;
   double Width_Y = End_Y - Start_Y;
   double CTower_w_RO_Z = CTower_Z + APD_socket_Z;
+  cout<<"chk Crys 0:: "<<CTower_w_RO_Z<<endl;
   
   G4Box* PIX_Silicon = new G4Box("CPIX_Silicon",	PIX_X/2.0,   PIX_Y/2.0,   PIX_Z/2.0); 
   G4Box* PIX_Glue2   = new G4Box("CPIX_Glue2",	Width_X/2.0, Width_Y/2.0, PIX_Glue2_Z/2.0);
@@ -169,9 +170,12 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   offsetZ = PIX_Z + PIX_Glue2_Z + PIX_FPC_Z + PIX_AirGap;
   LayerID = fLayer+1;
 
+  cout<<"chk Crys 1:: "<<offsetZ<<endl;
+
   for (int ilayer =0; ilayer<nCTowerZ; ilayer++){
     G4double position_Z_Crystal = Start_Z + offsetZ + CTower_w_RO_Z/2.;
-
+    cout<<"chk Crys 2:: "<<position_Z_Crystal<<endl;
+    
     G4ThreeVector threeVect_Crystal  = G4ThreeVector(Center_X, Center_Y, position_Z_Crystal);
     std::string ss_Crystal = "PhysVol_Crystal_L"+std::to_string(LayerID);
     
