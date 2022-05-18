@@ -58,7 +58,6 @@ void myZDCStructure::ProvideLogicalVolumeInfoMap(std::map<G4LogicalVolume *, int
   return;
 
 }
-
 double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, double Start_Z, 
 					      double End_X, double End_Y, double End_Z,
 					      G4VPhysicalVolume *motherPhy) {
@@ -89,13 +88,13 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   G4LogicalVolume* lV_CrysBox     = new G4LogicalVolume( CrysBox, fmat_World, "lV_CrysBox");
   G4LogicalVolume* lV_PIXPlane    = new G4LogicalVolume( PIXPlane, fmat_World, "lV_CPIXPlane");
   G4LogicalVolume* lV_PIXEnvelope = new G4LogicalVolume( PIXEnvelope, fmat_World, "lV_CPIXEnvelope");
-  G4LogicalVolume* lV_APD_socket  = new G4LogicalVolume( APD_socket, fmat_PET, "lv_CAPD_socket");
+  G4LogicalVolume* lV_APD_socket  = new G4LogicalVolume( APD_socket, fmat_PET, "lV_CAPD_socket");
 
   lV_Crystal->SetVisAttributes(fvisCrystal);
   lV_PIX_Silicon->SetVisAttributes(fvisPIX);
   lV_PIX_Glue2->SetVisAttributes(fvisDM);
   lV_PIX_FPC->SetVisAttributes(fvisDM);
-  lv_APD_socket->SetVisAttributes(fvisDM);
+  lV_APD_socket->SetVisAttributes(fvisDM);
   
   lV_CrysBox->SetVisAttributes(G4VisAttributes::Invisible);
   lV_CrysEnvelope->SetVisAttributes(G4VisAttributes::Invisible);
@@ -128,9 +127,9 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
 
   //Making Crystal Tower
   G4ThreeVector threeVect_Crystal_inTower = G4ThreeVector(0, 0, CTower_Z/2.);
-  G4Threevector threeVect_APD_sock_inTower = G4ThreeVector(0, 0, CTower_Z + APD_socket_Z/2.);
-  new G4PVPlacement(0, threeVect_Crystal_inTower, lV_Crystal, "PV_Crystal", lV_Crystal_R0, false, 0);
-  new G4PVPlacement(0, threeVect_APD_sock_inTower, lV_APD_socket, "PV_APD_socket", lV_Crystal_R0, false, 0);
+  G4ThreeVector threeVect_APD_sock_inTower = G4ThreeVector(0, 0, CTower_Z + APD_socket_Z/2.);
+  new G4PVPlacement(0, threeVect_Crystal_inTower, lV_Crystal, "PV_Crystal", lV_Crystal_RO, false, 0);
+  new G4PVPlacement(0, threeVect_APD_sock_inTower, lV_APD_socket, "PV_APD_socket", lV_Crystal_RO, false, 0);
   
   //Making Crystal Box using Replica
   new G4PVReplica("PV_CrysEnvelope", lV_CrysEnvelope, lV_CrysBox, kXAxis, nCTowerX, CTower_X,0);
