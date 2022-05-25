@@ -42,7 +42,7 @@ constexpr G4double PIX_Absorber_Z = 3.5*mm;
 constexpr G4double PIX_Glue1_Z  = 0.11*mm; //between W-Si
 constexpr G4double PIX_Glue2_Z  = 0.11*mm; //between Si+FPC
 constexpr G4double PIX_FPC_Z    = 0.28*mm; //Readout
-constexpr G4double PIX_AirGap   = 1.2*mm;
+constexpr G4double PIX_AirGap   = 5.0*mm;
 constexpr G4double PIX_Layer_Thickness = PIX_Absorber_Z + PIX_Glue1_Z + PIX_Z + PIX_Glue2_Z + PIX_FPC_Z + PIX_AirGap;
 
 //=================================================================
@@ -58,7 +58,7 @@ constexpr G4double PAD_Absorber_Z = 3.5*mm;
 constexpr G4double PAD_Glue1_Z  = 0.11*mm; //between W-Si
 constexpr G4double PAD_Glue2_Z  = 0.13*mm; //between Si+FPC
 constexpr G4double PAD_FPC_Z    = 0.28*mm;
-constexpr G4double PAD_AirGap   = 1.0*mm;
+constexpr G4double PAD_AirGap   = 5.0*mm;
 constexpr G4double PAD_Layer_Thickness = PAD_Absorber_Z + PAD_Glue1_Z + PAD_Z + PAD_Glue2_Z + PAD_FPC_Z + PAD_AirGap;
 
 //=================================================================
