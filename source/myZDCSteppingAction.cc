@@ -101,7 +101,7 @@ void myZDCSteppingAction::SetNPhotonPerMeV(){
   double defaultval = 130.; //PbWO4
   
   std::string crystal = m_Params->get_string_param("crystal");
-  ifstream istream;
+  std::ifstream istream;
   istream.open("myZDCcrystal.txt");
   if(!istream) {
     m_nPhperMeV = defaultval; 
@@ -111,7 +111,7 @@ void myZDCSteppingAction::SetNPhotonPerMeV(){
   while(getline(istream, line)){
     if(line.find("#") != std::string::npos) continue;
     if(line.find(crystal) != std::string::npos){
-      istringstream iss(line);
+      std::istringstream iss(line);
       std::string dummy;
       if(!(iss>>dummy>>m_nPhperMeV)){
 	m_nPhperMeV=defaultval;
@@ -224,7 +224,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     light_yield = dist(engine);
 
     if(m_testcnt<10)
-      std::cout<<mu/m_nPhperMeV<<"  "<<light_yield<<"   "<<seed_gen<<"  "<<engine<<std::endl;
+      std::cout<<mu<<"  "<<light_yield<<"   "<<seed_gen<<"  "<<engine<<std::endl;
 
     m_testcnt++;
     
