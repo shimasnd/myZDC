@@ -80,7 +80,7 @@ myZDCSteppingAction::myZDCSteppingAction(myZDCDetector *detector, const PHParame
   , m_EdepSum(0)
   , m_EionSum(0)
   , m_LightYield(0)
-  , m_nPerperMeV(0)
+  , m_nPhperMeV(0)
 {
   SetNPhotonPerMeV();
   m_testcnt=0;
@@ -96,7 +96,7 @@ myZDCSteppingAction::~myZDCSteppingAction()
   delete m_Hit;
 }
 
-myZDCSteppingAction::SetNPhotonPerMeV(){
+void myZDCSteppingAction::SetNPhotonPerMeV(){
 
   double defaultval = 130.; //PbWO4
   
