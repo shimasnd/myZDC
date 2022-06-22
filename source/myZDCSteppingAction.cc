@@ -104,6 +104,7 @@ void myZDCSteppingAction::SetNPhotonPerMeV(){
   std::ifstream istream;
   istream.open("myZDCcrystal.txt");
   if(!istream) {
+    std::cout<<"myZDCSteppingAction:: No file for photon/MeV is found. Use PbWO4 default value."<<std::endl;
     m_nPhperMeV = defaultval; 
     return;
   }
@@ -221,10 +222,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     double mu = light_yield * 1000 * m_nPhperMeV;
     std::poisson_distribution dist(mu);
     
-    light_yield = dist(engine);
-
-    if(m_testcnt<10)
-      std::cout<<mu<<"  "<<light_yield<<"   "<<seed_gen()<<"  "<<engine<<std::endl;
+    light_yield = dist(engine)/m_PhperMeV;  //note! converted to energy.
 
     m_testcnt++;
     
