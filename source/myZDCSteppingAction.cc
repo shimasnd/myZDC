@@ -54,7 +54,10 @@
 
 #include <cmath>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
+#include <random>
 
 class PHCompositeNode;
 
@@ -77,8 +80,10 @@ myZDCSteppingAction::myZDCSteppingAction(myZDCDetector *detector, const PHParame
   , m_EdepSum(0)
   , m_EionSum(0)
   , m_LightYield(0)
+  , m_nPerperMeV(0)
 {
-
+  SetNPhotonPerMeV();
+  m_testcnt=0;
 }
 
 //____________________________________________________________________________..
@@ -89,6 +94,35 @@ myZDCSteppingAction::~myZDCSteppingAction()
   // if the last hit was saved, hit is a nullptr pointer which are
   // legal to delete (it results in a no operation)
   delete m_Hit;
+}
+
+myZDCSteppingAction::SetNPhotonPerMeV(){
+
+  double defaultval = 130.; //PbWO4
+  
+  std::string crystal = m_Params->get_string_param("crystal");
+  ifstream istream;
+  istream.open("myZDCcrystal.txt");
+  if(!istream) {
+    m_nPhperMeV = defaultval; 
+    return;
+  }
+  std::string line;
+  while(getline(istream, line)){
+    if(line.find("#") != std::string::npos) continue;
+    if(line.find(crystal) != std::string::npos){
+      istringstream iss(line);
+      std::string dummy;
+      if(!(iss>>dummy>>m_nPhperMeV)){
+	m_nPhperMeV=defaultval;
+	return;
+      }
+      break;
+    }
+  }
+  std::cout<<crystal<<"  "<<m_nPhperMeV<<std::endl;
+  return;
+
 }
 
 //____________________________________________________________________________..
@@ -178,7 +212,24 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
       layer_id = detector_layer + boxid * detector_nlyrbox;
     }
   }
-      
+
+  if(detector_system == ZDCID::CrystalTower){
+
+    std::random_device seed_gen;
+    std::default_random_engine engine(seed_gen());
+  
+    double mu = light_yield * m_nPhperMeV;
+    std::poisson_distribution dist(mu);
+    
+    light_yield = dist(engine);
+
+    if(m_testcnt<10)
+      std::cout<<mu/m_nPhperMeV<<"  "<<light_yield<<"   "<<seed_gen<<"  "<<engine<<std::endl;
+
+    m_testcnt++;
+    
+  }
+  
   bool geantino = false;
   // the check for the pdg code speeds things up, I do not want to make
   // an expensive string compare for every track when we know

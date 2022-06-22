@@ -31,6 +31,8 @@ class myZDCSteppingAction : public PHG4SteppingAction
   virtual void SetInterfacePointers(PHCompositeNode*);
 
  private:
+  void SetNPhotonPerMeV();
+  
   //! pointer to the detector
   myZDCDetector* m_Detector;
   const PHParameters* m_Params;
@@ -50,6 +52,10 @@ class myZDCSteppingAction : public PHG4SteppingAction
   double m_EdepSum;
   double m_EionSum;
   double m_LightYield;
+
+  double m_nPhperMeV;
+
+  int m_testcnt;
  
 };
 
