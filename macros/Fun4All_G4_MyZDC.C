@@ -64,6 +64,7 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   PHG4ParticleGun *gun = new PHG4ParticleGun();
   double ene = 0.1;
   double theta = 0; //for test
+  //  string particle = "e-";
   string particle = "gamma";
   //  string particle = "neutron";
   //double theta = atan2(96, 3750);
