@@ -94,7 +94,7 @@ void Fun4All_G4_MyZDC(int nEvents = 10000)
   mydet->set_double_param("place_x",0.);
   mydet->set_double_param("rot_y",0.);
   mydet->set_double_param("size_z",300);
-  mydet->set_string_param("crystal","LYSO");
+  mydet->set_string_param("crystal","PbWO4");
 
   g4Reco->registerSubsystem(mydet);
 
