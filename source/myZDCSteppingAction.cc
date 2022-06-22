@@ -224,7 +224,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     light_yield = dist(engine);
 
     if(m_testcnt<10)
-      std::cout<<mu<<"  "<<light_yield<<"   "<<seed_gen<<"  "<<engine<<std::endl;
+      std::cout<<mu<<"  "<<light_yield<<"   "<<seed_gen()<<"  "<<engine<<std::endl;
 
     m_testcnt++;
     
