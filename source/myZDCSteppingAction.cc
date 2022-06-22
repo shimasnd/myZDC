@@ -120,7 +120,7 @@ void myZDCSteppingAction::SetNPhotonPerMeV(){
       break;
     }
   }
-  std::cout<<crystal<<"  "<<m_nPhperMeV<<std::endl;
+  std::cout<<"Crystal "<<crystal<<"  photon/MeV= "<<m_nPhperMeV<<std::endl;
   return;
 
 }
@@ -149,7 +149,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
   G4double edep = aStep->GetTotalEnergyDeposit() / GeV;
   G4double eion = (aStep->GetTotalEnergyDeposit() - aStep->GetNonIonizingEnergyDeposit()) / GeV;
   G4double light_yield = 0;
-  if(whichactive>0) light_yield = GetVisibleEnergyDeposition(aStep);
+  if(whichactive>0) light_yield = GetVisibleEnergyDeposition(aStep); //GeV
   const G4Track *aTrack = aStep->GetTrack();
   // if this detector stops everything, just put all kinetic energy into edep
   if (m_BlackHoleFlag)
@@ -213,12 +213,12 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     }
   }
 
-  if(detector_system == ZDCID::CrystalTower){
+  if(detector_system == ZDCID::CrystalTower && light_yield>0){
 
     std::random_device seed_gen;
     std::default_random_engine engine(seed_gen());
   
-    double mu = light_yield * m_nPhperMeV;
+    double mu = light_yield * 1000 * m_nPhperMeV;
     std::poisson_distribution dist(mu);
     
     light_yield = dist(engine);
