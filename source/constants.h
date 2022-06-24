@@ -21,7 +21,7 @@ constexpr G4int nCTowerX=20;
 constexpr G4int nCTowerY=20;
 constexpr G4double CTower_X = 3. *cm;
 constexpr G4double CTower_Y = 3. *cm;
-constexpr G4double CTower_Z = 7. *cm;
+constexpr G4double CTower_Z = 9.2 *cm; //7 or 9.2 for LYSO
 constexpr G4double CTower_GAP = 3. *cm;
 
 //MiniFoCal block

@@ -183,9 +183,15 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
 
   if(whichactive>0){
     if(detector_system == ZDCID::CrystalTower){
-      int zid = touch->GetCopyNumber(2);
-      if(detector_id == ZDCID::SI_PIXEL) layer_id = zid * 2;
-      else if(detector_id==ZDCID::Crystal) layer_id = zid * 2 +1;
+      if(detector_id == ZDCID::SI_PIXEL){
+	int zid = touch->GetCopyNumber(2);
+	layer_id = zid * 2;
+      } else if(detector_id==ZDCID::Crystal){
+	xid = touch->GetCopyNumber(2);
+	yid = touch->GetCopyNumber(1);
+	int zid = touch->GetCopyNumber(3);
+	layer_id = zid * 2 +1;
+      }
     }else if(detector_system == ZDCID::EMLayer){
       if(detector_id == ZDCID::SI_PIXEL) layer_id = detector_layer + touch->GetCopyNumber(3);
       if(detector_id == ZDCID::SI_PAD) {
@@ -214,7 +220,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     }
   }
 
-  if(detector_system == ZDCID::CrystalTower && light_yield>0){
+  if(detector_id == ZDCID::Crystal && light_yield>0){
 
     std::random_device seed_gen;
     std::default_random_engine engine(seed_gen());
@@ -222,8 +228,8 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     double mu = light_yield * 1000 * m_nPhperMeV;
     std::poisson_distribution dist(mu);
     
-    light_yield = dist(engine)/m_nPhperMeV;  //note! converted to energy.
-
+    light_yield = dist(engine)/m_nPhperMeV/1000.;  //note! converted to GeV energy.
+    
     m_testcnt++;
     
   }
