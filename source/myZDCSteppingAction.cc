@@ -228,7 +228,7 @@ bool myZDCSteppingAction::UserSteppingAction(const G4Step *aStep,bool was_used)
     double mu = light_yield * 1000 * m_nPhperMeV;
     std::poisson_distribution dist(mu);
 
-    int nphoton = dist(engine);
+    int nphoton = mu;   //dist(engine);
     double nphoton_detected = nphoton*(1./18.)*0.7; //APD
 
     std::poisson_distribution dist2(nphoton_detected);
