@@ -182,7 +182,6 @@ double myZDCStructure::ConstructCrystalTowers(double Start_X, double Start_Y, do
   }
   
   fLayer += 2*nCTowerZ +1;
-
   _z_Crystal[1] = Start_Z + (CTower_Z + CTower_GAP) * nCTowerZ + (PIX_Z + PIX_Glue2_Z + PIX_FPC_Z + PIX_AirGap) * (nCTowerZ +1); 
   return _z_Crystal[1];
 
@@ -635,6 +634,12 @@ void myZDCStructure::Materials(){
   if(_id_Crystal == _id_PbWO4) fmat_Crystal = mat_PbWO4;
   if(_id_Crystal == _id_LYSO)  fmat_Crystal = mat_LYSO;
   if(_id_Crystal == _id_LYSOCe) fmat_Crystal = mat_LYSOCe;
+
+  //test
+  std::cout<<"Birks' constant"<<std::endl;
+  std::cout<<"PbWO4  "<<mat_PbWO4->GetIonisation()->GetBirksConstant()<<std::endl;
+  std::cout<<"LYSO   "<<mat_LYSO->GetIonisation()->GetBirksConstant()<<std::endl;
+
 
   return;
 }

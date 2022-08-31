@@ -1,4 +1,5 @@
 #crystal  photon/MeV
 PbWO4     130
+#PbWO4     26
 LYSO      30000
 LYSOCe    30000
