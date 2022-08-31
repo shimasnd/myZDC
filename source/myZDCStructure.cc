@@ -601,7 +601,7 @@ void myZDCStructure::Materials(){
   fmat_PET->AddElement(O,4);
   
   //Definition of the scintillator
-  G4double density= 1.032 *g/cm3;       //to define the dencity on my own
+  G4double density= 1.032 *g/cm3;       //to define the density on my own
   fmat_Sci = new G4Material("Scintillator",density,2);   //
   fmat_Sci->AddElement(elC,8);
   fmat_Sci->AddElement(elH,8);
